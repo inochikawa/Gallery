@@ -1,0 +1,7 @@
+D:\Combogallary\ActiveRecordPattern\bin\Release\LocalDB.mdf
+D:\Combogallary\ActiveRecordPattern\bin\Release\LocalDB_log.ldf
+D:\Combogallary\ActiveRecordPattern\obj\Release\CustomDataBase.dll
+D:\Combogallary\ActiveRecordPattern\obj\Release\CustomDataBase.pdb
+D:\Combogallary\ActiveRecordPattern\bin\Release\CustomDataBase.dll
+D:\Combogallary\ActiveRecordPattern\bin\Release\CustomDataBase.pdb
+D:\Combogallary\ActiveRecordPattern\obj\Release\ActiveRecordPattern.csprojResolveAssemblyReference.cache

@@ -1,0 +1,36 @@
+﻿<Window x:Class="Combogallary.AlbumView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:themes="clr-namespace:Combogallary.Themes"
+        xmlns:style="clr-namespace:Combogallary"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="AlbumViewWindow" Height="600" Width="800"
+        Style="{DynamicResource FlatWindow}"
+        Background="White">
+    <!--<Window.Resources>
+        <ObjectDataProvider x:Key="sideEffectWigth"
+                            ObjectType="{x:Type themes:SidePanelHelper}"
+                            MethodName="SideEffectWigth">
+            <ObjectDataProvider.MethodParameters >
+                <sys:Double>12</sys:Double>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>-->
+    <Grid>
+        <ListBox x:Name="lsbPictures" 
+                 HorizontalAlignment="Stretch" 
+                 Height="Auto" 
+                 VerticalAlignment="Stretch" 
+                 Width="Auto"
+                 Style="{DynamicResource PictureStyleListBox}"/>
+        <themes:SidePanel Title="^"
+                          TitleRectHeight="50"
+                          Width="50"
+                          TitleRectWidth="12"
+                          x:Name="sidePanel">
+            <themes:SidePanel.RenderTransform>
+                <TranslateTransform X="-38"/>
+            </themes:SidePanel.RenderTransform>
+        </themes:SidePanel>
+    </Grid>
+</Window>

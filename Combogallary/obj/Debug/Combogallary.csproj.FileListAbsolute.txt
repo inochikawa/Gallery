@@ -1,0 +1,102 @@
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\bin\Debug\Combogallary.exe.config
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\bin\Debug\Combogallary.exe
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\bin\Debug\Combogallary.pdb
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\obj\Debug\Combogallary.csprojResolveAssemblyReference.cache
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\obj\Debug\MainWindow.baml
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\obj\Debug\MainWindow.g.cs
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\obj\Debug\App.g.cs
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\obj\Debug\Combogallary_MarkupCompile.cache
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\obj\Debug\Combogallary.g.resources
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\obj\Debug\Combogallary.Properties.Resources.resources
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\obj\Debug\Combogallary.csproj.GenerateResource.Cache
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\obj\Debug\Combogallary.exe
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\obj\Debug\Combogallary.pdb
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\bin\Debug\CustomDataBase.dll
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\bin\Debug\WorkSpace.dll
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\bin\Debug\CustomDataBase.pdb
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\Combogallary\bin\Debug\WorkSpace.pdb
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\bin\Debug\Combogallary.exe.config
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\bin\Debug\Combogallary.exe
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\bin\Debug\Combogallary.pdb
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\bin\Debug\CustomDataBase.dll
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\bin\Debug\CustomDataBase.pdb
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\Combogallary.csprojResolveAssemblyReference.cache
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\Test\CustomWindow.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\MainWindow.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\App.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\Combogallary_MarkupCompile.cache
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\Combogallary_MarkupCompile.lref
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\App.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\MainWindow.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\Combogallary.g.resources
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\Combogallary.Properties.Resources.resources
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\Combogallary.csproj.GenerateResource.Cache
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\Combogallary.exe.licenses
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\Combogallary.exe
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\Combogallary.pdb
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Windows\CreateAlbumView.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\CustomCombobox.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Resourses\AnimationEffects.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\AutantificationTextBox.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\ComboGalleryWindow.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Windows\SingUpView.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\GlassButton.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Windows\AlbumView.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Windows\CreateAlbumView.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Windows\PictureView.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\AutantificationTextBox.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\ComboGalleryWindow.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Windows\LogInView.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Windows\SingUpView.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\UserControls\SidePanel.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\AlbumStyleListBox.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\PictureStyleListBox.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\PictureStyleListBox.g.cs
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Windows\AlbumView.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Windows\PictureView.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\AlbumStyleListBox.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\Windows\LogInView.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\obj\Debug\View\UserControls\SidePanel.baml
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\bin\Debug\LocalDB.mdf
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\Combogallary\bin\Debug\LocalDB_log.ldf
+D:\Combogallary\Combogallary\bin\Debug\Combogallary.exe.config
+D:\Combogallary\Combogallary\obj\Debug\Combogallary.exe
+D:\Combogallary\Combogallary\obj\Debug\Combogallary.pdb
+D:\Combogallary\Combogallary\obj\Debug\Combogallary.csprojResolveAssemblyReference.cache
+D:\Combogallary\Combogallary\obj\Debug\View\Windows\CreateAlbumView.baml
+D:\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\CustomCombobox.baml
+D:\Combogallary\Combogallary\obj\Debug\View\Resourses\AnimationEffects.baml
+D:\Combogallary\Combogallary\obj\Debug\View\Windows\AlbumView.g.cs
+D:\Combogallary\Combogallary\obj\Debug\View\Windows\CreateAlbumView.g.cs
+D:\Combogallary\Combogallary\obj\Debug\View\Windows\PictureView.g.cs
+D:\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\AlbumStyleListBox.g.cs
+D:\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\PictureStyleListBox.g.cs
+D:\Combogallary\Combogallary\obj\Debug\View\UserControls\SidePanel.g.cs
+D:\Combogallary\Combogallary\obj\Debug\App.g.cs
+D:\Combogallary\Combogallary\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Combogallary\Combogallary\obj\Debug\Combogallary_MarkupCompile.cache
+D:\Combogallary\Combogallary\obj\Debug\Combogallary_MarkupCompile.lref
+D:\Combogallary\Combogallary\bin\Debug\LocalDB.mdf
+D:\Combogallary\Combogallary\bin\Debug\LocalDB_log.ldf
+D:\Combogallary\Combogallary\bin\Debug\Combogallary.exe
+D:\Combogallary\Combogallary\bin\Debug\Combogallary.pdb
+D:\Combogallary\Combogallary\bin\Debug\CustomDataBase.dll
+D:\Combogallary\Combogallary\bin\Debug\CustomDataBase.pdb
+D:\Combogallary\Combogallary\obj\Debug\App.baml
+D:\Combogallary\Combogallary\obj\Debug\View\Windows\AlbumView.baml
+D:\Combogallary\Combogallary\obj\Debug\View\Windows\PictureView.baml
+D:\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\AlbumStyleListBox.baml
+D:\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\PictureStyleListBox.baml
+D:\Combogallary\Combogallary\obj\Debug\View\UserControls\SidePanel.baml
+D:\Combogallary\Combogallary\obj\Debug\Combogallary.g.resources
+D:\Combogallary\Combogallary\obj\Debug\Combogallary.Properties.Resources.resources
+D:\Combogallary\Combogallary\obj\Debug\Combogallary.csproj.GenerateResource.Cache
+D:\Combogallary\Combogallary\obj\Debug\Combogallary.exe.licenses
+D:\Combogallary\Combogallary\obj\Debug\View\Windows\MainWindow.g.cs
+D:\Combogallary\Combogallary\obj\Debug\View\Windows\MainWindow.baml
+D:\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\ListAlbumsListBox.g.cs
+D:\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\ListAlbumsListBox.baml
+D:\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\FlatButton.baml
+D:\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\FlatWindow.baml
+D:\Combogallary\Combogallary\obj\Debug\View\Resourses\Styles\FlatWindow.g.cs

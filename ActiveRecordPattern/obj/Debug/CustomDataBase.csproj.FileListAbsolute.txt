@@ -1,0 +1,14 @@
+D:\Лабы (3)\dotNet\TravelAgencyServer\CustomDataBase\obj\Debug\CustomDataBase.dll
+D:\Лабы (3)\dotNet\TravelAgencyServer\CustomDataBase\bin\Debug\CustomDataBase.dll
+D:\Лабы (3)\dotNet\TravelAgencyServer\CustomDataBase\bin\Debug\CustomDataBase.pdb
+D:\Лабы (3)\dotNet\TravelAgencyServer\CustomDataBase\obj\Debug\CustomDataBase.csprojResolveAssemblyReference.cache
+D:\Лабы (3)\dotNet\TravelAgencyServer\CustomDataBase\obj\Debug\CustomDataBase.pdb
+D:\Лабы (3)\dotNet\TravelAgencyClientServer - Test\CustomDataBase\bin\Debug\CustomDataBase.dll
+D:\Лабы (3)\dotNet\TravelAgencyClientServer - Test\CustomDataBase\bin\Debug\CustomDataBase.pdb
+D:\Лабы (3)\dotNet\TravelAgencyClientServer - Test\CustomDataBase\obj\Debug\CustomDataBase.dll
+D:\Лабы (3)\dotNet\TravelAgencyClientServer - Test\CustomDataBase\obj\Debug\CustomDataBase.pdb
+D:\2 курс\1 семестр\Лабы (3)\dotNet\TravelAgencyClientServer - Test\CustomDataBase\bin\Debug\CustomDataBase.dll
+D:\2 курс\1 семестр\Лабы (3)\dotNet\TravelAgencyClientServer - Test\CustomDataBase\bin\Debug\CustomDataBase.pdb
+D:\2 курс\1 семестр\Лабы (3)\dotNet\TravelAgencyClientServer - Test\CustomDataBase\obj\Debug\CustomDataBase.csprojResolveAssemblyReference.cache
+D:\2 курс\1 семестр\Лабы (3)\dotNet\TravelAgencyClientServer - Test\CustomDataBase\obj\Debug\CustomDataBase.dll
+D:\2 курс\1 семестр\Лабы (3)\dotNet\TravelAgencyClientServer - Test\CustomDataBase\obj\Debug\CustomDataBase.pdb

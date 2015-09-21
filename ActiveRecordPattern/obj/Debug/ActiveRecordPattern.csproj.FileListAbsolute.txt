@@ -1,0 +1,19 @@
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\ActiveRecordPattern\bin\Debug\CustomDataBase.dll
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\ActiveRecordPattern\bin\Debug\CustomDataBase.pdb
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\ActiveRecordPattern\obj\Debug\CustomDataBase.dll
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\ActiveRecordPattern\obj\Debug\CustomDataBase.pdb
+D:\2 курс\2 семестр\СТП-1\Photogallary\Combogallary\ActiveRecordPattern\obj\Debug\ActiveRecordPattern.csprojResolveAssemblyReference.cache
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\ActiveRecordPattern\bin\Debug\CustomDataBase.dll
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\ActiveRecordPattern\bin\Debug\CustomDataBase.pdb
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\ActiveRecordPattern\obj\Debug\CustomDataBase.dll
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\ActiveRecordPattern\obj\Debug\CustomDataBase.pdb
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\ActiveRecordPattern\obj\Debug\ActiveRecordPattern.csprojResolveAssemblyReference.cache
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\ActiveRecordPattern\bin\Debug\LocalDB.mdf
+D:\2 курс\2 семестр\СТП-1\Project\Combogallary\ActiveRecordPattern\bin\Debug\LocalDB_log.ldf
+D:\Combogallary\ActiveRecordPattern\bin\Debug\LocalDB.mdf
+D:\Combogallary\ActiveRecordPattern\bin\Debug\LocalDB_log.ldf
+D:\Combogallary\ActiveRecordPattern\bin\Debug\CustomDataBase.dll
+D:\Combogallary\ActiveRecordPattern\bin\Debug\CustomDataBase.pdb
+D:\Combogallary\ActiveRecordPattern\obj\Debug\CustomDataBase.dll
+D:\Combogallary\ActiveRecordPattern\obj\Debug\CustomDataBase.pdb
+D:\Combogallary\ActiveRecordPattern\obj\Debug\ActiveRecordPattern.csprojResolveAssemblyReference.cache

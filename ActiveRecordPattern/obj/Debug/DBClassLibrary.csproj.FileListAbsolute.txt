@@ -1,0 +1,9 @@
+D:\Лабы (3)\dotNet\TravelAgencyServer\SQLClassLibrary\bin\Debug\SQLClassLibrary.dll
+D:\Лабы (3)\dotNet\TravelAgencyServer\SQLClassLibrary\bin\Debug\SQLClassLibrary.pdb
+D:\Лабы (3)\dotNet\TravelAgencyServer\SQLClassLibrary\obj\Debug\DBClassLibrary.csprojResolveAssemblyReference.cache
+D:\Лабы (3)\dotNet\TravelAgencyServer\SQLClassLibrary\obj\Debug\SQLClassLibrary.dll
+D:\Лабы (3)\dotNet\TravelAgencyServer\SQLClassLibrary\obj\Debug\SQLClassLibrary.pdb
+D:\Лабы (3)\dotNet\TravelAgencyServer\DBClassLibrary\bin\Debug\SQLClassLibrary.dll
+D:\Лабы (3)\dotNet\TravelAgencyServer\DBClassLibrary\bin\Debug\SQLClassLibrary.pdb
+D:\Лабы (3)\dotNet\TravelAgencyServer\DBClassLibrary\obj\Debug\SQLClassLibrary.dll
+D:\Лабы (3)\dotNet\TravelAgencyServer\DBClassLibrary\obj\Debug\SQLClassLibrary.pdb

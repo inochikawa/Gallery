@@ -1,0 +1,85 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Storyboard x:Key="DropDownShadow">
+        <DoubleAnimation
+                        Storyboard.TargetName="shadowEffect"
+                        Storyboard.TargetProperty="ShadowDepth"
+                        From="0" To="7" Duration="0:0:0.1" />
+    </Storyboard>
+    
+    <Storyboard x:Key="DropUpShadow">
+        <DoubleAnimation
+                        Storyboard.TargetName="shadowEffect"
+                        Storyboard.TargetProperty="ShadowDepth"
+                        From="7" To="0" Duration="0:0:0.1" />
+    </Storyboard>
+    
+    <Storyboard x:Key="LiftUpEffect">
+        <DoubleAnimation
+                        Storyboard.TargetName="translateTransform"
+                        Storyboard.TargetProperty="X"
+                        To="-4" Duration="0:0:0.1" />
+        <DoubleAnimation
+                        Storyboard.TargetName="translateTransform"
+                        Storyboard.TargetProperty="Y"
+                        To="-4" Duration="0:0:0.1" />
+    </Storyboard>
+    
+    <Storyboard x:Key="LiftDownEffect">
+        <DoubleAnimation
+                        Storyboard.TargetName="translateTransform"
+                        Storyboard.TargetProperty="X"
+                        To="4" Duration="0:0:0.1" />
+        <DoubleAnimation
+                        Storyboard.TargetName="translateTransform"
+                        Storyboard.TargetProperty="Y"
+                        To="4" Duration="0:0:0.1" />
+    </Storyboard>
+    
+    <Storyboard x:Key="ZoomUpEffect">
+        <DoubleAnimation
+                        Storyboard.TargetName="scaleTransform"
+                        Storyboard.TargetProperty="ScaleX"
+                        To="1.05" Duration="0:0:0.1" />
+        <DoubleAnimation
+                        Storyboard.TargetName="scaleTransform"
+                        Storyboard.TargetProperty="ScaleY"
+                        To="1.05" Duration="0:0:0.1" />
+    </Storyboard>
+    
+    <Storyboard x:Key="ZoomDownEffect">
+        <DoubleAnimation
+                        Storyboard.TargetName="scaleTransform"
+                        Storyboard.TargetProperty="ScaleX"
+                        To=".9" Duration="0:0:0.1" />
+        <DoubleAnimation
+                        Storyboard.TargetName="scaleTransform"
+                        Storyboard.TargetProperty="ScaleY"
+                        To=".9" Duration="0:0:0.1"
+                        AutoReverse="True"/>
+    </Storyboard>
+    
+    <Storyboard x:Key="ZoomNormalEffect">
+        <DoubleAnimation
+                        Storyboard.TargetName="scaleTransform"
+                        Storyboard.TargetProperty="ScaleX"
+                        To="1" Duration="0:0:0.1" />
+        <DoubleAnimation
+                        Storyboard.TargetName="scaleTransform"
+                        Storyboard.TargetProperty="ScaleY"
+                        To="1" Duration="0:0:0.1" />
+    </Storyboard>
+    
+    <Storyboard x:Key="MoveLeftEffect">
+        <DoubleAnimation
+                        Storyboard.TargetName="translateTransform"
+                        Storyboard.TargetProperty="X"
+                        To="-200" Duration="0:0:1">
+            <DoubleAnimation.EasingFunction>
+                <CircleEase EasingMode="EaseOut"/>
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+    </Storyboard>
+    
+</ResourceDictionary>

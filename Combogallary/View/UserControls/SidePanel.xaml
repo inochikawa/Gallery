@@ -1,0 +1,149 @@
+﻿<UserControl x:Name="SidePanelControl" 
+             x:Class="Combogallary.Themes.SidePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Combogallary.Themes"              
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             VerticalAlignment="Stretch" 
+             Width="215" 
+             HorizontalAlignment="Left"
+             Opacity="1">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="slideRightEffect">
+            <DoubleAnimation Storyboard.TargetName="grid"
+                             Storyboard.TargetProperty="Width"
+                             To="215"
+                             Duration="0:0:1">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="slideLeftEffect">
+            <DoubleAnimation Storyboard.TargetName="grid"
+                                     Storyboard.TargetProperty="Width"
+                                     To="25" Duration="0:0:1">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="borderTitleMouseEnter">
+            <ColorAnimation Duration="0:0:.1"
+                            Storyboard.TargetName="borderTitle"
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="#f1f1f1"/>
+        </Storyboard>
+        <Storyboard x:Key="borderTitleMouseLeave">
+            <ColorAnimation Duration="0:0:.1"
+                            Storyboard.TargetName="borderTitle"
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="White"/>
+        </Storyboard>
+        <Storyboard x:Key="slideBorderTitleRightEffect">
+            <DoubleAnimation Storyboard.TargetName="borderTitleTranslateTransform"
+                             Storyboard.TargetProperty="X"
+                             To="180" 
+                             Duration="0:0:1">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="slideBorderTitleLeftEffect">
+            <DoubleAnimation Storyboard.TargetName="borderTitleTranslateTransform"
+                                     Storyboard.TargetProperty="X"
+                                     To="0" Duration="0:0:1">
+                <DoubleAnimation.EasingFunction>
+                    <CircleEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid x:Name="grid"
+          Width="25"
+          VerticalAlignment="Stretch"
+          HorizontalAlignment="Left">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <TranslateTransform x:Name="translateTransform"
+                                        X="0"/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Border  x:Name="borderMainPanel"
+                BorderThickness="0,1,1,1" 
+                Background="White" 
+                VerticalAlignment="Stretch" 
+                Width="190" 
+                HorizontalAlignment="Stretch"
+                CornerRadius="0,1,1,1"
+                BorderBrush="Black"
+                Opacity="1"
+                 RenderTransformOrigin="1,1">
+            <Border.Effect>
+                <DropShadowEffect Direction="-45"
+                                        ShadowDepth="5"
+                                        BlurRadius="7"
+                                        Opacity=".4"/>
+            </Border.Effect>
+            <ContentPresenter Content="{Binding AdditionalContent, ElementName=SidePanelControl}">
+                
+            </ContentPresenter>
+        </Border>
+        <Border Width="150"
+                Height="25"
+                Grid.Column="1"
+                Background="White"
+                BorderThickness="1,1,1,0"
+                BorderBrush="Black"
+                CornerRadius="1,1,0,0"
+                x:Name="borderTitle"
+                HorizontalAlignment="Left">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="scaleTransform"/>
+                    <TranslateTransform x:Name="borderTitleTranslateTransform"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Border.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </Border.LayoutTransform>
+            <Border.Effect>
+                <DropShadowEffect Direction="45"
+                                          ShadowDepth="5"
+                                          BlurRadius="7"
+                                          Opacity=".4"/>
+            </Border.Effect>
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard Storyboard="{DynamicResource borderTitleMouseEnter}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard Storyboard="{DynamicResource borderTitleMouseLeave}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                    <BeginStoryboard Storyboard="{DynamicResource slideRightEffect}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseRightButtonDown">
+                    <BeginStoryboard Storyboard="{DynamicResource slideLeftEffect}"/>
+                </EventTrigger>
+            </Border.Triggers>
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       FontStretch="Normal"
+                       Text="Title"
+                       x:Name="txtTitle"
+                       Grid.Column="1"
+                       RenderTransformOrigin=".5,.5"
+                       FontFamily="Century Gothic" />
+        </Border>
+    </Grid>
+</UserControl>

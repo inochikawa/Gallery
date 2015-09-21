@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:themes="clr-namespace:Combogallary.Themes"
+                    xmlns:local="clr-namespace:Combogallary.Model"
+                    x:Class="ListAlbumsListBox">
+
+    <Style x:Key="ListAlbumsListBox" TargetType="{x:Type ListBox}">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate DataType="{x:Type local:Album}">
+                    <Border CornerRadius="1"
+                            BorderThickness="0"
+                            BorderBrush="Blue"
+                            Height="25"
+                            Width="160"
+                            Background="#303f9f">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Stretch="Uniform"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left">
+                                <Image.Source>
+                                    <BitmapImage UriSource="/Combogallary;component/View/Resourses/Images/folder.png"/>
+                                </Image.Source>
+                            </Image>
+
+                            <TextBlock x:Name="pictureTitle"
+                                       Text="{Binding VeryShortName}"
+                                       Background="Transparent"
+                                       FontSize="20"
+                                       FontFamily="Century Gothic"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Margin="5,0,0,0"
+                                       Foreground="White"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!-- Set this attached property to 'Disabled' so that the 
+           ScrollViewer in the ListBox will never show a horizontal 
+           scrollbar, and the WrapPanel it contains will be constrained 
+           to the width of the ScrollViewer's viewable surface. -->
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" 
+                Value="Disabled"  />
+    </Style>
+</ResourceDictionary>

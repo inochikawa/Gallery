@@ -1,0 +1,30 @@
+﻿<Window 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Combogallary.SingUpView"
+        x:Name="SingUp"
+        Title="COMBOGALLERY"
+        Opacity="1" Closing="SingUp_Closing" WindowStyle="None" Height="480" Width="640"
+        Background="White"
+        Style="{DynamicResource ComboGalleryWindow}"
+        >
+
+    <Grid>
+        <TextBox x:Name="txtName" Style="{DynamicResource AutantificationTextBox}" TextWrapping="Wrap" Text="Name" Background="#FFFDFDF9" Margin="218,86,218,319"/>
+        <TextBox x:Name="txtSurname" Style="{DynamicResource AutantificationTextBox}" TextWrapping="Wrap" Text="Surname" Margin="218,116,218,290" Background="#FFFDFDF9" Height="24"/>
+        <TextBox x:Name="txtLogin" Style="{DynamicResource AutantificationTextBox}" TextWrapping="Wrap" Text="Login" Margin="218,146,218,260" Background="#FFFDFDF9" Height="24"/>
+        <TextBox x:Name="txtEmail" Style="{DynamicResource AutantificationTextBox}" TextWrapping="Wrap" Text="Email" Margin="218,176,218,230" Background="#FFFDFDF9" Height="24"/>
+        <TextBox x:Name="txtPassword" Style="{DynamicResource AutantificationTextBox}" TextWrapping="Wrap" Text="Password" Margin="218,206,218,200" Background="#FFFDFDF9" Height="24"/>
+        <TextBox x:Name="txtConfirmPassword" Style="{DynamicResource AutantificationTextBox}" TextWrapping="Wrap" Text="Confirm Password" Margin="218,236,218,170" Background="#FFFDFDF9" Height="24"/>
+        <Button x:Name="btnSingUp" Content="Sing Up" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    Margin="218,369,0,0"
+                    FontSize="20"
+                    Style="{StaticResource GlassButton}" Visibility="Visible" Width="83" Height="50" Background="#FFF9DB1C" Click="btnSingUp_Click">
+        </Button>
+        <Button x:Name="btnSingIn" Content="Log In" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    Margin="352,376,0,0"
+                    FontSize="15" Opacity=".3"
+                    Style="{StaticResource GlassButton}" Visibility="Visible" Height="37" Width="66" Click="btnSingIn_Click">
+        </Button>
+    </Grid>
+</Window>

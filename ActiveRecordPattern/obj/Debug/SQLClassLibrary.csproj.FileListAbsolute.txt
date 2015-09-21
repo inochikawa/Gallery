@@ -1,0 +1,5 @@
+D:\Лабы (3)\dotNet\TravelAgencyServer\SQLClassLibrary\obj\Debug\SQLClassLibrary.csprojResolveAssemblyReference.cache
+D:\Лабы (3)\dotNet\TravelAgencyServer\SQLClassLibrary\bin\Debug\CustomDataBase.dll
+D:\Лабы (3)\dotNet\TravelAgencyServer\SQLClassLibrary\bin\Debug\CustomDataBase.pdb
+D:\Лабы (3)\dotNet\TravelAgencyServer\SQLClassLibrary\obj\Debug\CustomDataBase.dll
+D:\Лабы (3)\dotNet\TravelAgencyServer\SQLClassLibrary\obj\Debug\CustomDataBase.pdb

@@ -1,0 +1,53 @@
+;Crystal Clear v2.1 by TheBlueGuy07
+
+[Version]
+signature="$CHICAGO$"
+
+[DefaultInstall]
+CopyFiles = Scheme.Cur, 
+AddReg    = Scheme.Reg
+
+[DestinationDirs]
+Scheme.Cur = 10,"%CUR_DIR%"
+Scheme.Txt = 10,"%CUR_DIR%"
+
+[Scheme.Reg]
+HKCU,"Control Panel\Cursors\Schemes","%SCHEME_NAME%",,"%10%\%CUR_DIR%\%pointer%,%10%\%CUR_DIR%\%help%,%10%\%CUR_DIR%\%work%,%10%\%CUR_DIR%\%busy%,%10%\%CUR_DIR%\%Cross%,%10%\%CUR_DIR%\%Text%,%10%\%CUR_DIR%\%Hand%,%10%\%CUR_DIR%\%Unavailiable%,%10%\%CUR_DIR%\%Vert%,%10%\%CUR_DIR%\%Horz%,%10%\%CUR_DIR%\%Dgn1%,%10%\%CUR_DIR%\%Dgn2%,%10%\%CUR_DIR%\%move%,%10%\%CUR_DIR%\%alternate%,%10%\%CUR_DIR%\%link%"
+
+; -- Common Information
+
+[Scheme.Cur]
+"Normal Select v2.1.ani"
+"Help Select v2.1.ani"
+"Working In Background v2.1.ani"
+"Busy v2.1.ani"
+"Precision Select v2.1.ani"
+"Text Select v2.1.ani"
+"Handwriting v2.1.ani"
+"Unavailable v2.1.ani"
+"Vertical Resize v2.1.ani"
+"Horizontal Resize v2.1.ani"
+"Diagonal Resize 1 v2.1.ani"
+"Diagonal Resize 2 v2.1.ani"
+"Move v2.1.ani"
+"Alternate Select v2.1.ani"
+"Link Select v2.1.ani"
+
+[Strings]
+CUR_DIR         = "Cursors\Crystal Clear v2.1"
+SCHEME_NAME     = "Crystal Clear v2.1"
+pointer		= "Normal Select v2.1.ani"
+help		= "Help Select v2.1.ani"
+work		= "Working In Background v2.1.ani"
+busy		= "Busy v2.1.ani"
+cross		= "Precision Select v2.1.ani"
+text		= "Text Select v2.1.ani"
+hand		= "Handwriting v2.1.ani"
+unavailiable	= "Unavailable v2.1.ani"
+vert		= "Vertical Resize v2.1.ani"
+horz		= "Horizontal Resize v2.1.ani"
+dgn1		= "Diagonal Resize 1 v2.1.ani"
+dgn2		= "Diagonal Resize 2 v2.1.ani"
+move		= "Move v2.1.ani"
+alternate	= "Alternate Select v2.1.ani"
+link		= "Link Select v2.1.ani"
