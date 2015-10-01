@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combogallary", "Combogallar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActiveRecordPattern", "ActiveRecordPattern\ActiveRecordPattern.csproj", "{E3C36B6F-70A4-4DC5-BC56-D4D9A94C0828}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicEditor", "GraphicEditor\GraphicEditor.csproj", "{35805942-BB31-4F54-89FA-02099F796C04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E3C36B6F-70A4-4DC5-BC56-D4D9A94C0828}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3C36B6F-70A4-4DC5-BC56-D4D9A94C0828}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3C36B6F-70A4-4DC5-BC56-D4D9A94C0828}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35805942-BB31-4F54-89FA-02099F796C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35805942-BB31-4F54-89FA-02099F796C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35805942-BB31-4F54-89FA-02099F796C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35805942-BB31-4F54-89FA-02099F796C04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

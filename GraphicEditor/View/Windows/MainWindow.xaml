@@ -1,0 +1,160 @@
+﻿<Window x:Class="GraphicEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraphicEditor"
+        Background="#3b3b3b"
+        Style="{DynamicResource ResourceKey=FlatWindow}"
+        Title="" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Menu Height="25"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Left"
+              Margin="0,-30,75,0"
+              Background="Transparent">
+            <MenuItem Header="File"
+                      FontFamily="Century Gothic"
+                      Foreground="White">
+                <MenuItem x:Name="openFileMenuItem"
+                          Header="Open" Foreground="Black"
+                          Click="openFileMenuItem_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/GraphicEditor;component/View/Resources/Images/open_file.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Image"
+                      FontFamily="Century Gothic"
+                      Foreground="White">
+                <MenuItem x:Name="imageProperties"
+                          Header="Propeties" Foreground="Black" Click="imageProperties_Click"
+                          >
+                    <MenuItem.Icon>
+                        <Image Source="/GraphicEditor;component/View/Resources/Images/image-properties.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        
+        <TabControl x:Name="pictureTabView" 
+                    Background="Transparent" 
+                    SelectionChanged="pictureTabView_SelectionChanged"
+                    ItemsSource="{Binding}" MouseLeftButtonUp="pictureTabView_MouseLeftButtonUp">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="MinWidth" Value="100"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Name="Border" 
+                                        BorderThickness="0" 
+                                        BorderBrush="Gainsboro" 
+                                        CornerRadius="2,2,0,0" 
+                                        Margin="2,0"
+                                        HorizontalAlignment="Stretch">
+                                    <Grid HorizontalAlignment="Stretch">
+                                        <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=TabItem }, Path=Header}" />
+                                        <Button Name="btnDelete" Content="X" 
+                                                HorizontalAlignment="Right"
+                                                Background="#c8373a"
+                                                BorderThickness="0" 
+                                                Click="btnDelete_Click" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=Name}">
+
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="#727272" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="#b0b0b0" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+        </TabControl>
+        
+        <Menu Width="25"
+              Height="auto"
+              VerticalAlignment="Stretch"
+              HorizontalAlignment="Left"
+              x:Name="menuPanel"
+              Opacity=".3"
+              Margin="5,40,0,50"
+              >
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <Menu.Resources>
+                <Storyboard x:Key="opacityEffectIn">
+                    <DoubleAnimation Storyboard.TargetName="menuPanel"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1"
+                             Duration="0:0:.3">
+                    </DoubleAnimation>
+                </Storyboard>
+                <Storyboard x:Key="opacityEffectOut">
+                    <DoubleAnimation Storyboard.TargetName="menuPanel"
+                             Storyboard.TargetProperty="Opacity"
+                             To=".3"
+                             Duration="0:0:.3">
+                    </DoubleAnimation>
+                </Storyboard>
+            </Menu.Resources>
+            <Menu.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard Storyboard="{StaticResource opacityEffectIn}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard Storyboard="{StaticResource opacityEffectOut}"/>
+                </EventTrigger>
+            </Menu.Triggers>
+            <!--<MenuItem  Height="25">
+                <MenuItem.Icon>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/rectangle.png"/>
+                </MenuItem.Icon>
+            </MenuItem>-->
+        </Menu>
+
+        <!--<ListBox  Width="25"
+                  Height="auto"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Left"
+                  x:Name="menuPanel"
+                  Opacity=".3"
+                  Margin="5,40,0,50">
+            <ListBox.Resources>
+                <Storyboard x:Key="opacityEffectIn">
+                    <DoubleAnimation Storyboard.TargetName="menuPanel"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1"
+                             Duration="0:0:.3">
+                    </DoubleAnimation>
+                </Storyboard>
+                <Storyboard x:Key="opacityEffectOut">
+                    <DoubleAnimation Storyboard.TargetName="menuPanel"
+                             Storyboard.TargetProperty="Opacity"
+                             To=".3"
+                             Duration="0:0:.3">
+                    </DoubleAnimation>
+                </Storyboard>
+            </ListBox.Resources>
+            <ListBox.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard Storyboard="{StaticResource opacityEffectIn}"/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard Storyboard="{StaticResource opacityEffectOut}"/>
+                </EventTrigger>
+            </ListBox.Triggers>
+        </ListBox>-->
+    </Grid>
+</Window>

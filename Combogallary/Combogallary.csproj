@@ -72,6 +72,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\ImageProcessing.cs" />
+    <Compile Include="Model\Interfaces\IPicture.cs" />
+    <Compile Include="Model\ProxyPattern\PictureProxy.cs" />
     <Compile Include="ViewModel\AlbumViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\Resourses\Styles\WindowsResizer.cs" />

@@ -35,7 +35,7 @@ namespace Combogallary
 
             foreach (var bitmapImage in ImageProcessing.AddImagesToList(dialog.SelectedPath))
             {
-                _pictres.Add(new Picture(bitmapImage));
+                _pictres.Add(new Picture(bitmapImage.UriSource.AbsolutePath));
             }
 
             foreach (var pic in _pictres)
@@ -61,7 +61,7 @@ namespace Combogallary
 
         private void lsbPics_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            txtPicDimensions.Text = ((Picture)(lsbPics.SelectedItem)).Dimensions;
+            txtPicDimensions.Text = ((Picture)(lsbPics.SelectedItem)).Dimension;
             txtPicLocation.Text = ((Picture)(lsbPics.SelectedItem)).Location;
             txtPicSize.Text = ((Picture)(lsbPics.SelectedItem)).Size.ToString();
         }

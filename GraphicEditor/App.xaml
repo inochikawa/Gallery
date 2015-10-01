@@ -1,0 +1,17 @@
+﻿<Application x:Class="GraphicEditor.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GraphicEditor"
+             StartupUri="View/Windows/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Combogallary;component/View/Resourses/Styles/FlatWindow.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Combogallary;component/View/Resourses/Styles/FlatButton.xaml"/>
+                <ResourceDictionary Source="UserControls/Resources/ZoomBox.xaml"/>
+                <ResourceDictionary Source="UserControls/Resources/Brushes.xaml"/>
+                <ResourceDictionary Source="UserControls/Resources/DesignerItem.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

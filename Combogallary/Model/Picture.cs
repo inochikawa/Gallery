@@ -1,24 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using ActiveRecordPattern;
 using ActiveRecordPattern.Attributes;
 using System.IO;
-using System.Xml.Schema;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
-using System.Drawing;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
+using Combogallary.Model.Interfaces;
 
 namespace Combogallary.Model
-{  
+{
     [ActiveRecord]
     [Serializable]
-    public class Picture : ActiveRecordBaseGeneric<Picture>, INotifyPropertyChanged
+    public class Picture : ActiveRecordBaseGeneric<Picture>, IPicture, INotifyPropertyChanged
     {
         private Guid _id;
         private BitmapImage _image;
@@ -31,12 +24,13 @@ namespace Combogallary.Model
         {
 
         }
-        public Picture(BitmapImage image)
+        public Picture(string location)
         {
             Id = Guid.NewGuid();
-            _image = image;
+            this._location = location;
+            _image = Image;
             _dateAdded = DateTime.Now;
-            _name = image.UriSource.Fragment;
+            _name = Image.UriSource.Fragment;
         }
 
         [PropertyKeyRecord]
@@ -91,112 +85,6 @@ namespace Combogallary.Model
             }
         }
 
-        //public byte[] ImageBytes
-        //{
-        //    get
-        //    {
-        //        if (_imageBytes == null && _image != null)
-        //        {
-        //            using (MemoryStream ms = new MemoryStream())
-        //            {
-        //                BinaryFormatter bf = new BinaryFormatter();
-        //                bf.Serialize(ms, this);
-        //                _imageBytes = ms.ToArray();
-        //            }
-        //            return _imageBytes;
-        //        }
-
-        //        if (_imageBytes == null && _image == null)
-        //        {
-        //            List<byte> data = new List<byte>();
-        //            StreamReader reader = null;
-
-        //            //Ловим исключения. Если например файл не будет найден, то в консоли выведетс соответствующее вообщение
-        //            try
-        //            {
-        //                reader = new StreamReader(ImageBytesLocation);
-        //            }
-        //            catch (Exception e) {}
-
-        //            while (!reader.EndOfStream)
-        //            {
-        //                data.Add(Convert.ToByte(reader.ReadLine()));
-        //            }
-        //            reader.Close();
-        //            _imageBytes = data.ToArray();
-        //            return _imageBytes;
-        //        }
-        //        return _imageBytes;
-        //    }
-        //    set
-        //    {
-        //        _imageBytes = value;
-        //        OnPropertyChanged("Image");
-        //    }
-        //}
-
-        //[PropertyRecord]
-        //public string ImageBytesLocation
-        //{
-        //    get
-        //    {
-        //        return @"Source\ImagesInBytes\" + _id.ToString() + ".iminbt";
-        //    }
-        //    set { }
-        //}
-
-        //public override void Save()
-        //{
-        //    base.Save();
-        //    using (StreamWriter writer = new StreamWriter(ImageBytesLocation))
-        //    {
-        //        foreach (var item in ImageBytes)
-        //        {
-        //            writer.WriteLine(item);
-        //        }
-        //    }
-        //}
-
-        //[PropertyRecord(Name = "BytesCount")]
-        //public int ImageBytesCount
-        //{
-        //    get
-        //    {
-        //        if (_imageBytes == null)
-        //        {
-        //            _imageBytesCount = ImageBytes.Count();
-        //        }
-        //        return _imageBytesCount;
-        //    }
-        //    set
-        //    {
-        //        _imageBytesCount = value;
-        //        OnPropertyChanged("ImageBytesCount");
-        //    }
-        //}
-
-        //public BitmapImage ImageFromBytes(Byte[] bytes)
-        //{
-        //    var image = new BitmapImage();
-        //    using (var ms = new MemoryStream(bytes))
-        //    {
-        //        BinaryFormatter formatter = new BinaryFormatter();
-        //        ms.Seek(0, SeekOrigin.Begin);
-        //        image = (BitmapImage) formatter.Deserialize(ms);
-        //    }
-        //    return image;
-        //}
-
-        //public Stream GenerateStreamFromString(string s)
-        //{
-        //    MemoryStream stream = new MemoryStream();
-        //    StreamWriter writer = new StreamWriter(stream);
-        //    writer.Write(s);
-        //    writer.Flush();
-        //    stream.Position = 0;
-        //    return stream;
-        //}
-
         [PropertyRecord]
         public string Location
         {
@@ -211,12 +99,13 @@ namespace Combogallary.Model
             }
         }
 
-        public string Dimensions
+        public string Dimension
         {
             get
             {
                 return _image.Width + "x" + _image.Height;
             }
+            set { }
         }
 
         public long Size
@@ -225,6 +114,7 @@ namespace Combogallary.Model
             {
                 return GetFileSizeOnDisk(_image.UriSource.AbsolutePath);
             }
+            set { }
         }
 
         public static long GetFileSizeOnDisk(string file)
@@ -250,16 +140,6 @@ namespace Combogallary.Model
            out uint lpSectorsPerCluster, out uint lpBytesPerSector, out uint lpNumberOfFreeClusters,
            out uint lpTotalNumberOfClusters);
 
-        //public List<BitmapImage> NextImage()
-        //{ 
-        //        List<BitmapImage> img = new List<BitmapImage>();
-        //        foreach (var pic in Pictures)
-        //        {
-        //            img.Add(pic.Image);
-        //        }
-        //        return img; 
-        //}
-
         [PropertyRecord]
         public DateTime DateAdded
         {
@@ -283,8 +163,13 @@ namespace Combogallary.Model
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        public BitmapImage Open()
+        {
+            return _image;
+        }
         #endregion
 
-       
+
     }
 }
