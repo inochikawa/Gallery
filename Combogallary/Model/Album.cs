@@ -40,7 +40,7 @@ namespace Combogallary.Model
         [PropertyKeyRecord]
         public Guid Id
         {
-            get { return _id; }
+            get {  _id; }
             set
             {
                 _id = value;
