@@ -1,7 +1,7 @@
 # Gallery
 In this gallery you can watch pics and photos saved in your computer. They are easy access in any time, don't afraid lost your media files - just open gallery and enjoy it.
 
->Mwindow looks
+>Main window looks
 
 ><img src="https://pp.vk.me/c622520/v622520455/47391/KccGff_1SNA.jpg" alt="MainWindow"></img>
 
