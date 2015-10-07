@@ -24,7 +24,7 @@ namespace Combogallary.Model
         {
 
         }
-        public Picture(int location)
+        public Picture(string location)
         {
             Id = Guid.NewGuid();
             this._location = location;
