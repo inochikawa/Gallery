@@ -17,7 +17,7 @@ namespace Combogallary.Model
         private string _name;
         private DateTime _dateCreated;
         private bool _publicAccess;
-        public Album(int name)
+        public Album(string name)
         {
             _name = name;
             _dateCreated = DateTime.Now;
