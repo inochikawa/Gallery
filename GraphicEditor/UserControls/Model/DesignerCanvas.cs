@@ -1,11 +1,9 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Xml;
@@ -67,7 +65,6 @@ namespace GraphicEditor.UserControls.Model
                 //        adornerLayer.Add(adorner);
                 //    }
                 //}
-
                 e.Handled = true;
             }
         }
@@ -76,7 +73,7 @@ namespace GraphicEditor.UserControls.Model
         {
             base.OnDrop(e);
             string xamlString = e.Data.GetData("DESIGNER_ITEM") as string;
-            if (!String.IsNullOrEmpty(xamlString))
+            if (!string.IsNullOrEmpty(xamlString))
             {
                 DesignerItem newItem = null;
                 FrameworkElement content = XamlReader.Load(XmlReader.Create(new StringReader(xamlString))) as FrameworkElement;
@@ -89,7 +86,7 @@ namespace GraphicEditor.UserControls.Model
                     Point position = e.GetPosition(this);
                     if (content.MinHeight != 0 && content.MinWidth != 0)
                     {
-                        newItem.Width = content.MinWidth * 2; ;
+                        newItem.Width = content.MinWidth * 2;
                         newItem.Height = content.MinHeight * 2;
                     }
                     else
@@ -97,9 +94,10 @@ namespace GraphicEditor.UserControls.Model
                         newItem.Width = 65;
                         newItem.Height = 65;
                     }
+
                     DesignerCanvas.SetLeft(newItem, Math.Max(0, position.X - newItem.Width / 2));
                     DesignerCanvas.SetTop(newItem, Math.Max(0, position.Y - newItem.Height / 2));
-                    this.Children.Add(newItem);
+                    Children.Add(newItem);
 
                     this.DeselectAll();
                     newItem.IsSelected = true;
@@ -112,7 +110,7 @@ namespace GraphicEditor.UserControls.Model
         protected override Size MeasureOverride(Size constraint)
         {
             Size size = new Size();
-            foreach (UIElement element in Children)
+            foreach (UIElement element in this.Children)
             {
                 double left = Canvas.GetLeft(element);
                 double top = Canvas.GetTop(element);

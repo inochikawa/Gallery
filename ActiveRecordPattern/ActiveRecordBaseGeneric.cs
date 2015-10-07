@@ -26,14 +26,14 @@ namespace ActiveRecordPattern
             string[] propNames = propertyNames(classType);
             Type[] propTypes = propertyTypes(classType);
 
-            sqlCom.Parameters.Add("@" + propertyKeyName(classType), ConvertType.FromCLR(propertyKeyType(classType)));
+            sqlCom.Parameters.AddWithValue("@" + propertyKeyName(classType), ConvertType.FromCLR(propertyKeyType(classType)));
             sqlCom.Parameters["@" + propertyKeyName(classType)].Value = propertyKey(classType).GetValue(this);
 
             StringBuilder query = new StringBuilder("INSERT INTO " + tableName(classType) + " VALUES(@" + propertyKeyName(classType) + ", ");
 
             for (int i = 0; i < propTypes.Count(); i++)
             {
-                sqlCom.Parameters.Add("@" + propNames[i], ConvertType.FromCLR(propTypes[i]));
+                sqlCom.Parameters.AddWithValue("@" + propNames[i], ConvertType.FromCLR(propTypes[i]));
                 sqlCom.Parameters["@" + propNames[i]].Value = props[i].GetValue(this);
                 query.Append("@" + propNames[i]);
                 if (i == propTypes.Count() - 1)
@@ -78,12 +78,12 @@ namespace ActiveRecordPattern
                 StringBuilder query = new StringBuilder("UPDATE " + tableName(classType) + " SET " + propertyKeyName(classType) 
                     + "=@" + propertyKeyName(classType) + ", ");
                 
-                sqlCom.Parameters.Add("@" + propertyKeyName(classType), ConvertType.FromCLR(propertyKeyType(classType)));
+                sqlCom.Parameters.AddWithValue("@" + propertyKeyName(classType), ConvertType.FromCLR(propertyKeyType(classType)));
                 sqlCom.Parameters["@" + propertyKeyName(classType)].Value = propertyKey(classType).GetValue(this);
                 
                 for (int i = 0; i < propTypes.Count(); i++)
                 {
-                    sqlCom.Parameters.Add("@" + propNames[i], propTypes[i]);
+                    sqlCom.Parameters.AddWithValue("@" + propNames[i], propTypes[i]);
                     sqlCom.Parameters["@" + propNames[i]].Value = props[i].GetValue(this);
                     query.Append(propNames[i] + "=@" + propNames[i]);
                     if (i != propTypes.Count() - 1)
@@ -121,7 +121,7 @@ namespace ActiveRecordPattern
                 string query = "DELETE FROM " + tableName(classType) + " WHERE " +
                 propertyKeyName(classType) + "=@" + propertyKeyName(classType) + ";";
 
-                sqlCom.Parameters.Add("@" + propertyKeyName(classType), ConvertType.FromCLR(propertyKeyType(classType)));
+                sqlCom.Parameters.AddWithValue("@" + propertyKeyName(classType), ConvertType.FromCLR(propertyKeyType(classType)));
                 sqlCom.Parameters["@" + propertyKeyName(classType)].Value = propertyKey(classType).GetValue(this);
                 
                 sqlCom.CommandText = query.ToString();
@@ -144,7 +144,7 @@ namespace ActiveRecordPattern
 
             string query = "SELECT * FROM " + tableName(classType) + " WHERE " + propertyKeyName(classType) + "=@" + propertyKeyName(classType) + ";";
 
-            sqlCom.Parameters.Add("@" + propertyKeyName(classType), ConvertType.FromCLR(propertyKeyType(classType)));
+            sqlCom.Parameters.AddWithValue("@" + propertyKeyName(classType), ConvertType.FromCLR(propertyKeyType(classType)));
             sqlCom.Parameters["@" + propertyKeyName(classType)].Value = propertyKey(classType).GetValue(this);
 
             sqlConnection.Open();
@@ -215,7 +215,7 @@ namespace ActiveRecordPattern
                     sqlReader.Close();
 
                 }
-                catch (SqlException e)
+                catch (SqlException)
                 {
                     sqlConnection.Close();
                 }
@@ -329,7 +329,7 @@ namespace ActiveRecordPattern
             string query = "SELECT * FROM " + tableName(type) + " WHERE " + propertyNames(type)[1] + "=@" + propertyNames(type)[1] + ";";
             SqlCommand sqlCom = new SqlCommand(query, sqlConnection);
 
-            sqlCom.Parameters.Add("@" + propertyNames(type)[1], ConvertType.FromCLR(propertyTypes(type)[0]));
+            sqlCom.Parameters.AddWithValue("@" + propertyNames(type)[1], ConvertType.FromCLR(propertyTypes(type)[0]));
             sqlCom.Parameters["@" + propertyNames(type)[1]].Value = albumId;
 
             try

@@ -95,7 +95,7 @@ namespace ActiveRecordPattern
                     {
                         sqlCom.ExecuteNonQuery();
                     }
-                    catch (SqlException e )
+                    catch (SqlException)
                     {
                         sqlConnection.Close();
                         return false;

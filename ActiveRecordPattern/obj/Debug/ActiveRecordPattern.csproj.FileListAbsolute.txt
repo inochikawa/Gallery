@@ -23,4 +23,3 @@ D:\GitHub\Gallery\ActiveRecordPattern\bin\Debug\CustomDataBase.dll
 D:\GitHub\Gallery\ActiveRecordPattern\bin\Debug\CustomDataBase.pdb
 D:\GitHub\Gallery\ActiveRecordPattern\obj\Debug\CustomDataBase.dll
 D:\GitHub\Gallery\ActiveRecordPattern\obj\Debug\CustomDataBase.pdb
-D:\GitHub\Gallery\ActiveRecordPattern\obj\Debug\ActiveRecordPattern.csprojResolveAssemblyReference.cache
