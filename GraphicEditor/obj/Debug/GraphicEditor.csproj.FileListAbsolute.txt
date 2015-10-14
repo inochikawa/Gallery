@@ -27,3 +27,5 @@ D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.Properties.Resources.res
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.csproj.GenerateResource.Cache
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.exe
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.pdb
+D:\GitHub\Gallery\GraphicEditor\bin\Debug\GraphicEditor.exe.CodeAnalysisLog.xml
+D:\GitHub\Gallery\GraphicEditor\bin\Debug\GraphicEditor.exe.lastcodeanalysissucceeded

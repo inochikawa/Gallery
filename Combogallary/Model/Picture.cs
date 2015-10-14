@@ -14,6 +14,7 @@ namespace Combogallary.Model
     public class Picture : ActiveRecordBaseGeneric<Picture>, IPicture, INotifyPropertyChanged
     {
         private Guid _id;
+        [NonSerialized]
         private BitmapImage _image;
         private DateTime _dateAdded;
         private Guid _idAlbum;
