@@ -8,6 +8,9 @@ namespace GraphicEditor.UserControls.Model
 {
     public class ZoomBox : Control
     {
+        public static readonly DependencyProperty ScrollViewerProperty =
+            DependencyProperty.Register("ScrollViewer", typeof(ScrollViewer), typeof(ZoomBox));
+
         private Thumb zoomThumb;
         private Canvas zoomCanvas;
         private Slider zoomSlider;
@@ -19,9 +22,6 @@ namespace GraphicEditor.UserControls.Model
             get { return (ScrollViewer)GetValue(ScrollViewerProperty); }
             set { SetValue(ScrollViewerProperty, value); }
         }
-
-        public static readonly DependencyProperty ScrollViewerProperty =
-            DependencyProperty.Register("ScrollViewer", typeof(ScrollViewer), typeof(ZoomBox));
 
         public override void OnApplyTemplate()
         {
@@ -61,10 +61,10 @@ namespace GraphicEditor.UserControls.Model
             double scale = e.NewValue / e.OldValue;
 
             double halfViewportHeight = this.ScrollViewer.ViewportHeight / 2;
-            double newVerticalOffset = ((this.ScrollViewer.VerticalOffset + halfViewportHeight) * scale - halfViewportHeight);
+            double newVerticalOffset = (ScrollViewer.VerticalOffset + halfViewportHeight) * scale - halfViewportHeight;
 
             double halfViewportWidth = this.ScrollViewer.ViewportWidth / 2;
-            double newHorizontalOffset = ((this.ScrollViewer.HorizontalOffset + halfViewportWidth) * scale - halfViewportWidth);
+            double newHorizontalOffset = (this.ScrollViewer.HorizontalOffset + halfViewportWidth) * scale - halfViewportWidth;
 
             this.scaleTransform.ScaleX *= scale;
             this.scaleTransform.ScaleY *= scale;

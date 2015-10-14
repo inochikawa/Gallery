@@ -56,15 +56,15 @@ namespace GraphicEditor.UserControls.Model
 
             if (this.dragStartPoint.HasValue)
             {
-                //AdornerLayer adornerLayer = AdornerLayer.GetAdornerLayer(this);
-                //if (adornerLayer != null)
-                //{
+                // AdornerLayer adornerLayer = AdornerLayer.GetAdornerLayer(this);
+                // if (adornerLayer != null)
+                // {
                 //    RubberbandAdorner adorner = new RubberbandAdorner(this, this.dragStartPoint);
                 //    if (adorner != null)
                 //    {
                 //        adornerLayer.Add(adorner);
                 //    }
-                //}
+                // }
                 e.Handled = true;
             }
         }
@@ -95,8 +95,8 @@ namespace GraphicEditor.UserControls.Model
                         newItem.Height = 65;
                     }
 
-                    DesignerCanvas.SetLeft(newItem, Math.Max(0, position.X - newItem.Width / 2));
-                    DesignerCanvas.SetTop(newItem, Math.Max(0, position.Y - newItem.Height / 2));
+                    DesignerCanvas.SetLeft(newItem, Math.Max(0, position.X - (newItem.Width / 2)));
+                    DesignerCanvas.SetTop(newItem, Math.Max(0, position.Y - (newItem.Height / 2)));
                     Children.Add(newItem);
 
                     this.DeselectAll();

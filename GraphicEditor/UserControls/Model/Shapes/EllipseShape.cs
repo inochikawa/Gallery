@@ -10,8 +10,6 @@ namespace GraphicEditor.UserControls.Model.Shapes
 {
     public class EllipseShape : Shapes
     {
-        public Ellipse Ellipse;
-
         public EllipseShape(double width, double height, Brush background)
         {
             Ellipse = new Ellipse();
@@ -22,17 +20,19 @@ namespace GraphicEditor.UserControls.Model.Shapes
             setParametres();
         }
 
-        private void setParametres()
-        {
-            Ellipse.Width = this.Width;
-            Ellipse.Height = this.Height;
-            Ellipse.Fill = this.Bckground;
-        }
+        public Ellipse Ellipse { get; set; }
 
         public override Shapes Clone()
         {
             EllipseShape cloned = new EllipseShape(Width, Height, Bckground);
             return cloned as Shapes;
+        }
+
+        private void setParametres()
+        {
+            Ellipse.Width = this.Width;
+            Ellipse.Height = this.Height;
+            Ellipse.Fill = this.Bckground;
         }
     }
 }

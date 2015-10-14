@@ -7,29 +7,15 @@ namespace GraphicEditor.UserControls.Model
 {
     public class DesignerItem : ContentControl
     {
-        public bool IsSelected
-        {
-            get { return (bool)GetValue(IsSelectedProperty); }
-            set { SetValue(IsSelectedProperty, value); }
-        }
-
         public static readonly DependencyProperty IsSelectedProperty =
-          DependencyProperty.Register("IsSelected", typeof(bool),
-                                      typeof(DesignerItem),
-                                      new FrameworkPropertyMetadata(false));
+          DependencyProperty.Register(
+              "IsSelected", 
+              typeof(bool),
+              typeof(DesignerItem),
+              new FrameworkPropertyMetadata(false));
 
         public static readonly DependencyProperty MoveThumbTemplateProperty =
             DependencyProperty.RegisterAttached("MoveThumbTemplate", typeof(ControlTemplate), typeof(DesignerItem));
-
-        public static ControlTemplate GetMoveThumbTemplate(UIElement element)
-        {
-            return (ControlTemplate)element.GetValue(MoveThumbTemplateProperty);
-        }
-
-        public static void SetMoveThumbTemplate(UIElement element, ControlTemplate value)
-        {
-            element.SetValue(MoveThumbTemplateProperty, value);
-        }
 
         static DesignerItem()
         {
@@ -39,6 +25,22 @@ namespace GraphicEditor.UserControls.Model
         public DesignerItem()
         {
             this.Loaded += new RoutedEventHandler(this.DesignerItem_Loaded);
+        }
+
+        public bool IsSelected
+        {
+            get { return (bool)GetValue(IsSelectedProperty); }
+            set { SetValue(IsSelectedProperty, value); }
+        }
+
+        public static ControlTemplate GetMoveThumbTemplate(UIElement element)
+        {
+            return (ControlTemplate)element.GetValue(MoveThumbTemplateProperty);
+        }
+
+        public static void SetMoveThumbTemplate(UIElement element, ControlTemplate value)
+        {
+            element.SetValue(MoveThumbTemplateProperty, value);
         }
 
         protected override void OnPreviewMouseDown(MouseButtonEventArgs e)

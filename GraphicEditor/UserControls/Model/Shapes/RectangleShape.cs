@@ -13,8 +13,6 @@ namespace GraphicEditor.UserControls.Model.Shapes
 {
     public class RectangleShape : Shapes
     {
-        public Rectangle Rectangle;
-
         public RectangleShape(double width, double height, Brush background)
         {
             Rectangle = new Rectangle();
@@ -25,17 +23,19 @@ namespace GraphicEditor.UserControls.Model.Shapes
             setParametres();
         }
 
-        private void setParametres()
-        {
-            Rectangle.Width = this.Width;
-            Rectangle.Height = this.Height;
-            Rectangle.Fill = this.Bckground;
-        }
+        public Rectangle Rectangle { get; set; }
 
         public override Shapes Clone()
         {
             RectangleShape cloned = new RectangleShape(Width, Height, Bckground);
             return cloned as Shapes;
+        }
+
+        private void setParametres()
+        {
+            Rectangle.Width = this.Width;
+            Rectangle.Height = this.Height;
+            Rectangle.Fill = this.Bckground;
         }
     }
 }

@@ -9,9 +9,9 @@ namespace GraphicEditor.UserControls.Model.Shapes
 {
     public abstract class Shapes
     {
-        double width;
-        double height;
-        Brush background;
+        private double width;
+        private double height;
+        private Brush background;
 
         public double Width
         {
@@ -24,6 +24,7 @@ namespace GraphicEditor.UserControls.Model.Shapes
             get { return height; }
             set { height = value; }
         }
+
         public Brush Bckground
         {
             get { return background; }

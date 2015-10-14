@@ -1,5 +1,5 @@
-﻿using Combogallary.Model.ProxyPattern;
-using System.Windows;
+﻿using System.Windows;
+using Combogallary.Model.ProxyPattern;
 
 namespace GraphicEditor.View.Windows
 {

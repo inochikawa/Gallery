@@ -1,21 +1,16 @@
-﻿using Combogallary.Model.ProxyPattern;
-using GraphicEditor.UserControls.Model;
-using GraphicEditor.UserControls.Model.Shapes;
-using GraphicEditor.View.Windows;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Combogallary.Model.ProxyPattern;
+using GraphicEditor.UserControls.Model;
+using GraphicEditor.UserControls.Model.Shapes;
+using GraphicEditor.View.Windows;
 
 namespace GraphicEditor
 {
@@ -24,20 +19,13 @@ namespace GraphicEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<TabItem> tabItems;
-        List<Grid> tabGrids;
-        List<DesignerCanvas> designerCanvases = new List<DesignerCanvas>();
-        List<PictureProxy> pictures;
-        RectangleShape rectangleShape;
-        EllipseShape ellipseShape;
-        SelectedShape selectedShape = SelectedShape.None;
-
-        private enum SelectedShape
-        {
-            None,
-            Elipse,
-            Rectangle
-        }
+        private List<TabItem> tabItems;
+        private List<Grid> tabGrids;
+        private List<DesignerCanvas> designerCanvases = new List<DesignerCanvas>();
+        private List<PictureProxy> pictures;
+        private RectangleShape rectangleShape;
+        private EllipseShape ellipseShape;
+        private SelectedShape selectedShape = SelectedShape.None;
 
         public MainWindow()
         {
@@ -54,12 +42,32 @@ namespace GraphicEditor
             addEllipseToMenu();
         }
 
+        private enum SelectedShape
+        {
+            /// <summary>
+            /// If no select any shape
+            /// </summary>
+            None,
+
+            /// <summary>
+            /// If selected ellipse in toolbox
+            /// </summary>
+            Elipse,
+
+            /// <summary>
+            /// If selected ellipse in toolbox
+            /// </summary>
+            Rectangle
+        }
+
         private void addRectToMenu()
         {
             Image rectImage = new Image();
             rectImage.BeginInit();
-            rectImage.Source = new BitmapImage(new Uri(@"pack://application:,,,/View/Resources/Images/rectangle.png",
-                                                   UriKind.RelativeOrAbsolute));
+            rectImage.Source = new BitmapImage(
+                new Uri(
+                    @"pack://application:,,,/View/Resources/Images/rectangle.png",
+                    UriKind.RelativeOrAbsolute));
             rectImage.Stretch = Stretch.Uniform;
             rectImage.EndInit();
             MenuItem rectMenuItem = new MenuItem();
@@ -72,8 +80,10 @@ namespace GraphicEditor
         {
             Image ellipseImage = new Image();
             ellipseImage.BeginInit();
-            ellipseImage.Source = new BitmapImage(new Uri(@"pack://application:,,,/View/Resources/Images/ellipse.png",
-                                                   UriKind.RelativeOrAbsolute));
+            ellipseImage.Source = new BitmapImage(
+                new Uri(
+                    @"pack://application:,,,/View/Resources/Images/ellipse.png",
+                    UriKind.RelativeOrAbsolute));
             ellipseImage.Stretch = Stretch.Uniform;
             ellipseImage.EndInit();
             MenuItem ellipseMenuItem = new MenuItem();
@@ -165,7 +175,7 @@ namespace GraphicEditor
 
         private void imageProperties_Click(object sender, RoutedEventArgs e)
         {
-            if(pictures.Count != 0)
+            if (pictures.Count != 0)
                 new ImagePropertiesWindow(pictures[pictureTabView.SelectedIndex]).ShowDialog();
         }
         
@@ -207,6 +217,7 @@ namespace GraphicEditor
                     {
                         selectedTab = tabItems[0];
                     }
+
                     pictureTabView.SelectedItem = selectedTab;
                 }
             }
@@ -233,9 +244,7 @@ namespace GraphicEditor
 
             Canvas.SetLeft(renderShape, e.GetPosition(designerCanvases[pictureTabView.SelectedIndex]).X);
             Canvas.SetTop(renderShape, e.GetPosition(designerCanvases[pictureTabView.SelectedIndex]).Y);
-
-            designerCanvases[pictureTabView.SelectedIndex].Children.Add(renderShape);
-            
+            designerCanvases[pictureTabView.SelectedIndex].Children.Add(renderShape);            
         }
     }
 }
