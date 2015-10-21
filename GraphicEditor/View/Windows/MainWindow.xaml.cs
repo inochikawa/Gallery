@@ -7,36 +7,37 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Globalization;
 using Combogallary.Model.ProxyPattern;
 using GraphicEditor.UserControls.Model;
-using GraphicEditor.UserControls.Model.Shapes;
+using GraphicEditor.UserControls.Model.ShapesModel;
 using GraphicEditor.View.Windows;
 
 namespace GraphicEditor
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<TabItem> tabItems;
-        private List<Grid> tabGrids;
-        private List<DesignerCanvas> designerCanvases = new List<DesignerCanvas>();
-        private List<PictureProxy> pictures;
-        private RectangleShape rectangleShape;
-        private EllipseShape ellipseShape;
-        private SelectedShape selectedShape = SelectedShape.None;
+        private List<TabItem> f_tabItems;
+        private List<Grid> f_tabGrids;
+        private List<DesignerCanvas> f_designerCanvases = new List<DesignerCanvas>();
+        private List<PictureProxy> f_pictures;
+        private RectangleShape f_rectangleShape;
+        private EllipseShape f_ellipseShape;
+        private SelectedShape f_selectedShape = SelectedShape.None;
 
         public MainWindow()
         {
             InitializeComponent();
-            pictures = new List<PictureProxy>();
-            tabItems = new List<TabItem>();
-            tabGrids = new List<Grid>();
-            pictureTabView.DataContext = tabItems;
+            f_pictures = new List<PictureProxy>();
+            f_tabItems = new List<TabItem>();
+            f_tabGrids = new List<Grid>();
+            pictureTabView.DataContext = f_tabItems;
 
-            rectangleShape = new RectangleShape(100, 50, Brushes.Red);
-            ellipseShape = new EllipseShape(50, 50, Brushes.Blue);
+            f_rectangleShape = new RectangleShape(100, 50, Brushes.Red);
+            f_ellipseShape = new EllipseShape(50, 50, Brushes.Blue);
 
             addRectToMenu();
             addEllipseToMenu();
@@ -94,12 +95,12 @@ namespace GraphicEditor
 
         private void ellipseMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            selectedShape = SelectedShape.Elipse;
+            f_selectedShape = SelectedShape.Elipse;
         }
 
         private void RectMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            selectedShape = SelectedShape.Rectangle;
+            f_selectedShape = SelectedShape.Rectangle;
         }
 
         private void overrideTabContent()
@@ -107,7 +108,7 @@ namespace GraphicEditor
             Grid grid = new Grid();
             DesignerItem designerItem = new DesignerItem();
             Image image = new Image();
-            image.Source = pictures[pictures.Count - 1].Open();
+            image.Source = f_pictures[f_pictures.Count - 1].Open();
             ScrollViewer scrollViewer = new ScrollViewer();
             scrollViewer.Background = Brushes.Transparent;
             scrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
@@ -130,25 +131,25 @@ namespace GraphicEditor
             grid.Children.Add(scrollViewer);
             grid.Children.Add(zoomBox);
 
-            designerCanvases.Add(designerCanvas);
-            tabGrids.Add(grid);
+            f_designerCanvases.Add(designerCanvas);
+            f_tabGrids.Add(grid);
         }
 
         private TabItem AddTabItem()
         {
-            int count = tabItems.Count;
+            int count = f_tabItems.Count;
             TabItem tab = new TabItem();
-            tab.Header = string.Format("Tab {0}", count);
-            tab.Name = string.Format("tab{0}", count);
-            if (pictures.Count != 0)
+            tab.Header = string.Format(CultureInfo.CurrentCulture, "Tab {0}", count);
+            tab.Name = string.Format(CultureInfo.CurrentCulture, "tab{0}", count);
+            if (f_pictures.Count != 0)
             {
                 overrideTabContent();
-                tab.Content = tabGrids.Last();
+                tab.Content = f_tabGrids.Last();
             }
-            
-            tabItems.Insert(count, tab);
+
+            f_tabItems.Insert(count, tab);
             pictureTabView.DataContext = null;
-            pictureTabView.DataContext = tabItems;
+            pictureTabView.DataContext = f_tabItems;
             pictureTabView.SelectedItem = tab;
 
             return tab;
@@ -159,7 +160,8 @@ namespace GraphicEditor
             // Create OpenFileDialog
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".png";
-            dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            dlg.Filter =
+                "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|GIF Files (*.gif)|*.gif|All files (*.*)|*.*";
             bool? result = dlg.ShowDialog();
             if (result == true)
             {
@@ -167,7 +169,7 @@ namespace GraphicEditor
                 PictureProxy picture = new PictureProxy(dlg.SafeFileName, dlg.FileName);
                 picture.Width = image.Width;
                 picture.Height = image.Height;
-                pictures.Add(picture);
+                f_pictures.Add(picture);
                 AddTabItem();
                 return;
             }
@@ -175,10 +177,10 @@ namespace GraphicEditor
 
         private void imageProperties_Click(object sender, RoutedEventArgs e)
         {
-            if (pictures.Count != 0)
-                new ImagePropertiesWindow(pictures[pictureTabView.SelectedIndex]).ShowDialog();
+            if (f_pictures.Count != 0)
+                new ImagePropertiesWindow(f_pictures[pictureTabView.SelectedIndex]).ShowDialog();
         }
-        
+
         private void pictureTabView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TabItem tab = pictureTabView.SelectedItem as TabItem;
@@ -195,7 +197,7 @@ namespace GraphicEditor
 
             if (tab != null)
             {
-                if (tabItems.Count < 2)
+                if (f_tabItems.Count < 2)
                 {
                     MessageBox.Show("Cannot remove last tab.");
                 }
@@ -207,15 +209,15 @@ namespace GraphicEditor
                     // clear tab control binding
                     pictureTabView.DataContext = null;
 
-                    tabItems.Remove(tab);
+                    f_tabItems.Remove(tab);
 
                     // bind tab control
-                    pictureTabView.DataContext = tabItems;
+                    pictureTabView.DataContext = f_tabItems;
 
                     // select previously selected tab. if that is removed then select first tab
                     if (selectedTab == null || selectedTab.Equals(tab))
                     {
-                        selectedTab = tabItems[0];
+                        selectedTab = f_tabItems[0];
                     }
 
                     pictureTabView.SelectedItem = selectedTab;
@@ -225,26 +227,24 @@ namespace GraphicEditor
 
         private void pictureTabView_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            TabItem currentTabItem = tabItems[pictureTabView.SelectedIndex];
-
             Shape renderShape = null;
-            switch (selectedShape)
+            switch (f_selectedShape)
             {
                 case SelectedShape.Elipse:
-                    EllipseShape newEllipse = ellipseShape.Clone() as EllipseShape;
+                    EllipseShape newEllipse = f_ellipseShape.Clone() as EllipseShape;
                     renderShape = newEllipse.Ellipse;
                     break;
                 case SelectedShape.Rectangle:
-                    RectangleShape newRect = rectangleShape.Clone() as RectangleShape;
+                    RectangleShape newRect = f_rectangleShape.Clone() as RectangleShape;
                     renderShape = newRect.Rectangle;
                     break;
                 default:
-                    return; 
+                    return;
             }
 
-            Canvas.SetLeft(renderShape, e.GetPosition(designerCanvases[pictureTabView.SelectedIndex]).X);
-            Canvas.SetTop(renderShape, e.GetPosition(designerCanvases[pictureTabView.SelectedIndex]).Y);
-            designerCanvases[pictureTabView.SelectedIndex].Children.Add(renderShape);            
+            Canvas.SetLeft(renderShape, e.GetPosition(f_designerCanvases[pictureTabView.SelectedIndex]).X);
+            Canvas.SetTop(renderShape, e.GetPosition(f_designerCanvases[pictureTabView.SelectedIndex]).Y);
+            f_designerCanvases[pictureTabView.SelectedIndex].Children.Add(renderShape);
         }
     }
 }

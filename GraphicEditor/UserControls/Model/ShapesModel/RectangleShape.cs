@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace GraphicEditor.UserControls.Model.Shapes
+namespace GraphicEditor.UserControls.Model.ShapesModel
 {
     public class RectangleShape : Shapes
     {
@@ -18,7 +10,7 @@ namespace GraphicEditor.UserControls.Model.Shapes
             Rectangle = new Rectangle();
             this.Width = width;
             this.Height = height;
-            this.Bckground = background;
+            this.Background = background;
 
             setParametres();
         }
@@ -27,7 +19,7 @@ namespace GraphicEditor.UserControls.Model.Shapes
 
         public override Shapes Clone()
         {
-            RectangleShape cloned = new RectangleShape(Width, Height, Bckground);
+            RectangleShape cloned = new RectangleShape(Width, Height, Background);
             return cloned as Shapes;
         }
 
@@ -35,7 +27,7 @@ namespace GraphicEditor.UserControls.Model.Shapes
         {
             Rectangle.Width = this.Width;
             Rectangle.Height = this.Height;
-            Rectangle.Fill = this.Bckground;
+            Rectangle.Fill = this.Background;
         }
     }
 }

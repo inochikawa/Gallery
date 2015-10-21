@@ -5,7 +5,6 @@
     <Style TargetType="{x:Type s:ZoomBox}">
 
         <Style.Resources>
-
             <VisualBrush x:Key="AlphaBrush"
                          Stretch="None"
                          TileMode="Tile"
@@ -68,7 +67,7 @@
                             <DockPanel>
                                 <ToggleButton Style="{StaticResource ToggleButtonStyle}"
                                               DockPanel.Dock="Top"
-                                              IsChecked="{Binding Path=IsExpanded,Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                              IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                               HorizontalContentAlignment="Left"
                                               VerticalContentAlignment="Center">
                                     <ToggleButton.Content>
@@ -159,7 +158,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type s:ZoomBox}">
                     <ControlTemplate.Triggers>
-
                         <Trigger Property="IsMouseOver"
                                          Value="True">
                             <Trigger.EnterActions>
@@ -212,9 +210,14 @@
                                                     <Setter Property="Template">
                                                         <Setter.Value>
                                                             <ControlTemplate TargetType="Thumb">
-                                                                <Rectangle StrokeThickness="1"
-                                                                           Stroke="Black"
-                                                                           Fill="Transparent" />
+                                                                <Border BorderThickness="1"
+                                                                        BorderBrush="Black">
+                                                                    <Rectangle Fill="White"
+                                                                               Opacity=".4"
+                                                                               Stroke="Transparent">
+                                                                        
+                                                                    </Rectangle>
+                                                                </Border>
                                                             </ControlTemplate>
                                                         </Setter.Value>
                                                     </Setter>
@@ -234,9 +237,9 @@
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Stretch"
                                             Margin="0"
-                                            Ticks="25,50,75,100,125,150,200,300,400,500"
+                                            TickFrequency="1"
                                             Minimum="25"
-                                            Maximum="500"
+                                            Maximum="300"
                                             Value="100"
                                             IsSnapToTickEnabled="True"
                                             IsMoveToPointEnabled="False" 
@@ -255,8 +258,7 @@
                                 </Grid>
                             </Expander.Header>
                         </Expander>                        
-                    </Border>
-                    
+                    </Border>                    
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -1,10 +1,11 @@
 ﻿using System.Windows;
+using System.Globalization;
 using Combogallary.Model.ProxyPattern;
 
 namespace GraphicEditor.View.Windows
 {
     /// <summary>
-    /// Interaction logic for ImagePropertiesWindow.xaml
+    /// Interaction logic for ImagePropertiesWindow
     /// </summary>
     public partial class ImagePropertiesWindow : Window
     {
@@ -16,11 +17,12 @@ namespace GraphicEditor.View.Windows
         public ImagePropertiesWindow(PictureProxy picture)
         {
             InitializeComponent();
-
+            if (picture == null)
+                return;
             txtDimension.Text = picture.Dimension;
             txtName.Text = picture.Name;
             txtPath.Text = picture.Location;
-            txtSize.Text = picture.Size.ToString();
+            txtSize.Text = picture.Size.ToString(CultureInfo.CurrentCulture);
             previewImage.Source = picture.Preview();
         }
     }

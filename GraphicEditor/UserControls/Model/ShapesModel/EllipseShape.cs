@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace GraphicEditor.UserControls.Model.Shapes
+namespace GraphicEditor.UserControls.Model.ShapesModel
 {
     public class EllipseShape : Shapes
     {
@@ -15,7 +10,7 @@ namespace GraphicEditor.UserControls.Model.Shapes
             Ellipse = new Ellipse();
             this.Width = width;
             this.Height = height;
-            this.Bckground = background;
+            this.Background = background;
 
             setParametres();
         }
@@ -24,7 +19,7 @@ namespace GraphicEditor.UserControls.Model.Shapes
 
         public override Shapes Clone()
         {
-            EllipseShape cloned = new EllipseShape(Width, Height, Bckground);
+            EllipseShape cloned = new EllipseShape(Width, Height, Background);
             return cloned as Shapes;
         }
 
@@ -32,7 +27,7 @@ namespace GraphicEditor.UserControls.Model.Shapes
         {
             Ellipse.Width = this.Width;
             Ellipse.Height = this.Height;
-            Ellipse.Fill = this.Bckground;
+            Ellipse.Fill = this.Background;
         }
     }
 }

@@ -7,8 +7,8 @@ namespace GraphicEditor.UserControls.Model
 {
     public class MoveThumb : Thumb
     {
-        private DesignerItem designerItem;
-        private DesignerCanvas designerCanvas;
+        private DesignerItem f_designerItem;
+        private DesignerCanvas f_designerCanvas;
 
         public MoveThumb()
         {
@@ -18,22 +18,22 @@ namespace GraphicEditor.UserControls.Model
 
         private void MoveThumb_DragStarted(object sender, DragStartedEventArgs e)
         {
-            this.designerItem = DataContext as DesignerItem;
+            this.f_designerItem = DataContext as DesignerItem;
 
-            if (this.designerItem != null)
+            if (this.f_designerItem != null)
             {
-                this.designerCanvas = VisualTreeHelper.GetParent(this.designerItem) as DesignerCanvas;
+                this.f_designerCanvas = VisualTreeHelper.GetParent(this.f_designerItem) as DesignerCanvas;
             }
         }
 
         private void MoveThumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
-            if (this.designerItem != null && this.designerCanvas != null && this.designerItem.IsSelected)
+            if (this.f_designerItem != null && this.f_designerCanvas != null && this.f_designerItem.IsSelected)
             {
                 double minLeft = double.MaxValue;
                 double minTop = double.MaxValue;
 
-                foreach (DesignerItem item in this.designerCanvas.SelectedItems)
+                foreach (DesignerItem item in this.f_designerCanvas.SelectedItems)
                 {
                     minLeft = Math.Min(Canvas.GetLeft(item), minLeft);
                     minTop = Math.Min(Canvas.GetTop(item), minTop);
@@ -42,13 +42,13 @@ namespace GraphicEditor.UserControls.Model
                 double deltaHorizontal = Math.Max(-minLeft, e.HorizontalChange);
                 double deltaVertical = Math.Max(-minTop, e.VerticalChange);
 
-                foreach (DesignerItem item in this.designerCanvas.SelectedItems)
+                foreach (DesignerItem item in this.f_designerCanvas.SelectedItems)
                 {
                     Canvas.SetLeft(item, Canvas.GetLeft(item) + deltaHorizontal);
                     Canvas.SetTop(item, Canvas.GetTop(item) + deltaVertical);
                 }
 
-                this.designerCanvas.InvalidateMeasure();
+                this.f_designerCanvas.InvalidateMeasure();
                 e.Handled = true;
             }
         }

@@ -21,6 +21,5 @@ D:\GitHub\Gallery\ActiveRecordPattern\bin\Debug\LocalDB.mdf
 D:\GitHub\Gallery\ActiveRecordPattern\bin\Debug\LocalDB_log.ldf
 D:\GitHub\Gallery\ActiveRecordPattern\bin\Debug\CustomDataBase.dll
 D:\GitHub\Gallery\ActiveRecordPattern\bin\Debug\CustomDataBase.pdb
-D:\GitHub\Gallery\ActiveRecordPattern\obj\Debug\ActiveRecordPattern.csprojResolveAssemblyReference.cache
 D:\GitHub\Gallery\ActiveRecordPattern\obj\Debug\CustomDataBase.dll
 D:\GitHub\Gallery\ActiveRecordPattern\obj\Debug\CustomDataBase.pdb

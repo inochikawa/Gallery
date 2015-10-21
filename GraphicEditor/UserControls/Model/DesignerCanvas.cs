@@ -12,7 +12,7 @@ namespace GraphicEditor.UserControls.Model
 {
     public class DesignerCanvas : Canvas
     {
-        private Point? dragStartPoint = null;
+        private Point? f_dragStartPoint = null;
 
         public IEnumerable<DesignerItem> SelectedItems
         {
@@ -36,10 +36,12 @@ namespace GraphicEditor.UserControls.Model
 
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
+            if (e == null)
+                return;
             base.OnMouseDown(e);
             if (e.Source == this)
             {
-                this.dragStartPoint = new Point?(e.GetPosition(this));
+                this.f_dragStartPoint = new Point?(e.GetPosition(this));
                 this.DeselectAll();
                 e.Handled = true;
             }
@@ -47,14 +49,17 @@ namespace GraphicEditor.UserControls.Model
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
+            if (e == null)
+                return;
+
             base.OnMouseMove(e);
 
             if (e.LeftButton != MouseButtonState.Pressed)
             {
-                this.dragStartPoint = null;
+                this.f_dragStartPoint = null;
             }
 
-            if (this.dragStartPoint.HasValue)
+            if (this.f_dragStartPoint.HasValue)
             {
                 // AdornerLayer adornerLayer = AdornerLayer.GetAdornerLayer(this);
                 // if (adornerLayer != null)
@@ -71,12 +76,19 @@ namespace GraphicEditor.UserControls.Model
 
         protected override void OnDrop(DragEventArgs e)
         {
+            if (e == null)
+                return;
             base.OnDrop(e);
             string xamlString = e.Data.GetData("DESIGNER_ITEM") as string;
             if (!string.IsNullOrEmpty(xamlString))
             {
                 DesignerItem newItem = null;
-                FrameworkElement content = XamlReader.Load(XmlReader.Create(new StringReader(xamlString))) as FrameworkElement;
+                FrameworkElement content = new FrameworkElement();
+
+                using (StringReader stringReader = new StringReader(xamlString))
+                {
+                    content = XamlReader.Load(XmlReader.Create(stringReader)) as FrameworkElement;
+                }
 
                 if (content != null)
                 {

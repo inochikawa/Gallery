@@ -9,7 +9,7 @@ namespace GraphicEditor.UserControls.Model
     {
         public static readonly DependencyProperty IsSelectedProperty =
           DependencyProperty.Register(
-              "IsSelected", 
+              "IsSelected",
               typeof(bool),
               typeof(DesignerItem),
               new FrameworkPropertyMetadata(false));
@@ -17,10 +17,11 @@ namespace GraphicEditor.UserControls.Model
         public static readonly DependencyProperty MoveThumbTemplateProperty =
             DependencyProperty.RegisterAttached("MoveThumbTemplate", typeof(ControlTemplate), typeof(DesignerItem));
 
-        static DesignerItem()
-        {
-            FrameworkElement.DefaultStyleKeyProperty.OverrideMetadata(typeof(DesignerItem), new FrameworkPropertyMetadata(typeof(DesignerItem)));
-        }
+        ////static DesignerItem()
+        ////{
+        ////    FrameworkElement.DefaultStyleKeyProperty.OverrideMetadata(typeof(DesignerItem),
+        ////new FrameworkPropertyMetadata(typeof(DesignerItem)));
+        ////}
 
         public DesignerItem()
         {
@@ -33,13 +34,17 @@ namespace GraphicEditor.UserControls.Model
             set { SetValue(IsSelectedProperty, value); }
         }
 
-        public static ControlTemplate GetMoveThumbTemplate(UIElement element)
+        public static ControlTemplate GetMoveThumbTemplate(DependencyObject element)
         {
+            if (element == null)
+                return null;
             return (ControlTemplate)element.GetValue(MoveThumbTemplateProperty);
         }
 
-        public static void SetMoveThumbTemplate(UIElement element, ControlTemplate value)
+        public static void SetMoveThumbTemplate(DependencyObject element, ControlTemplate value)
         {
+            if (element == null)
+                return;
             element.SetValue(MoveThumbTemplateProperty, value);
         }
 
@@ -63,6 +68,9 @@ namespace GraphicEditor.UserControls.Model
                     }
                 }
             }
+
+            if (e == null)
+                return;
 
             e.Handled = false;
         }
