@@ -3,6 +3,8 @@ D:\GitHub\Gallery\GraphicEditor\bin\Debug\LocalDB_log.ldf
 D:\GitHub\Gallery\GraphicEditor\bin\Debug\GraphicEditor.exe.config
 D:\GitHub\Gallery\GraphicEditor\bin\Debug\GraphicEditor.exe
 D:\GitHub\Gallery\GraphicEditor\bin\Debug\GraphicEditor.pdb
+D:\GitHub\Gallery\GraphicEditor\bin\Debug\GraphicEditor.exe.CodeAnalysisLog.xml
+D:\GitHub\Gallery\GraphicEditor\bin\Debug\GraphicEditor.exe.lastcodeanalysissucceeded
 D:\GitHub\Gallery\GraphicEditor\bin\Debug\Combogallary.exe
 D:\GitHub\Gallery\GraphicEditor\bin\Debug\CustomDataBase.dll
 D:\GitHub\Gallery\GraphicEditor\bin\Debug\StyleCop.dll
@@ -40,5 +42,3 @@ D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.Properties.Resources.res
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.csproj.GenerateResource.Cache
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.exe
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.pdb
-D:\GitHub\Gallery\GraphicEditor\bin\Debug\GraphicEditor.exe.CodeAnalysisLog.xml
-D:\GitHub\Gallery\GraphicEditor\bin\Debug\GraphicEditor.exe.lastcodeanalysissucceeded

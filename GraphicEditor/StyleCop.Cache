@@ -6,8 +6,8 @@
   <sourcecode name="DesignerCanvas.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
-      <sourceFile>2015/10/22 02:19:41.045</sourceFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
+      <sourceFile>2015/10/22 10:51:41.510</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -31,7 +31,7 @@
   <sourcecode name="DesignerItem.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/10/22 02:20:21.895</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -56,7 +56,7 @@
   <sourcecode name="GraphicHandling.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/10/22 02:59:19.215</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -81,7 +81,7 @@
   <sourcecode name="MoveThumb.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/10/22 02:18:59.879</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -106,7 +106,7 @@
   <sourcecode name="EllipseShape.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/10/21 20:26:31.787</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -131,8 +131,8 @@
   <sourcecode name="RectangleShape.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
-      <sourceFile>2015/10/21 20:26:31.811</sourceFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
+      <sourceFile>2015/10/22 11:18:06.629</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -151,12 +151,18 @@
       <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
       <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
     </timestamps>
-    <violations />
+    <violations>
+      <violation namespace="StyleCopPlus.StyleCopPlusRules" rule="CodeLineMustNotEndWithWhitespace" ruleCheckId="SP2000">
+        <context>Invalid spacing at the end of the line.</context>
+        <line>27</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
   <sourcecode name="Shapes.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/10/21 21:55:20.732</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -181,7 +187,7 @@
   <sourcecode name="ZoomBox.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/10/22 01:41:12.252</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -206,8 +212,8 @@
   <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
-      <sourceFile>2015/10/21 22:05:01.242</sourceFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
+      <sourceFile>2015/10/22 10:41:44.871</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -231,7 +237,7 @@
   <sourcecode name="Resources.Designer.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/09/23 17:05:27.479</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -256,7 +262,7 @@
   <sourcecode name=".NETFramework,Version=v4.5.2.AssemblyAttributes.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/10/15 10:20:51.666</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -281,7 +287,7 @@
   <sourcecode name="TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/09/23 17:05:28.690</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -306,7 +312,7 @@
   <sourcecode name="TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/09/23 17:05:28.691</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -331,7 +337,7 @@
   <sourcecode name="TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/09/23 17:05:28.719</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -356,7 +362,7 @@
   <sourcecode name="VerticalPanel.xaml.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/10/21 22:05:01.237</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -381,8 +387,8 @@
   <sourcecode name="App.xaml.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
-      <sourceFile>2015/10/21 19:22:02.571</sourceFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
+      <sourceFile>2015/10/22 10:50:53.359</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
       <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
@@ -406,7 +412,7 @@
   <sourcecode name="ImagePropertiesWindow.xaml.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/10/21 20:20:35.424</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -431,7 +437,7 @@
   <sourcecode name="MainWindow.xaml.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/10/22 01:42:16.395</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
@@ -456,7 +462,7 @@
   <sourcecode name="Settings.Designer.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/10/22 03:08:56.871</settingsFile>
+      <settingsFile>2015/10/22 10:58:32.276</settingsFile>
       <sourceFile>2015/09/23 17:05:27.486</sourceFile>
       <parser>2014/04/01 10:18:24.000</parser>
       <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>

@@ -1,1 +1,3 @@
-<StyleCopViolations />
+<StyleCopViolations>
+  <Violation Section="Root.GraphicEditor.UserControls.Model.ShapesModel.RectangleShape.setParametres" LineNumber="27" Source="D:\GitHub\Gallery\GraphicEditor\UserControls\Model\ShapesModel\RectangleShape.cs" RuleNamespace="StyleCopPlus.StyleCopPlusRules" Rule="CodeLineMustNotEndWithWhitespace" RuleId="SP2000">Invalid spacing at the end of the line.</Violation>
+</StyleCopViolations>
