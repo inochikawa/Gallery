@@ -5,3 +5,10 @@ D:\Combogallary\ActiveRecordPattern\obj\Release\CustomDataBase.pdb
 D:\Combogallary\ActiveRecordPattern\bin\Release\CustomDataBase.dll
 D:\Combogallary\ActiveRecordPattern\bin\Release\CustomDataBase.pdb
 D:\Combogallary\ActiveRecordPattern\obj\Release\ActiveRecordPattern.csprojResolveAssemblyReference.cache
+D:\GitHub\Gallery\ActiveRecordPattern\bin\Release\LocalDB.mdf
+D:\GitHub\Gallery\ActiveRecordPattern\bin\Release\LocalDB_log.ldf
+D:\GitHub\Gallery\ActiveRecordPattern\bin\Release\CustomDataBase.dll
+D:\GitHub\Gallery\ActiveRecordPattern\bin\Release\CustomDataBase.pdb
+D:\GitHub\Gallery\ActiveRecordPattern\obj\Release\ActiveRecordPattern.csprojResolveAssemblyReference.cache
+D:\GitHub\Gallery\ActiveRecordPattern\obj\Release\CustomDataBase.dll
+D:\GitHub\Gallery\ActiveRecordPattern\obj\Release\CustomDataBase.pdb

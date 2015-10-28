@@ -8,7 +8,7 @@ using System.Windows;
 [assembly: AssemblyTitle("GraphicEditor")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("StecenkoCorporation")]
 [assembly: AssemblyProduct("GraphicEditor")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Combogallary\Combogallary\obj\Release\
+D:\GitHub\Gallery\Combogallary\obj\Release\
 Combogallary
 none
 false
 TRACE
-D:\Combogallary\Combogallary\App.xaml
-14-1498926538
+D:\GitHub\Gallery\Combogallary\App.xaml
+12-2116920640
 
-19985796257
-16-808354309
-View\Resourses\Styles\ListAlbumsListBox.xaml;View\Windows\AlbumView.xaml;View\Windows\CreateAlbumView.xaml;View\Windows\PictureView.xaml;View\Resourses\Styles\CustomCombobox.xaml;Test\CustomWindow.xaml;View\Resourses\Styles\AlbumStyleListBox.xaml;View\Resourses\AnimationEffects.xaml;View\Resourses\Styles\AutantificationTextBox.xaml;View\Resourses\Styles\ComboGalleryWindow.xaml;View\Windows\MainWindow.xaml;View\Resourses\Styles\GlassButton.xaml;View\Resourses\Styles\PictureStyleListBox.xaml;View\UserControls\SidePanel.xaml;
+20-726782062
+16-1461278699
+View\Resourses\Styles\ListAlbumsListBox.xaml;View\Windows\AlbumView.xaml;View\Windows\CreateAlbumView.xaml;View\Windows\PictureView.xaml;View\Resourses\Styles\CustomCombobox.xaml;View\Resourses\Styles\AlbumStyleListBox.xaml;View\Resourses\AnimationEffects.xaml;View\Resourses\Styles\FlatWindow.xaml;View\Windows\MainWindow.xaml;View\Resourses\Styles\FlatButton.xaml;View\Resourses\Styles\PictureStyleListBox.xaml;View\UserControls\SidePanel.xaml;
 
 False
 
