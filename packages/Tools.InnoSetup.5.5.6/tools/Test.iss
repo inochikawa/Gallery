@@ -5,7 +5,7 @@
 ; Имя приложения
 #define   Name       GetStringFileInfo("..\..\..\GraphicEditor\bin\Release\GraphicEditor.exe", "ProductName")
 ; Версия приложения
-#define   Version    GetFileVersion("..\..\..\GraphicEditor\bin\Release\GraphicEditor.exe")
+#define   Version    GetStringFileInfo("..\..\..\GraphicEditor\bin\Release\GraphicEditor.exe", "FileVersion")
 ; Фирма-разработчик
 #define   Publisher  GetFileCompany("..\..\..\GraphicEditor\bin\Release\GraphicEditor.exe")
 ; Имя исполняемого модуля
@@ -33,9 +33,6 @@ DefaultGroupName={#Name}
 ; Каталог, куда будет записан собранный setup и имя исполняемого файла
 OutputDir=..\..\..\Install
 OutputBaseFileName=Setup
-
-; Файл иконки
-;SetupIconFile=E:\work\Mirami\Mirami\icon.ico
 
 ; Параметры сжатия
 Compression=lzma
