@@ -9,14 +9,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GraphicEditor</RootNamespace>
     <AssemblyName>GraphicEditor</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <StyleCopTreatErrorsAsWarnings>true</StyleCopTreatErrorsAsWarnings>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -32,6 +32,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,8 +43,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>GraphicEditor.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,6 +56,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>GraphicEditor.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="StyleCop">
@@ -64,6 +67,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -82,14 +86,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserControls\Model\DesignerCanvas.cs" />
-    <Compile Include="UserControls\Model\DesignerItem.cs" />
-    <Compile Include="UserControls\Model\GraphicHandling.cs" />
-    <Compile Include="UserControls\Model\MoveThumb.cs" />
-    <Compile Include="UserControls\Model\ShapesModel\EllipseShape.cs" />
-    <Compile Include="UserControls\Model\ShapesModel\RectangleShape.cs" />
-    <Compile Include="UserControls\Model\ShapesModel\Shapes.cs" />
-    <Compile Include="UserControls\Model\ZoomBox.cs" />
+    <Compile Include="Model\Adorners\ResizeAdorner.cs" />
+    <Compile Include="Model\Adorners\ResizeChrome.cs" />
+    <Compile Include="Model\Adorners\RubberbandAdorner.cs" />
+    <Compile Include="Model\GraphicContent.cs" />
+    <Compile Include="Model\Layer.cs" />
+    <Compile Include="Model\RelayCommand.cs" />
+    <Compile Include="Model\DesignerCanvas.cs" />
+    <Compile Include="Model\DesignerItem.cs" />
+    <Compile Include="Model\MoveThumb.cs" />
+    <Compile Include="Model\ResizeDecorator.cs" />
+    <Compile Include="Model\ResizeThumb.cs" />
+    <Compile Include="Model\ShapesModel\EllipseShape.cs" />
+    <Compile Include="Model\ShapesModel\RectangleShape.cs" />
+    <Compile Include="Model\ShapesModel\Shapes.cs" />
+    <Compile Include="Model\ZoomBox.cs" />
     <Compile Include="UserControls\VerticalPanel.xaml.cs">
       <DependentUpon>VerticalPanel.xaml</DependentUpon>
     </Compile>
@@ -100,6 +111,10 @@
     <Page Include="UserControls\Resources\DesignerItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Resources\ResizeChrome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\Resources\ZoomBox.xaml">
       <SubType>Designer</SubType>
@@ -117,6 +132,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\Windows\ImagePropertiesWindow.xaml.cs">
       <DependentUpon>ImagePropertiesWindow.xaml</DependentUpon>
     </Compile>
@@ -156,7 +172,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ActiveRecordPattern\ActiveRecordPattern.csproj">

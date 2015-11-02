@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using GraphicEditor.UserControls.Model;
+using GraphicEditor.Model;
 using GraphicEditor.View.Windows;
 using System;
 using System.Diagnostics;

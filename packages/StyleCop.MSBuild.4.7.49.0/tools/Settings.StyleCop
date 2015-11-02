@@ -2,6 +2,13 @@
   <GlobalSettings>
     <StringProperty Name="MergeSettingsFiles">NoMerge</StringProperty>
   </GlobalSettings>
+  <Parsers>
+    <Parser ParserId="StyleCop.CSharp.CsParser">
+      <ParserSettings>
+        <BooleanProperty Name="AnalyzeDesignerFiles">False</BooleanProperty>
+      </ParserSettings>
+    </Parser>
+  </Parsers>
   <Analyzers>
     <Analyzer AnalyzerId="StyleCop.CSharp.DocumentationRules">
       <Rules>
@@ -130,37 +137,52 @@
             <BooleanProperty Name="Enabled">False</BooleanProperty>
           </RuleSettings>
         </Rule>
+        <Rule Name="PrefixLocalCallsWithThis">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
       </Rules>
       <AnalyzerSettings />
     </Analyzer>
     <Analyzer AnalyzerId="StyleCopPlus.StyleCopPlusRules">
       <Rules>
-        <Rule Name="ElementMustNotBeOnSingleLine">
-          <RuleSettings>
-            <BooleanProperty Name="Enabled">True</BooleanProperty>
-          </RuleSettings>
-        </Rule>
-        <Rule Name="ClosingCurlyBracketMustBeFollowedByBlankLine">
-          <RuleSettings>
-            <BooleanProperty Name="Enabled">True</BooleanProperty>
-          </RuleSettings>
-        </Rule>
-        <Rule Name="ElementsMustBeSeparatedByBlankLine">
-          <RuleSettings>
-            <BooleanProperty Name="Enabled">True</BooleanProperty>
-          </RuleSettings>
-        </Rule>
-        <Rule Name="ConstructorSummaryDocumentationMustBeginWithStandardText">
-          <RuleSettings>
-            <BooleanProperty Name="Enabled">True</BooleanProperty>
-          </RuleSettings>
-        </Rule>
-        <Rule Name="DestructorSummaryDocumentationMustBeginWithStandardText">
-          <RuleSettings>
-            <BooleanProperty Name="Enabled">True</BooleanProperty>
-          </RuleSettings>
-        </Rule>
         <Rule Name="CheckAllowedIndentationCharacters">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="CodeLineMustNotEndWithWhitespace">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="CheckWhetherLastCodeLineIsEmpty">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="CodeLineMustNotBeLongerThan">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="MethodMustNotContainMoreLinesThan">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="PropertyMustNotContainMoreLinesThan">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="FileMustNotContainMoreLinesThan">
+          <RuleSettings>
+            <BooleanProperty Name="Enabled">False</BooleanProperty>
+          </RuleSettings>
+        </Rule>
+        <Rule Name="AdvancedNamingRules">
           <RuleSettings>
             <BooleanProperty Name="Enabled">False</BooleanProperty>
           </RuleSettings>
@@ -170,6 +192,10 @@
         <StringProperty Name="AdvancedNaming_ProtectedInstanceField">f_$(aaBb)</StringProperty>
         <StringProperty Name="AdvancedNaming_PrivateInstanceField">f_$(aaBb)</StringProperty>
         <StringProperty Name="AdvancedNaming_MethodGeneral">$(AaBb):$(aaBb)</StringProperty>
+        <StringProperty Name="AdvancedNaming_Parameter">$(aaBb):_</StringProperty>
+        <BooleanProperty Name="SP1502_AllowConstructors">False</BooleanProperty>
+        <BooleanProperty Name="SP1513_AllowJoinedAccessors">False</BooleanProperty>
+        <BooleanProperty Name="SP1516_AllowJoinedAccessors">False</BooleanProperty>
       </AnalyzerSettings>
     </Analyzer>
   </Analyzers>

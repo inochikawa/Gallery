@@ -4,10 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraphicEditor"
+        xmlns:dataContext="clr-namespace:GraphicEditor.ViewModel"
         Background="#3b3b3b"
         Style="{DynamicResource ResourceKey=FlatWindow}"
         Title="" Height="500" Width="800"
         WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <dataContext:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
         <Menu Height="25"
               VerticalAlignment="Top"
@@ -39,9 +43,11 @@
         </Menu>
         
         <TabControl x:Name="pictureTabView" 
-                    Background="Transparent" 
-                    SelectionChanged="pictureTabView_SelectionChanged"
-                    ItemsSource="{Binding}" MouseLeftButtonUp="pictureTabView_MouseLeftButtonUp">
+                    Background="Transparent"
+                    ItemsSource="{Binding}" 
+                    MouseLeftButtonUp="pictureTabView_MouseLeftButtonUp"
+                    >
+            
             <TabControl.Resources>
                 <Style TargetType="TabItem">
                     <Setter Property="MinWidth" Value="100"/>
@@ -79,7 +85,7 @@
                 </Style>
             </TabControl.Resources>
         </TabControl>
-        
+
         <Menu Width="25"
               Height="auto"
               VerticalAlignment="Stretch"
@@ -117,11 +123,12 @@
                     <BeginStoryboard Storyboard="{StaticResource opacityEffectOut}"/>
                 </EventTrigger>
             </Menu.Triggers>
-            <!--<MenuItem  Height="25">
+            <MenuItem  Height="25"
+                       Command="{Binding ShowMessageCommand}">
                 <MenuItem.Icon>
                     <Image Source="/GraphicEditor;component/View/Resources/Images/rectangle.png"/>
                 </MenuItem.Icon>
-            </MenuItem>-->
+            </MenuItem>
         </Menu>
 
         <!--<ListBox  Width="25"

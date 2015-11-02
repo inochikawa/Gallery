@@ -1,24 +1,27 @@
-﻿<Application x:Class="Combogallary.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local ="clr-namespace:Combogallary" 
-             StartupUri="View/Windows/MainWindow.xaml">
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="View/Resourses/Styles/FlatWindow.xaml"/>
-                <ResourceDictionary Source="View/Resourses/AnimationEffects.xaml"/>
-                <ResourceDictionary Source="View/Resourses/Styles/FlatButton.xaml"/>
-                <ResourceDictionary Source="View/Resourses/Styles/CustomCombobox.xaml"/>
-                <ResourceDictionary Source="View/Resourses/Styles/AlbumStyleListBox.xaml"/>
-                <ResourceDictionary Source="View/Resourses/Styles/PictureStyleListBox.xaml"/>
-                <ResourceDictionary Source="View/Resourses/Styles/ListAlbumsListBox.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            
-            <!--<ObjectDataProvider x:Key="customNormalCursor" ObjectType="{x:Type local:CustomCursor}" MethodName="NormalCursor"/>
+<Application x:Class="Combogallary.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Combogallary" StartupUri="View/Windows/MainWindow.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="View/Resourses/Styles/FlatWindow.xaml">
+        </ResourceDictionary>
+        <ResourceDictionary Source="View/Resourses/AnimationEffects.xaml">
+        </ResourceDictionary>
+        <ResourceDictionary Source="View/Resourses/Styles/FlatButton.xaml">
+        </ResourceDictionary>
+        <ResourceDictionary Source="View/Resourses/Styles/CustomCombobox.xaml">
+        </ResourceDictionary>
+        <ResourceDictionary Source="View/Resourses/Styles/AlbumStyleListBox.xaml">
+        </ResourceDictionary>
+        <ResourceDictionary Source="View/Resourses/Styles/PictureStyleListBox.xaml">
+        </ResourceDictionary>
+        <ResourceDictionary Source="View/Resourses/Styles/ListAlbumsListBox.xaml">
+          <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:Combogallary.ViewModel" />
+        </ResourceDictionary>
+      </ResourceDictionary.MergedDictionaries>
+      <!--<ObjectDataProvider x:Key="customNormalCursor" ObjectType="{x:Type local:CustomCursor}" MethodName="NormalCursor"/>
             <ObjectDataProvider x:Key="customTextSelectCursor" ObjectType="{x:Type local:CustomCursor}" MethodName="TextSelect"/>
             <ObjectDataProvider x:Key="customLinkSelectCursor" ObjectType="{x:Type local:CustomCursor}" MethodName="LinkSelect"/>
             <ObjectDataProvider x:Key="customHandWritingCursor" ObjectType="{x:Type local:CustomCursor}" MethodName="HandWriting"/>-->
-        </ResourceDictionary>
-    </Application.Resources>
+    </ResourceDictionary>
+  </Application.Resources>
 </Application>

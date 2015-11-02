@@ -63,10 +63,10 @@
     <Rule Id="CA1063" Action="Error" />
     <Rule Id="CA1064" Action="Error" />
     <Rule Id="CA1065" Action="Error" />
-    <Rule Id="CA1300" Action="Error" />
+    <Rule Id="CA1300" Action="None" />
     <Rule Id="CA1301" Action="Error" />
     <Rule Id="CA1302" Action="Error" />
-    <Rule Id="CA1303" Action="Error" />
+    <Rule Id="CA1303" Action="None" />
     <Rule Id="CA1304" Action="Error" />
     <Rule Id="CA1305" Action="Error" />
     <Rule Id="CA1306" Action="Error" />

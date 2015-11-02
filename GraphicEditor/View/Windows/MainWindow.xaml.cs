@@ -9,8 +9,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Globalization;
 using Combogallary.Model.ProxyPattern;
-using GraphicEditor.UserControls.Model;
-using GraphicEditor.UserControls.Model.ShapesModel;
+using GraphicEditor.Model;
+using GraphicEditor.Model.ShapesModel;
 using GraphicEditor.View.Windows;
 
 namespace GraphicEditor
@@ -114,12 +114,22 @@ namespace GraphicEditor
             scrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
             scrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
             DesignerCanvas designerCanvas = new DesignerCanvas();
-            designerCanvas.Background = Brushes.White;
-            designerCanvas.AllowDrop = true;
+            designerCanvas.Background = Brushes.Red;
+            designerCanvas.Width = 500;
+            designerCanvas.Height = 300;
+
+            DesignerCanvas layerCanvas = new DesignerCanvas();
+            layerCanvas.Background = Brushes.Yellow;
 
             designerItem.Content = image;
+            image.Stretch = Stretch.Fill;
+            Canvas.SetLeft(designerItem, 100);
+            Canvas.SetTop(designerItem, 100);
             designerCanvas.Children.Add(designerItem);
-            scrollViewer.Content = designerCanvas;
+
+            layerCanvas.Children.Add(designerCanvas);
+
+            scrollViewer.Content = layerCanvas;
 
             ZoomBox zoomBox = new ZoomBox();
             zoomBox.Width = 180;
@@ -130,8 +140,7 @@ namespace GraphicEditor
 
             grid.Children.Add(scrollViewer);
             grid.Children.Add(zoomBox);
-
-            f_designerCanvases.Add(designerCanvas);
+            
             f_tabGrids.Add(grid);
         }
 
@@ -179,12 +188,6 @@ namespace GraphicEditor
         {
             if (f_pictures.Count != 0)
                 new ImagePropertiesWindow(f_pictures[pictureTabView.SelectedIndex]).ShowDialog();
-        }
-
-        private void pictureTabView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            TabItem tab = pictureTabView.SelectedItem as TabItem;
-            if (tab == null) return;
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

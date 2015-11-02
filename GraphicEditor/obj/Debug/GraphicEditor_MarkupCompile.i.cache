@@ -8,13 +8,13 @@ D:\GitHub\Gallery\GraphicEditor\obj\Debug\
 GraphicEditor
 none
 false
-CODE_ANALYSIS;DEBUG;TRACE
+DEBUG;TRACE
 D:\GitHub\Gallery\GraphicEditor\App.xaml
-6-186675695
+7-1904672366
 
-19-1322849147
-17-1540295369
-UserControls\Resources\Brushes.xaml;UserControls\Resources\DesignerItem.xaml;UserControls\Resources\ZoomBox.xaml;View\Windows\ImagePropertiesWindow.xaml;View\Windows\MainWindow.xaml;UserControls\VerticalPanel.xaml;
+27172481152
+18406582824
+UserControls\Resources\Brushes.xaml;UserControls\Resources\DesignerItem.xaml;UserControls\Resources\ResizeChrome.xaml;UserControls\Resources\ZoomBox.xaml;View\Windows\ImagePropertiesWindow.xaml;View\Windows\MainWindow.xaml;UserControls\VerticalPanel.xaml;
 
 True
 
