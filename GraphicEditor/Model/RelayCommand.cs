@@ -3,11 +3,13 @@ using System.Windows.Input;
 
 namespace GraphicEditor.Model
 {
-    public class RelayCommand : ICommand
+    public class RelayCommand: ICommand
     {
-        private Action<object> f_execute;
+        private Action<object> execute;
 
-        private Predicate<object> f_canExecute;
+        private Predicate<object> canExecute;
+
+        private event EventHandler CanExecuteChangedInternal;
 
         public RelayCommand(Action<object> execute)
             : this(execute, DefaultCanExecute)
@@ -26,8 +28,8 @@ namespace GraphicEditor.Model
                 throw new ArgumentNullException("canExecute");
             }
 
-            this.f_execute = execute;
-            this.f_canExecute = canExecute;
+            this.execute = execute;
+            this.canExecute = canExecute;
         }
 
         public event EventHandler CanExecuteChanged
@@ -45,16 +47,14 @@ namespace GraphicEditor.Model
             }
         }
 
-        private event EventHandler CanExecuteChangedInternal;
-
         public bool CanExecute(object parameter)
         {
-            return this.f_canExecute != null && this.f_canExecute(parameter);
+            return this.canExecute != null && this.canExecute(parameter);
         }
 
         public void Execute(object parameter)
         {
-            this.f_execute(parameter);
+            this.execute(parameter);
         }
 
         public void OnCanExecuteChanged()
@@ -62,15 +62,15 @@ namespace GraphicEditor.Model
             EventHandler handler = this.CanExecuteChangedInternal;
             if (handler != null)
             {
-                // DispatcherHelper.BeginInvokeOnUIThread(() => handler.Invoke(this, EventArgs.Empty));
+                //DispatcherHelper.BeginInvokeOnUIThread(() => handler.Invoke(this, EventArgs.Empty));
                 handler.Invoke(this, EventArgs.Empty);
             }
         }
 
         public void Destroy()
         {
-            this.f_canExecute = _ => false;
-            this.f_execute = _ => { return; };
+            this.canExecute = _ => false;
+            this.execute = _ => { return; };
         }
 
         private static bool DefaultCanExecute(object parameter)

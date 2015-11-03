@@ -86,40 +86,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Adorners\ResizeAdorner.cs" />
-    <Compile Include="Model\Adorners\ResizeChrome.cs" />
-    <Compile Include="Model\Adorners\RubberbandAdorner.cs" />
-    <Compile Include="Model\GraphicContent.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\BrushToolSelected.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\GraphicContent.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\GraphicContentState.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\NoToolSelected.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\PointerToolSelected.cs" />
     <Compile Include="Model\Layer.cs" />
     <Compile Include="Model\RelayCommand.cs" />
-    <Compile Include="Model\DesignerCanvas.cs" />
-    <Compile Include="Model\DesignerItem.cs" />
-    <Compile Include="Model\MoveThumb.cs" />
-    <Compile Include="Model\ResizeDecorator.cs" />
-    <Compile Include="Model\ResizeThumb.cs" />
-    <Compile Include="Model\ShapesModel\EllipseShape.cs" />
-    <Compile Include="Model\ShapesModel\RectangleShape.cs" />
-    <Compile Include="Model\ShapesModel\Shapes.cs" />
-    <Compile Include="Model\ZoomBox.cs" />
     <Compile Include="UserControls\VerticalPanel.xaml.cs">
       <DependentUpon>VerticalPanel.xaml</DependentUpon>
     </Compile>
-    <Page Include="UserControls\Resources\Brushes.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\Resources\DesignerItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\Resources\ResizeChrome.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\Resources\ZoomBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Windows\ImagePropertiesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,16 +163,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Resources\Images\open_file.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="View\Resources\Images\image-properties.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\Resources\Images\rectangle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\Resources\Images\ellipse.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -209,6 +176,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Images\image-brush.png" />
+    <Resource Include="View\Resources\Images\image-save.png" />
+    <Resource Include="View\Resources\Images\image-cursor-pointer.png" />
+    <Resource Include="View\Resources\Images\image-folder-open.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

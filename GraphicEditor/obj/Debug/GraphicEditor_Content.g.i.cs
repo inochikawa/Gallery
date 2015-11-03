@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/ellipse.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/android-brush.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/android-save.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/cusor-pointer.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/folder-open.png")]
 
 

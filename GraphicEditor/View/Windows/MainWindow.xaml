@@ -10,9 +10,14 @@
         Title="" Height="500" Width="800"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <dataContext:MainWindowViewModel/>
+        <dataContext:MainWindowViewModel x:Name="f_vm"/>
     </Window.DataContext>
     <Grid>
+        <Canvas x:Name="backgroundCanvas"
+                Background="Transparent" MouseMove="backgroundCanvas_MouseMove"
+                >
+        </Canvas>
+
         <Menu Height="25"
               VerticalAlignment="Top"
               HorizontalAlignment="Left"
@@ -25,7 +30,7 @@
                           Header="Open" Foreground="Black"
                           Click="openFileMenuItem_Click">
                     <MenuItem.Icon>
-                        <Image Source="/GraphicEditor;component/View/Resources/Images/open_file.png"/>
+                        <Image Source="/GraphicEditor;component/View/Resources/Images/image-folder-open.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
@@ -42,7 +47,7 @@
             </MenuItem>
         </Menu>
         
-        <TabControl x:Name="pictureTabView" 
+        <!--<TabControl x:Name="pictureTabView" 
                     Background="Transparent"
                     ItemsSource="{Binding}" 
                     MouseLeftButtonUp="pictureTabView_MouseLeftButtonUp"
@@ -84,7 +89,7 @@
                     </Setter>
                 </Style>
             </TabControl.Resources>
-        </TabControl>
+        </TabControl>-->
 
         <Menu Width="25"
               Height="auto"
@@ -124,44 +129,35 @@
                 </EventTrigger>
             </Menu.Triggers>
             <MenuItem  Height="25"
-                       Command="{Binding ShowMessageCommand}">
+                       Header="Open"
+                       ToolTip="Open">
                 <MenuItem.Icon>
-                    <Image Source="/GraphicEditor;component/View/Resources/Images/rectangle.png"/>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/image-folder-open.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem  Height="25"
+                       Header="Save"
+                       ToolTip="Save">
+                <MenuItem.Icon>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/image-save.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem  Height="25"
+                       Header="Pointer"
+                       ToolTip="Pointer"
+                       Command="{Binding PointerToolSelectedCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/image-cursor-pointer.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem  Height="25"
+                       Header="Brush"
+                       ToolTip="Brush"
+                       Command="{Binding BrushToolSelectedCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/image-brush.png"/>
                 </MenuItem.Icon>
             </MenuItem>
         </Menu>
-
-        <!--<ListBox  Width="25"
-                  Height="auto"
-                  VerticalAlignment="Stretch"
-                  HorizontalAlignment="Left"
-                  x:Name="menuPanel"
-                  Opacity=".3"
-                  Margin="5,40,0,50">
-            <ListBox.Resources>
-                <Storyboard x:Key="opacityEffectIn">
-                    <DoubleAnimation Storyboard.TargetName="menuPanel"
-                             Storyboard.TargetProperty="Opacity"
-                             To="1"
-                             Duration="0:0:.3">
-                    </DoubleAnimation>
-                </Storyboard>
-                <Storyboard x:Key="opacityEffectOut">
-                    <DoubleAnimation Storyboard.TargetName="menuPanel"
-                             Storyboard.TargetProperty="Opacity"
-                             To=".3"
-                             Duration="0:0:.3">
-                    </DoubleAnimation>
-                </Storyboard>
-            </ListBox.Resources>
-            <ListBox.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard Storyboard="{StaticResource opacityEffectIn}"/>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <BeginStoryboard Storyboard="{StaticResource opacityEffectOut}"/>
-                </EventTrigger>
-            </ListBox.Triggers>
-        </ListBox>-->
     </Grid>
 </Window>

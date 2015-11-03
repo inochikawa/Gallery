@@ -30,7 +30,6 @@ D:\GitHub\Gallery\GraphicEditor\bin\Debug\pl-PL\StyleCop.CSharp.Rules.resources.
 D:\GitHub\Gallery\GraphicEditor\bin\Debug\pt-BR\StyleCop.CSharp.Rules.resources.dll
 D:\GitHub\Gallery\GraphicEditor\bin\Debug\ru-RU\StyleCop.CSharp.Rules.resources.dll
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.csprojResolveAssemblyReference.cache
-D:\GitHub\Gallery\GraphicEditor\obj\Debug\UserControls\Resources\Brushes.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Windows\ImagePropertiesWindow.g.cs
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Windows\MainWindow.g.cs
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\UserControls\VerticalPanel.g.cs
@@ -39,8 +38,6 @@ D:\GitHub\Gallery\GraphicEditor\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor_MarkupCompile.cache
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor_MarkupCompile.lref
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\App.baml
-D:\GitHub\Gallery\GraphicEditor\obj\Debug\UserControls\Resources\DesignerItem.baml
-D:\GitHub\Gallery\GraphicEditor\obj\Debug\UserControls\Resources\ZoomBox.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Windows\ImagePropertiesWindow.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Windows\MainWindow.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\UserControls\VerticalPanel.baml
@@ -49,4 +46,3 @@ D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.Properties.Resources.res
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.csproj.GenerateResource.Cache
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.exe
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.pdb
-D:\GitHub\Gallery\GraphicEditor\obj\Debug\UserControls\Resources\ResizeChrome.baml
