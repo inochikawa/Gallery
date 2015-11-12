@@ -17,17 +17,17 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
 
         public override void MouseDownHandler(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            return;
         }
 
         public override void MouseMoveHandler(object sender, MouseEventArgs e)
         {
-            throw new NotImplementedException();
+            return;
         }
 
         public override void MouseUpHandler(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            return;
         }
     }
 }

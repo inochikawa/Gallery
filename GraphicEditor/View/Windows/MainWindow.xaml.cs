@@ -23,7 +23,7 @@ namespace GraphicEditor
         public MainWindow()
         {
             InitializeComponent();
-            backgroundCanvas.Children.Add(f_vm.GraphicContent.WorkSpace);
+            backgroundCanvas.Children.Add(f_viewModel.GraphicContent.WorkSpace);
         }
 
         private void openFileMenuItem_Click(object sender, RoutedEventArgs e)
@@ -56,7 +56,7 @@ namespace GraphicEditor
 
         private void backgroundCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            f_vm.GraphicContent.MousePositionOnWindow = e.GetPosition(backgroundCanvas);
+            f_viewModel.GraphicContent.MousePositionOnWindow = e.GetPosition(backgroundCanvas);
         }
     }
 }

@@ -115,7 +115,7 @@
     <Compile Include="View\Windows\PictureView.xaml.cs">
       <DependentUpon>PictureView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Resourses\ComboGalleryWindow.cs" />
+    <Compile Include="View\Resourses\FlatWindow.cs" />
     <Compile Include="CustomCursor.cs" />
     <Compile Include="View\UserControls\SidePanel.xaml.cs">
       <DependentUpon>SidePanel.xaml</DependentUpon>

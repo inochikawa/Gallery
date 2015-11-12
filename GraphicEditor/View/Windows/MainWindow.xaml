@@ -10,7 +10,7 @@
         Title="" Height="500" Width="800"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <dataContext:MainWindowViewModel x:Name="f_vm"/>
+        <dataContext:MainWindowViewModel x:Name="f_viewModel"/>
     </Window.DataContext>
     <Grid>
         <Canvas x:Name="backgroundCanvas"
@@ -30,7 +30,7 @@
                           Header="Open" Foreground="Black"
                           Click="openFileMenuItem_Click">
                     <MenuItem.Icon>
-                        <Image Source="/GraphicEditor;component/View/Resources/Images/image-folder-open.png"/>
+                        <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-folder-open.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
@@ -41,7 +41,7 @@
                           Header="Propeties" Foreground="Black" Click="imageProperties_Click"
                           >
                     <MenuItem.Icon>
-                        <Image Source="/GraphicEditor;component/View/Resources/Images/image-properties.png"/>
+                        <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-properties.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
@@ -132,14 +132,14 @@
                        Header="Open"
                        ToolTip="Open">
                 <MenuItem.Icon>
-                    <Image Source="/GraphicEditor;component/View/Resources/Images/image-folder-open.png"/>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-folder-open.png"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem  Height="25"
                        Header="Save"
                        ToolTip="Save">
                 <MenuItem.Icon>
-                    <Image Source="/GraphicEditor;component/View/Resources/Images/image-save.png"/>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-save.png"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem  Height="25"
@@ -147,7 +147,7 @@
                        ToolTip="Pointer"
                        Command="{Binding PointerToolSelectedCommand}">
                 <MenuItem.Icon>
-                    <Image Source="/GraphicEditor;component/View/Resources/Images/image-cursor-pointer.png"/>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-cursor-pointer.png"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem  Height="25"
@@ -155,7 +155,15 @@
                        ToolTip="Brush"
                        Command="{Binding BrushToolSelectedCommand}">
                 <MenuItem.Icon>
-                    <Image Source="/GraphicEditor;component/View/Resources/Images/image-brush.png"/>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-brush.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem  Height="25"
+                       Header="Line"
+                       ToolTip="Line"
+                       Command="{Binding LineToolSelectedCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-line.png"/>
                 </MenuItem.Icon>
             </MenuItem>
         </Menu>

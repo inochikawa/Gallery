@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:GraphicEditor.View.UserControls.LayersControl">
+
+    <Style TargetType="{x:Type local:LayerItem}">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="MinWidth" Value="100"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:LayerItem}">
+                    <Border BorderBrush="Black"
+                            BorderThickness="1">
+                    <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=.}"
+                          Background="#9f9f9f"
+                          HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Column="0"
+                                  x:Name="PART_CheckBox"
+                                  IsChecked="True"/>
+                        <Border Background="White"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                Grid.Column="1"
+                                BorderBrush="Black"
+                                BorderThickness="1">
+                            <Image Stretch="Uniform"
+                                   VerticalAlignment="Stretch"
+                                   HorizontalAlignment="Stretch"
+                                   Source="{Binding Path=Preview, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   Margin="2"/>
+                        </Border>
+                        <TextBlock Text="{Binding LayerName}"
+                                   FontSize="10"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Center"
+                                   FontFamily="Century Gothic"
+                                   Foreground="White"
+                                   TextWrapping="Wrap"
+                                   Margin="5"
+                                   Grid.Column="2"/>
+                    </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

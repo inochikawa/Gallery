@@ -1,0 +1,72 @@
+﻿<Window x:Class="GraphicEditor.View.Windows.LayersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GraphicEditor.ViewModel"
+        mc:Ignorable="d"
+        Title="" Height="150" Width="200"
+        MaxHeight="200"
+        MaxWidth="350"
+        MinWidth="140"
+        MinHeight="100"
+        Background="White"
+        Style="{DynamicResource InnerWindow}"
+        xmlns:l="clr-namespace:GraphicEditor.View.UserControls.LayersControl">
+    <Window.DataContext>
+        <local:LayersWindowViewModel x:Name="ViewModel"/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        
+        <ListBox x:Name="LayersList"
+                 Grid.Row="0"
+                 ItemsSource="{Binding Path=LayerItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Style="{DynamicResource LayersListBox}"
+                 HorizontalContentAlignment="Stretch"
+                 SelectedIndex="0"
+                 />
+        
+        <Menu Height="25"
+              Grid.Row="1"
+              VerticalAlignment="Bottom">
+            <MenuItem Command="{Binding CreateNewLayerCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/Layers/layer-add.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Command="{Binding DublicateSelectedLayerCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/Layers/layer-dublicate.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Command="{Binding DeleteSelectedLayerCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/Layers/layer-delete.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <!--<Button Height="20"
+                    Width="20">
+                <Button.Background>
+                    <ImageBrush ImageSource="/GraphicEditor;component/View/Resources/Images/Layers/layer-add.png"/>
+                </Button.Background>
+            </Button>
+            <Button Height="20"
+                    Width="20">
+                <Button.Background>
+                    <ImageBrush ImageSource="/GraphicEditor;component/View/Resources/Images/Layers/layer-dublicate.png"/>
+                </Button.Background>
+            </Button>
+            <Button Height="20"
+                    Width="20">
+                <Button.Background>
+                    <ImageBrush ImageSource="/GraphicEditor;component/View/Resources/Images/Layers/layer-delete.png"/>
+                </Button.Background>
+            </Button>-->
+        </Menu>
+    </Grid>
+</Window>

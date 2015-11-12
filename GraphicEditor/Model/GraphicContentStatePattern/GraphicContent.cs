@@ -31,7 +31,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         {
             f_workSpace = new Grid();
             Layers = new List<Layer>();
-            Layers.Add(new Layer());
+            AddLayer(new Layer("New layer " + Layers.Count));
             // Set current tool is Pointer
             f_graphicContentState = new PointerToolSelected(this);
             // Add new layer to the work space
@@ -103,6 +103,17 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         public Layer SelectedLayer()
         {
             return Layers.FirstOrDefault(w => w.IsSelected);
+        }
+
+        public void AddLayer(Layer layer)
+        {
+            // Unselect all layers
+            foreach (var item in Layers)
+            {
+                item.IsSelected = false;
+            }
+
+            Layers.Add(layer);
         }
     }
 }

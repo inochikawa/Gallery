@@ -19,12 +19,13 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         private double f_opacity;
         private Layer f_layer;
         private double f_softness;
+        private Polyline f_polyLine;
 
         public BrushToolSelected(GraphicContent graphicContent)
             : base(graphicContent)
         {
             f_color = Brushes.Blue;
-            f_thickness = 10;
+            f_thickness = 2;
             f_opacity = 1;
             f_softness = 10;
             f_layer = graphicContent.SelectedLayer();
@@ -32,13 +33,24 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
 
         public override void MouseDownHandler(object sender, MouseButtonEventArgs e)
         {
-            drawEllipse(e.GetPosition(base.GraphicContent.WorkSpace), f_layer);
+            if (!f_layer.IsActive)
+                return;
+
+            configurePolyLine();
+            f_polyLine.Points.Add(e.GetPosition(f_layer));
+            f_layer.Children.Add(f_polyLine);
         }
 
         public override void MouseMoveHandler(object sender, MouseEventArgs e)
         {
+            if (f_polyLine == null)
+                return;
+
+            if (!f_layer.IsActive)
+                return;
+
             if (e.LeftButton == MouseButtonState.Pressed)
-                drawEllipse(e.GetPosition(base.GraphicContent.WorkSpace), f_layer);
+                f_polyLine.Points.Add(e.GetPosition(f_layer));
         }
 
         public override void MouseUpHandler(object sender, MouseButtonEventArgs e)
@@ -46,17 +58,11 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             return;
         }
 
-        private void drawEllipse(Point position, Layer layer)
+        private void configurePolyLine()
         {
-            Ellipse ellipse = new Ellipse();
-            ellipse.Fill = f_color;
-            ellipse.Width = f_thickness;
-            ellipse.Height = f_thickness;
-            ellipse.Opacity = f_opacity;
-
-            layer.Children.Add(ellipse);
-            Canvas.SetTop(ellipse, position.Y - f_thickness / 2);
-            Canvas.SetLeft(ellipse, position.X - f_thickness / 2);
+            f_polyLine = new Polyline();
+            f_polyLine.StrokeThickness = f_thickness;
+            f_polyLine.Stroke = f_color;
         }
 
         private DropShadowEffect dropShadowEffect()

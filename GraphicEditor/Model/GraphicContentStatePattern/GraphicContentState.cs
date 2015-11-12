@@ -14,9 +14,9 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         public GraphicContentState(GraphicContent graphicContent)
         {
             f_graphicContent = graphicContent;
-            Mouse.AddMouseUpHandler(f_graphicContent.SelectedLayer(), MouseUpHandler);
-            Mouse.AddMouseDownHandler(f_graphicContent.SelectedLayer(), MouseDownHandler);
-            Mouse.AddMouseMoveHandler(f_graphicContent.SelectedLayer(), MouseMoveHandler);
+            f_graphicContent.WorkSpace.MouseMove += MouseMoveHandler;
+            f_graphicContent.WorkSpace.MouseLeftButtonDown += MouseDownHandler;
+            f_graphicContent.WorkSpace.MouseLeftButtonUp += MouseUpHandler;
         }
 
         public GraphicContent GraphicContent
@@ -32,10 +32,10 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         public abstract void MouseUpHandler(object sender, MouseButtonEventArgs e);
 
         public void Dispose()
-        {
-            Mouse.RemoveMouseUpHandler(f_graphicContent.SelectedLayer(), MouseUpHandler);
-            Mouse.RemoveMouseDownHandler(f_graphicContent.SelectedLayer(), MouseDownHandler);
-            Mouse.RemoveMouseMoveHandler(f_graphicContent.SelectedLayer(), MouseMoveHandler);
+        { 
+            f_graphicContent.WorkSpace.MouseMove -= MouseMoveHandler;
+            f_graphicContent.WorkSpace.MouseLeftButtonDown -= MouseDownHandler;
+            f_graphicContent.WorkSpace.MouseLeftButtonUp -= MouseUpHandler;
         }
     }
 }

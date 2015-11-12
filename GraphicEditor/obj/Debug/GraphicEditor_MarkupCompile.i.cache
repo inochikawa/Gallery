@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\GitHub\Gallery\GraphicEditor\App.xaml
-3-1449265707
+6-1656568614
 
-19-351813377
+24-450778053
 18406582824
-View\Windows\ImagePropertiesWindow.xaml;View\Windows\MainWindow.xaml;UserControls\VerticalPanel.xaml;
+View\Styles\FlatInnerWindow.xaml;View\Styles\LayerItem.xaml;View\Styles\LayersListBox.xaml;View\Windows\ImagePropertiesWindow.xaml;View\Windows\LayersWindow.xaml;View\Windows\MainWindow.xaml;
 
-False
+True
 

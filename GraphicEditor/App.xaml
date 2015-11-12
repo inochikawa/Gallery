@@ -8,6 +8,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Combogallary;component/View/Resourses/Styles/FlatWindow.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Combogallary;component/View/Resourses/Styles/FlatButton.xaml"/>
+                <ResourceDictionary Source="View/Styles/FlatInnerWindow.xaml"/>
+                <ResourceDictionary Source="View/Styles/LayerItem.xaml"/>
+                <ResourceDictionary Source="View/Styles/LayersListBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
