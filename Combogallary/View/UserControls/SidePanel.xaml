@@ -141,7 +141,6 @@
                        FontStretch="Normal"
                        Text="Title"
                        x:Name="txtTitle"
-                       Grid.Column="1"
                        RenderTransformOrigin=".5,.5"
                        FontFamily="Century Gothic" />
         </Border>

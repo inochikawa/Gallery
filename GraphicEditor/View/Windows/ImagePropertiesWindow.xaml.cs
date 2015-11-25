@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using System.Globalization;
+﻿using System.Globalization;
+using System.Windows;
 using Combogallary.Model.ProxyPattern;
 
 namespace GraphicEditor.View.Windows

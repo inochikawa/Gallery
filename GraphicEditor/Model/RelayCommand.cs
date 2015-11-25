@@ -3,11 +3,11 @@ using System.Windows.Input;
 
 namespace GraphicEditor.Model
 {
-    public class RelayCommand: ICommand
+    public class RelayCommand : ICommand
     {
-        private Action<object> execute;
+        private Action<object> f_execute;
 
-        private Predicate<object> canExecute;
+        private Predicate<object> f_canExecute;
 
         private event EventHandler CanExecuteChangedInternal;
 
@@ -20,16 +20,16 @@ namespace GraphicEditor.Model
         {
             if (execute == null)
             {
-                throw new ArgumentNullException("execute");
+                throw new ArgumentNullException(nameof(execute));
             }
 
             if (canExecute == null)
             {
-                throw new ArgumentNullException("canExecute");
+                throw new ArgumentNullException(nameof(canExecute));
             }
 
-            this.execute = execute;
-            this.canExecute = canExecute;
+            f_execute = execute;
+            f_canExecute = canExecute;
         }
 
         public event EventHandler CanExecuteChanged
@@ -37,40 +37,37 @@ namespace GraphicEditor.Model
             add
             {
                 CommandManager.RequerySuggested += value;
-                this.CanExecuteChangedInternal += value;
+                CanExecuteChangedInternal += value;
             }
 
             remove
             {
                 CommandManager.RequerySuggested -= value;
-                this.CanExecuteChangedInternal -= value;
+                CanExecuteChangedInternal -= value;
             }
         }
 
         public bool CanExecute(object parameter)
         {
-            return this.canExecute != null && this.canExecute(parameter);
+            return f_canExecute != null && f_canExecute(parameter);
         }
 
         public void Execute(object parameter)
         {
-            this.execute(parameter);
+            f_execute(parameter);
         }
 
         public void OnCanExecuteChanged()
         {
-            EventHandler handler = this.CanExecuteChangedInternal;
-            if (handler != null)
-            {
-                //DispatcherHelper.BeginInvokeOnUIThread(() => handler.Invoke(this, EventArgs.Empty));
-                handler.Invoke(this, EventArgs.Empty);
-            }
+            EventHandler handler = CanExecuteChangedInternal;
+            //DispatcherHelper.BeginInvokeOnUIThread(() => handler.Invoke(this, EventArgs.Empty));
+            handler?.Invoke(this, EventArgs.Empty);
         }
 
         public void Destroy()
         {
-            this.canExecute = _ => false;
-            this.execute = _ => { return; };
+            f_canExecute = _ => false;
+            f_execute = _ => { };
         }
 
         private static bool DefaultCanExecute(object parameter)

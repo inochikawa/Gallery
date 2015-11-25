@@ -1,13 +1,9 @@
-﻿using GraphicEditor.Model;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using GraphicEditor.Model;
 
 namespace GraphicEditor.View.UserControls.LayersControl
 {
@@ -18,7 +14,18 @@ namespace GraphicEditor.View.UserControls.LayersControl
         private BitmapImage f_preview;
         private string f_name;
 
-        public LayerItem() { }
+        public event LayerUpdateDelegate OnCheckBoxChecked;
+
+        public event LayerUpdateDelegate OnCheckBoxUnchecked;
+
+        public static readonly DependencyProperty IsSelectedProperty =
+          DependencyProperty.Register("IsSelected", typeof(bool),
+                                      typeof(LayerItem),
+                                      new FrameworkPropertyMetadata(false));
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public delegate void LayerUpdateDelegate();
 
         public string LayerName
         {
@@ -66,19 +73,6 @@ namespace GraphicEditor.View.UserControls.LayersControl
             set { SetValue(IsSelectedProperty, value); }
         }
 
-        public delegate void LayerUpdateDelegate();
-
-        public event LayerUpdateDelegate OnCheckBoxChecked;
-
-        public event LayerUpdateDelegate OnCheckBoxUnchecked;
-
-        public static readonly DependencyProperty IsSelectedProperty =
-          DependencyProperty.Register("IsSelected", typeof(bool),
-                                      typeof(LayerItem),
-                                      new FrameworkPropertyMetadata(false));
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -99,20 +93,20 @@ namespace GraphicEditor.View.UserControls.LayersControl
 
         public void LayerMouseLeftButtonUp(Layer layer)
         {
-            if(IsChecked)
+            if (IsChecked)
                 Preview = layer.Preview();
         }
 
-        private void checkBox_Checked(object sender, System.Windows.RoutedEventArgs e)
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
         {
             f_isChecked = true;
-            OnCheckBoxChecked();
+            OnCheckBoxChecked?.Invoke();
         }
 
-        private void checkBox_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        private void checkBox_Unchecked(object sender, RoutedEventArgs e)
         {
             f_isChecked = false;
-            OnCheckBoxUnchecked();
+            OnCheckBoxUnchecked?.Invoke();
         }
     }
 }

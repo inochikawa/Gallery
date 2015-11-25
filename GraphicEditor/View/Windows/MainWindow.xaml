@@ -1,17 +1,11 @@
 ﻿<Window x:Class="GraphicEditor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GraphicEditor"
-        xmlns:dataContext="clr-namespace:GraphicEditor.ViewModel"
+        xmlns:controls="clr-namespace:GraphicEditor.View.UserControls"
         Background="#3b3b3b"
         Style="{DynamicResource ResourceKey=FlatWindow}"
         Title="" Height="500" Width="800"
-        WindowStartupLocation="CenterScreen">
-    <Window.DataContext>
-        <dataContext:MainWindowViewModel x:Name="f_viewModel"/>
-    </Window.DataContext>
+        WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown">
     <Grid>
         <Canvas x:Name="backgroundCanvas"
                 Background="Transparent" MouseMove="backgroundCanvas_MouseMove"
@@ -21,19 +15,20 @@
         <Menu Height="25"
               VerticalAlignment="Top"
               HorizontalAlignment="Left"
-              Margin="0,-30,75,0"
+              Margin="0,-35,75,0"
               Background="Transparent">
             <MenuItem Header="File"
                       FontFamily="Century Gothic"
                       Foreground="White">
                 <MenuItem x:Name="openFileMenuItem"
                           Header="Open" Foreground="Black"
-                          Click="openFileMenuItem_Click">
+                          Command="{Binding OpenImage}">
                     <MenuItem.Icon>
                         <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-folder-open.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
             <MenuItem Header="Image"
                       FontFamily="Century Gothic"
                       Foreground="White">
@@ -45,6 +40,23 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+            <MenuItem ToolTip="Undo"
+                      Width="25"
+                      Command="{Binding UndoCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/UndoRedo/undo.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+            <MenuItem ToolTip="Redo"
+                      Width="25"
+                      Command="{Binding RedoCommand}">
+                <MenuItem.Icon>
+                    <Image Source="/GraphicEditor;component/View/Resources/Images/UndoRedo/redo.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
         </Menu>
         
         <!--<TabControl x:Name="pictureTabView" 
@@ -167,5 +179,26 @@
                 </MenuItem.Icon>
             </MenuItem>
         </Menu>
+
+        <Expander Template="{DynamicResource RevealExpanderTemp}"
+                  OverridesDefaultStyle="True"
+                  Header="Color picker"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Top"
+                  Background="White">
+        </Expander>
+
+        <controls:ChildWindow Width="250"
+                              Height="250"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top"
+                              Header="Color picker">
+            <controls:ChildWindow.RenderTransform>
+                <TranslateTransform X="500"
+                                        Y="0"/>
+            </controls:ChildWindow.RenderTransform>
+            
+            <controls:ColorPicker></controls:ColorPicker>
+        </controls:ChildWindow>
     </Grid>
 </Window>

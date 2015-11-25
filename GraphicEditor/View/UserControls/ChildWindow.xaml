@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="GraphicEditor.View.UserControls.ChildWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" 
+             d:DesignWidth="300"
+             x:Name="ChildWindowControl"
+             Background="White"
+             MaxWidth="350"
+             MinHeight="200"
+             MinWidth="200">
+    <UserControl.Resources>
+        <Storyboard x:Key="opacityEffectIn">
+            <DoubleAnimation Storyboard.TargetName="ChildWindowControl"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1"
+                             Duration="0:0:.3">
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Key="opacityEffectOut">
+            <DoubleAnimation Storyboard.TargetName="ChildWindowControl"
+                             Storyboard.TargetProperty="Opacity"
+                             To=".3"
+                             Duration="0:0:.3">
+            </DoubleAnimation>
+        </Storyboard>
+        <Style x:Key="RectBorderStyle" TargetType="Rectangle">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Fill" Value="Transparent" />
+            <Setter Property="Tag" Value="{Binding RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <EventSetter Event="MouseLeftButtonDown" Handler="Resize_Init"/>
+            <EventSetter Event="MouseLeftButtonUp" Handler="Resize_End"/>
+            <EventSetter Event="MouseMove" Handler="Resizeing_Form"/>
+        </Style>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="MouseEnter">
+            <BeginStoryboard Storyboard="{StaticResource opacityEffectIn}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeave">
+            <BeginStoryboard Storyboard="{StaticResource opacityEffectOut}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Border BorderBrush="#484b5f"
+            BorderThickness="2">
+        <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Border x:Name="TopPanel"
+                    Height="15"
+                    Background="#484b5f"
+                    VerticalAlignment="Top"
+                    Grid.Row="0">
+                <Border.Effect>
+                    <DropShadowEffect Direction="-90"
+                                      Opacity=".3"
+                                      ShadowDepth="3"/>
+                </Border.Effect>
+                <Grid>
+                    <Button x:Name="ButtonClose" 
+                            Content="X"
+                            FontSize="8"
+                            FontFamily="Palatino Linotype"
+                            Width="20"
+                            Height="15"
+                            Style="{DynamicResource FlatButton}"
+                            Background="#cd4800"
+                            HorizontalAlignment="Right"/>
+                    <TextBlock x:Name="HeaderTxt"
+                               Text="Header"
+                               VerticalAlignment="Center"
+                               Foreground="White"/>
+                    </Grid>
+                </Border>
+            
+            <!--Container-->
+            <Grid Grid.Row="1"
+                  x:Name="PART_Host">
+                
+            </Grid>
+             <!---->
+            
+            <Image Source="../Resources/Images/ResizeNW.png"
+                    HorizontalAlignment="Right"
+                    Grid.Row="2"/>
+        </Grid>
+        
+            <!--Resizing elements-->
+            <Grid>
+                <Rectangle  x:Name="rightSizeGrip"
+                        Width="3"
+                        HorizontalAlignment="Right"
+                        Cursor="SizeWE"
+                        Style="{StaticResource RectBorderStyle}" />
+                <Rectangle  x:Name="bottomSizeGrip"
+                            Height="3"
+                            VerticalAlignment="Bottom"
+                            Cursor="SizeNS"
+                            Style="{StaticResource RectBorderStyle}" />
+                  <!--Corners-->
+                <Rectangle  Name="bottomRightSizeGrip"
+                            Width="10"
+                            Height="10"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Cursor="SizeNWSE"
+                            Style="{StaticResource RectBorderStyle}" />
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

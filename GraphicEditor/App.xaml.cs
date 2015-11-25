@@ -1,7 +1,7 @@
-﻿namespace GraphicEditor
-{
-    using System.Windows;
+﻿using System.Windows;
 
+namespace GraphicEditor
+{
     /// <summary>
     /// Interaction logic for App
     /// </summary>

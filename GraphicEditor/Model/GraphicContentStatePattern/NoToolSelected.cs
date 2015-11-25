@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace GraphicEditor.Model.GraphicContentStatePattern
 {
@@ -12,22 +7,18 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         public NoToolSelected(GraphicContent graphicContent)
             : base(graphicContent)
         {
-
         }
 
         public override void MouseDownHandler(object sender, MouseButtonEventArgs e)
         {
-            return;
         }
 
         public override void MouseMoveHandler(object sender, MouseEventArgs e)
         {
-            return;
         }
 
         public override void MouseUpHandler(object sender, MouseButtonEventArgs e)
         {
-            return;
         }
     }
 }

@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="View/Styles/FlatInnerWindow.xaml"/>
                 <ResourceDictionary Source="View/Styles/LayerItem.xaml"/>
                 <ResourceDictionary Source="View/Styles/LayersListBox.xaml"/>
+                <ResourceDictionary Source="View/Styles/ModificatedExpander.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

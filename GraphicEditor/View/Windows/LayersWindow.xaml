@@ -11,7 +11,7 @@
         MinWidth="140"
         MinHeight="100"
         Background="White"
-        Style="{DynamicResource InnerWindow}"
+        Style="{DynamicResource FlatInnerWindow}"
         xmlns:l="clr-namespace:GraphicEditor.View.UserControls.LayersControl">
     <Window.DataContext>
         <local:LayersWindowViewModel x:Name="ViewModel"/>
@@ -33,17 +33,28 @@
         <Menu Height="25"
               Grid.Row="1"
               VerticalAlignment="Bottom">
-            <MenuItem Command="{Binding CreateNewLayerCommand}">
+            <MenuItem Command="{Binding CreateNewLayerCommand}"
+                      Width="25">
                 <MenuItem.Icon>
                     <Image Source="/GraphicEditor;component/View/Resources/Images/Layers/layer-add.png"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Command="{Binding DublicateSelectedLayerCommand}">
+            <Separator Background="White"
+                       Height="25"
+                       Width="5"
+                       VerticalAlignment="Stretch"/>
+            <MenuItem Command="{Binding DublicateSelectedLayerCommand}"
+                      Width="25">
                 <MenuItem.Icon>
                     <Image Source="/GraphicEditor;component/View/Resources/Images/Layers/layer-dublicate.png"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Command="{Binding DeleteSelectedLayerCommand}">
+            <Separator Background="White"
+                       Height="25"
+                       Width="5"
+                       VerticalAlignment="Stretch"/>
+            <MenuItem Command="{Binding DeleteSelectedLayerCommand}"
+                      Width="25">
                 <MenuItem.Icon>
                     <Image Source="/GraphicEditor;component/View/Resources/Images/Layers/layer-delete.png"/>
                 </MenuItem.Icon>

@@ -67,6 +67,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,13 +87,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Commands\CommandReceiver.cs" />
+    <Compile Include="Model\Commands\DeleteCommand.cs" />
+    <Compile Include="Model\Commands\ICommand.cs" />
+    <Compile Include="Model\Commands\InsertCommand.cs" />
+    <Compile Include="Model\Commands\MoveCommand.cs" />
+    <Compile Include="Model\Commands\OpenImageCommand.cs" />
+    <Compile Include="Model\Commands\ResizeCommand.cs" />
     <Compile Include="Model\GraphicContentStatePattern\BrushToolSelected.cs" />
     <Compile Include="Model\GraphicContentStatePattern\GraphicContent.cs" />
     <Compile Include="Model\GraphicContentStatePattern\GraphicContentState.cs" />
     <Compile Include="Model\GraphicContentStatePattern\LineToolSelected.cs" />
     <Compile Include="Model\GraphicContentStatePattern\NoToolSelected.cs" />
     <Compile Include="Model\GraphicContentStatePattern\PointerToolSelected.cs" />
-    <Compile Include="Model\ILayer.cs" />
     <Compile Include="Model\Layer.cs" />
     <Compile Include="Model\RelayCommand.cs" />
     <Page Include="View\Styles\FlatInnerWindow.xaml">
@@ -104,6 +111,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Styles\LayersListBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Styles\ModificatedExpander.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ColorPicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,9 +142,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ColorPickerVIewModel.cs" />
     <Compile Include="ViewModel\LayersWindowViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="View\Styles\FlatInnerWindow.cs" />
+    <Compile Include="View\Styles\Helpers\MultiplyConverter.cs" />
+    <Compile Include="View\UserControls\ChildWindow.xaml.cs">
+      <DependentUpon>ChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\LayersControl\LayerItem.cs" />
     <Compile Include="View\Windows\ImagePropertiesWindow.xaml.cs">
       <DependentUpon>ImagePropertiesWindow.xaml</DependentUpon>
@@ -142,18 +174,14 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="GraphicEditor.ruleset" />
@@ -209,6 +237,22 @@
     <Resource Include="View\Resources\Images\Layers\layer-down.png" />
     <Resource Include="View\Resources\Images\Layers\layer-dublicate.png" />
     <Resource Include="View\Resources\Images\Layers\layer-up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Images\UndoRedo\redo.png" />
+    <Resource Include="View\Resources\Images\UndoRedo\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ColorPalette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Images\ResizeNW.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Images\color-palette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Images\transparent.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

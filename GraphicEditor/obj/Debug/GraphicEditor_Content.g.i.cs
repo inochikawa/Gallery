@@ -8,10 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/layers/layer-add.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/layers/layer-delete.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/layers/layer-down.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/layers/layer-dublicate.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/layers/layer-up.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/transparent.png")]
 
 

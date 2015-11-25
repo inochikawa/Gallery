@@ -1,9 +1,8 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -11,26 +10,28 @@ using System.Xml;
 
 namespace GraphicEditor.Model
 {
-    public class Layer : Canvas, ILayer, INotifyPropertyChanged
+    public class Layer : Canvas
     {
         public Layer()
         {
             IsActive = true;
             IsSelected = true;
             Background = Brushes.Transparent;
-            VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
-            HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+            VerticalAlignment = VerticalAlignment.Stretch;
+            HorizontalAlignment = HorizontalAlignment.Stretch;
             MouseLeftButtonUp += Layer_MouseLeftButtonUp;
         }
-        
-        private void Layer_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+
+        private void Layer_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            OnLayerMouseLeftButtonUp(this);
+            OnLayerMouseLeftButtonUp?.Invoke(this);
         }
 
         public Layer(string name)
-            :this()
+            : this()
         {
+            string[] n = name.Split(' ');
+            Name = n[1] + n[n.Length - 1];
             LayerName = name;
         }
 
@@ -51,24 +52,28 @@ namespace GraphicEditor.Model
         public bool IsSelected { get; set; }
 
         public string LayerName { get; set; }
-
+        
         public Layer Clone()
         {
             var xaml = XamlWriter.Save(this);
             var xamlString = new StringReader(xaml);
             var xmlTextReader = new XmlTextReader(xamlString);
             var deepCopyObject = XamlReader.Load(xmlTextReader) as Layer;
-            deepCopyObject.LayerName += " clone";
-            IsSelected = false;
-            return deepCopyObject;
-        }
-        
-        public BitmapImage Preview()
-        {
-                return newPreview(this, 1, 20);
+            if (deepCopyObject != null)
+            {
+                deepCopyObject.LayerName += " clone";
+                IsSelected = false;
+                return deepCopyObject;
+            }
+            return null;
         }
 
-        private BitmapImage newPreview(UIElement source, double scale, int quality)
+        public BitmapImage Preview()
+        {
+            return NewPreview(this, 1, 20);
+        }
+
+        private BitmapImage NewPreview(UIElement source, double scale, int quality)
         {
             double actualHeight = source.RenderSize.Height;
             double actualWidth = source.RenderSize.Width;
@@ -94,7 +99,7 @@ namespace GraphicEditor.Model
 
             PngBitmapEncoder jpgEncoder = new PngBitmapEncoder();
             jpgEncoder.Frames.Add(BitmapFrame.Create(renderTarget));
-            
+
             BitmapImage bitmapImage = new BitmapImage();
 
             using (var stream = new MemoryStream())
@@ -124,13 +129,13 @@ namespace GraphicEditor.Model
         public void UnactivateLayer()
         {
             IsActive = false;
-            base.Opacity = 0;
+            Opacity = 0;
         }
 
         public void ActivateLayer()
         {
             IsActive = true;
-            base.Opacity = 1;
+            Opacity = 1;
         }
     }
 }

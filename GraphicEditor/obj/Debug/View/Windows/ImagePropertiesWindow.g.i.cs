@@ -9,7 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using GraphicEditor.View.UserControls.LayersControl;
 using GraphicEditor.View.Windows;
 using System;
 using System.Diagnostics;
