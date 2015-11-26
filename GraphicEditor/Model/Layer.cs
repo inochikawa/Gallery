@@ -115,27 +115,29 @@ namespace GraphicEditor.Model
 
             return bitmapImage;
         }
-
-        internal void SelectLayer(object sender, RoutedEventArgs e)
-        {
-            IsSelected = true;
-        }
-
-        internal void UnselectLayer(object sender, RoutedEventArgs e)
-        {
-            IsSelected = false;
-        }
-
-        public void UnactivateLayer()
+        
+        public void Unactivate()
         {
             IsActive = false;
             Opacity = 0;
         }
 
-        public void ActivateLayer()
+        public void Activate()
         {
             IsActive = true;
             Opacity = 1;
+        }
+
+        public void Select(object sender, RoutedEventArgs e)
+        {
+            IsSelected = true;
+            IsHitTestVisible = true;
+        }
+
+        public void Unselect(object sender, RoutedEventArgs e)
+        {
+            IsSelected = false;
+            IsHitTestVisible = false;
         }
     }
 }

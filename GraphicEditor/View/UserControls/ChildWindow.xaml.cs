@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using GraphicEditor.ViewModel;
 
 namespace GraphicEditor.View.UserControls
 {
@@ -31,35 +32,6 @@ namespace GraphicEditor.View.UserControls
             MouseLeftButtonDown += TopPanelMouseLeftButtonDown;
             MouseMove += TopPanelMouseMove;
         }
-        
-        private void TopPanelMouseMove(object sender, MouseEventArgs e)
-        {
-            var draggableControl = sender as UserControl;
-
-            if (e.LeftButton == MouseButtonState.Pressed && draggableControl != null)
-            {
-                Point currentPosition = e.GetPosition(this.Parent as UIElement);
-
-                // If not clicked on border
-                if(f_clickPosition.Y > TopPanel.Height)
-                    return;
-
-                var transform = draggableControl.RenderTransform as TranslateTransform;
-                if (transform == null)
-                {
-                    transform = new TranslateTransform();
-                    draggableControl.RenderTransform = transform;
-                }
-
-                transform.X = currentPosition.X - f_clickPosition.X;
-                transform.Y = currentPosition.Y - f_clickPosition.Y;
-            }
-        }
-
-        private void TopPanelMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            f_clickPosition = e.GetPosition(this);
-        }
 
         public UIElementCollection Children
         {
@@ -72,7 +44,23 @@ namespace GraphicEditor.View.UserControls
             get { return HeaderTxt.Text; }
             set { HeaderTxt.Text = value; }
         }
+        
+        public UIElement Child
+        {
+            get { return Children[0]; }
+            set
+            {
+                if (!Children.Contains(value) && Children.Count < 1)
+                    Children.Add(value);
+            }
+        }
 
+        public void Move(int x, int y)
+        {
+            TranslateTransform translateTransform = new TranslateTransform(x ,y);
+            RenderTransform = translateTransform;
+        }
+        
         private void Resize_Init(object sender, MouseButtonEventArgs e)
         {
             Rectangle senderRect = sender as Rectangle;
@@ -138,6 +126,35 @@ namespace GraphicEditor.View.UserControls
                     }
                 }
             }
+        }
+
+        private void TopPanelMouseMove(object sender, MouseEventArgs e)
+        {
+            // If not clicked on border
+            if (f_clickPosition.Y > TopPanel.Height || f_clickPosition.Y < 1)
+                return;
+
+            var draggableControl = sender as UserControl;
+
+            if (e.LeftButton == MouseButtonState.Pressed && draggableControl != null)
+            {
+                Point currentPosition = e.GetPosition(this.Parent as UIElement);
+                
+                var transform = draggableControl.RenderTransform as TranslateTransform;
+                if (transform == null)
+                {
+                    transform = new TranslateTransform();
+                    draggableControl.RenderTransform = transform;
+                }
+
+                transform.X = currentPosition.X - f_clickPosition.X;
+                transform.Y = currentPosition.Y - f_clickPosition.Y;
+            }
+        }
+
+        private void TopPanelMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            f_clickPosition = e.GetPosition(this);
         }
     }
 }

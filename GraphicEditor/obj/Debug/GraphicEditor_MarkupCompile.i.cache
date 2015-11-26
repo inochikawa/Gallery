@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\GitHub\Gallery\GraphicEditor\App.xaml
-9-1913999746
+8-297303587
 
-34-687086418
+44701569581
 19-1007979877
-View\Styles\FlatInnerWindow.xaml;View\Styles\LayerItem.xaml;View\Styles\LayersListBox.xaml;View\Styles\ModificatedExpander.xaml;View\UserControls\ChildWindow.xaml;View\UserControls\ColorPicker.xaml;View\Windows\ImagePropertiesWindow.xaml;View\Windows\LayersWindow.xaml;View\Windows\MainWindow.xaml;
+View\Styles\LayerItem.xaml;View\Styles\LayersListBox.xaml;View\Styles\ModificatedExpander.xaml;View\UserControls\ChildWindow.xaml;View\UserControls\ColorPicker.xaml;View\UserControls\LayersView.xaml;View\Windows\ImagePropertiesWindow.xaml;View\Windows\MainWindow.xaml;
 
 True
 

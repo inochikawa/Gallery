@@ -5,13 +5,13 @@ using System.Windows.Shapes;
 
 namespace GraphicEditor.Model.GraphicContentStatePattern
 {
-    public class BrushToolSelected : GraphicContentState
+    public class BrushToolSelected : GraphicContentState, ITool
     {
-        private readonly Color f_color;
-        private readonly double f_thickness;
+        private Color f_color;
+        private double f_thickness;
         private double f_opacity;
         private readonly Layer f_layer;
-        private readonly double f_softness;
+        private double f_softness;
         private Polyline f_polyLine;
 
         public BrushToolSelected(GraphicContent graphicContent)
@@ -21,7 +21,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             f_thickness = 2;
             f_opacity = 1;
             f_softness = 10;
-            f_layer = graphicContent.SelectedLayer();
+            f_layer = graphicContent.SelectedLayer;
         }
 
         public override void MouseDownHandler(object sender, MouseButtonEventArgs e)
@@ -94,6 +94,11 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             f_polyLine.MouseLeftButtonDown += GraphicContent.ElementMouseLeftButtonDown;
             f_polyLine.MouseLeftButtonUp += GraphicContent.ElementMouseLeftButtonUp;
             f_polyLine.MouseMove += GraphicContent.ElementMouseMove;
+        }
+
+        public void UpdateColor(Color color)
+        {
+            f_color = color;
         }
     }
 }

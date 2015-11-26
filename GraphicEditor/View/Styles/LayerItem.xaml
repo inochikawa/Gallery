@@ -11,25 +11,35 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:LayerItem}">
                     <Border BorderBrush="Black"
-                            BorderThickness="1">
+                            BorderThickness="2"
+                            Margin="0,2,0,2"
+                            x:Name="Border">
                     <Grid DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=.}"
                           Background="#9f9f9f"
                           HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="15"/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Grid.Column="0"
+                        <CheckBox Grid.Column="2"
                                   x:Name="PART_CheckBox"
                                   IsChecked="True"/>
-                        <Border Background="White"
-                                VerticalAlignment="Stretch"
+                        <Border VerticalAlignment="Stretch"
                                 HorizontalAlignment="Stretch"
-                                Grid.Column="1"
+                                Grid.Column="0"
                                 BorderBrush="Black"
                                 BorderThickness="1">
-                            <Image Stretch="Uniform"
+                                <Border.Background>
+                                    <VisualBrush TileMode="Tile" 
+                                                 Viewport="0,0,10,10"
+                                                 ViewportUnits="Absolute">
+                                        <VisualBrush.Visual>
+                                            <Image Source="../Resources/Images/transparent.png"></Image>
+                                        </VisualBrush.Visual>
+                                    </VisualBrush>
+                                </Border.Background>
+                                <Image Stretch="Uniform"
                                    VerticalAlignment="Stretch"
                                    HorizontalAlignment="Stretch"
                                    Source="{Binding Path=Preview, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -43,9 +53,28 @@
                                    Foreground="White"
                                    TextWrapping="Wrap"
                                    Margin="5"
-                                   Grid.Column="2"/>
+                                   Grid.Column="1"/>
                     </Grid>
                     </Border>
+                    
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="Border" Property="BorderBrush"
+                                    Value="Black"/>
+                        </Trigger>
+                        <!--<Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="Border" Property="BorderThickness"
+                                    Value="2"/>
+                        </Trigger>-->
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="BorderBrush"
+                                    Value="White"/>
+                        </Trigger>
+                        <!--<Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="BorderThickness"
+                                    Value="1"/>
+                        </Trigger>-->
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

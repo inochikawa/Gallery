@@ -5,9 +5,9 @@ using System.Windows.Shapes;
 
 namespace GraphicEditor.Model.GraphicContentStatePattern
 {
-    public class LineToolSelected : GraphicContentState
+    public class LineToolSelected : GraphicContentState, ITool
     {
-        private readonly Brush f_color;
+        private Color f_color;
         private readonly double f_thickness;
         private double f_opacity;
         private readonly Layer f_layer;
@@ -19,15 +19,18 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         public LineToolSelected(GraphicContent graphicContent)
             : base(graphicContent)
         {
-            f_color = Brushes.Brown;
+            f_color = Colors.Brown;
             f_thickness = 10;
             f_opacity = 1;
             f_softness = 10;
-            f_layer = GraphicContent.SelectedLayer();
+            f_layer = GraphicContent.SelectedLayer;
         }
 
         public override void MouseDownHandler(object sender, MouseButtonEventArgs e)
         {
+            if(f_layer == null)
+                return;
+
             if (!f_layer.IsActive)
                 return;
 
@@ -74,9 +77,14 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         {
             f_line = new Line
             {
-                Stroke = f_color,
+                Stroke = new SolidColorBrush(f_color),
                 StrokeThickness = f_thickness
             };
+        }
+
+        public void UpdateColor(Color color)
+        {
+            f_color = color;
         }
     }
 }

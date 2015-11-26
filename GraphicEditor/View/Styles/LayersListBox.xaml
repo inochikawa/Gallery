@@ -58,7 +58,7 @@
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Vertical">
-                <Setter Property="Width" Value="20"/>
+                <Setter Property="Width" Value="7"/>
                 <Setter Property="Height" Value="Auto" />
                 <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
                 <Setter Property="Background" Value="Transparent"/>
@@ -67,6 +67,7 @@
     </Style>
 
     <Style TargetType="{x:Type ScrollViewer}">
+        <Setter Property="CanContentScroll" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate  TargetType="{x:Type ScrollViewer}">

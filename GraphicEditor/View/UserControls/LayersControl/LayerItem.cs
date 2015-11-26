@@ -7,7 +7,7 @@ using GraphicEditor.Model;
 
 namespace GraphicEditor.View.UserControls.LayersControl
 {
-    public class LayerItem : Control, INotifyPropertyChanged
+    public class LayerItem : ListBoxItem, INotifyPropertyChanged
     {
         private CheckBox f_checkBox;
         private bool f_isChecked;
@@ -17,12 +17,7 @@ namespace GraphicEditor.View.UserControls.LayersControl
         public event LayerUpdateDelegate OnCheckBoxChecked;
 
         public event LayerUpdateDelegate OnCheckBoxUnchecked;
-
-        public static readonly DependencyProperty IsSelectedProperty =
-          DependencyProperty.Register("IsSelected", typeof(bool),
-                                      typeof(LayerItem),
-                                      new FrameworkPropertyMetadata(false));
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         public delegate void LayerUpdateDelegate();
@@ -66,13 +61,7 @@ namespace GraphicEditor.View.UserControls.LayersControl
                 f_isChecked = value;
             }
         }
-
-        public bool IsSelected
-        {
-            get { return (bool)GetValue(IsSelectedProperty); }
-            set { SetValue(IsSelectedProperty, value); }
-        }
-
+        
         public void NotifyPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)

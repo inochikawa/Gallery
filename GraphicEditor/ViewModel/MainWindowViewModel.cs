@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using GraphicEditor.Model;
+using GraphicEditor.Model.ChildWindowBehavior.Factories;
+using GraphicEditor.Model.ChildWindowBehavior.Interfaces;
 using GraphicEditor.Model.GraphicContentStatePattern;
-using GraphicEditor.View.UserControls.LayersControl;
-using GraphicEditor.View.Windows;
 using Microsoft.Win32;
 
 namespace GraphicEditor.ViewModel
@@ -20,112 +19,19 @@ namespace GraphicEditor.ViewModel
         private ICommand f_undoCommand;
         private ICommand f_redoCommand;
         private ICommand f_openImage;
-        private GraphicContent f_graphicContent;
-        private readonly LayersWindow f_layersWindow;
+        private ICommand f_fillToolSelectedCommand;
+        private IChildWindowFactory f_layersChildWindowFactory;
+        private IChildWindowFactory f_colorPickerChildWindowFactory;
 
         public MainWindowViewModel()
         {
-            f_pointerToolSelectedCommand = new RelayCommand(PointerToolSelectedExecute);
-            f_noToolSelectedCommand = new RelayCommand(NoToolSelectedExecute);
-            f_brushToolSelectedCommand = new RelayCommand(BrushToolSelectedExecute);
-            f_lineToolSelectedCommand = new RelayCommand(LineToolSelectedExecute);
-            f_undoCommand = new RelayCommand(UndoExecute);
-            f_redoCommand = new RelayCommand(RedoExecute);
-            f_openImage = new RelayCommand(OpenImageExecute);
-            f_graphicContent = new GraphicContent();
-            f_layersWindow = new LayersWindow();
-
-            f_layersWindow.ViewModel.AddLayer(f_graphicContent.SelectedLayer());
-            f_layersWindow.ViewModel.OnLayerCreate += LayerWindowViewModel_OnLayerCreate;
-            f_layersWindow.ViewModel.OnLayerDelete += LayerWindowViewModel_OnLayerDelete;
-            f_layersWindow.ViewModel.OnLayerDublicate += LayerWindowViewModel_OnLayerDublicate;
-            f_layersWindow.ViewModel.OnLayerSelectionChanged += LayerWindowViewModel_OnLayerSelectionChanged;
-
-            f_layersWindow.Show();
-            f_layersWindow.Topmost = true;
+            SubscribeToCommands();
+            GraphicContent = new GraphicContent();
+            f_layersChildWindowFactory = new LayersChildWindowFactory(GraphicContent);
+            f_colorPickerChildWindowFactory = new ColorPickerChildWindowFactory();
         }
 
-        private void OpenImageExecute(object obj)
-        {
-            // Create OpenFileDialog
-            var dlg = new OpenFileDialog
-            {
-                DefaultExt = ".png",
-                Filter =
-                    "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|GIF Files (*.gif)|*.gif|All files (*.*)|*.*"
-            };
-            var result = dlg.ShowDialog();
-            if (result != true) return;
-            BitmapImage bitmapImage = new BitmapImage(new Uri(dlg.FileName));
-            Image image = new Image { Source = bitmapImage };
-            f_graphicContent.Command.Insert(image, f_graphicContent.SelectedLayer());
-        }
-
-        private void LayerWindowViewModel_OnLayerSelectionChanged(object obj)
-        {
-            if (((ListBox)obj).Items.Count == 0)
-                return;
-
-            foreach (var layer in f_graphicContent.Layers)
-            {
-                if (((ListBox)obj).SelectedItem == null)
-                    return;
-
-                if (layer.LayerName == ((LayerItem)((ListBox)obj).SelectedItem).LayerName)
-                {
-                    layer.IsSelected = true;
-                    layer.IsHitTestVisible = true;
-                }
-                else
-                {
-                    layer.IsSelected = false;
-                    layer.IsHitTestVisible = false;
-                }
-            }
-        }
-
-        private void LayerWindowViewModel_OnLayerDublicate()
-        {
-            var cloneLayer = f_graphicContent.SelectedLayer().Clone();
-            if (cloneLayer == null)
-                throw new ArgumentNullException(nameof(cloneLayer));
-            f_graphicContent.AddLayer(cloneLayer);
-            f_layersWindow?.ViewModel.AddLayer(cloneLayer);
-        }
-
-        private void LayerWindowViewModel_OnLayerDelete(object obj)
-        {
-            if (obj == null)
-                return;
-
-            LayerItem layerItem = (LayerItem)((ListBox)obj).SelectedItem;
-            Layer currentLayer = null;
-
-            foreach (var layer in f_graphicContent.Layers)
-            {
-                if (layer.LayerName == layerItem.LayerName)
-                    currentLayer = layer;
-            }
-
-            f_graphicContent.WorkSpace.Children.Remove(currentLayer);
-            f_graphicContent.Layers.Remove(currentLayer);
-            f_layersWindow.ViewModel.RemoveLayer(layerItem);
-        }
-
-        private void LayerWindowViewModel_OnLayerCreate()
-        {
-            f_graphicContent.SelectedLayer().IsSelected = false;
-            Layer layer = new Layer("New layer " + f_graphicContent.Layers.Count);
-            f_graphicContent.AddLayer(layer);
-            f_layersWindow.ViewModel.AddLayer(layer);
-            NoToolSelectedExecute();
-        }
-
-        public GraphicContent GraphicContent
-        {
-            get { return f_graphicContent; }
-            set { f_graphicContent = value; }
-        }
+        public GraphicContent GraphicContent { get; set; }
 
         #region Commands
 
@@ -216,44 +122,93 @@ namespace GraphicEditor.ViewModel
             }
         }
 
+        public ICommand FillToolSelectedCommand
+        {
+            get { return f_fillToolSelectedCommand; }
+            set { f_fillToolSelectedCommand = value; }
+        }
+
         #endregion
+
+        public void UndoExecute(object obj = null)
+        {
+            GraphicContent.Command.Undo(1);
+        }
+
+        public void RedoExecute(object obj = null)
+        {
+            GraphicContent.Command.Redo(1);
+        }
+
+        private void SubscribeToCommands()
+        {
+            f_pointerToolSelectedCommand = new RelayCommand(PointerToolSelectedExecute);
+            f_noToolSelectedCommand = new RelayCommand(NoToolSelectedExecute);
+            f_brushToolSelectedCommand = new RelayCommand(BrushToolSelectedExecute);
+            f_lineToolSelectedCommand = new RelayCommand(LineToolSelectedExecute);
+            f_undoCommand = new RelayCommand(UndoExecute);
+            f_redoCommand = new RelayCommand(RedoExecute);
+            f_openImage = new RelayCommand(OpenImageExecute);
+            f_fillToolSelectedCommand = new RelayCommand(FillToolSelectedCommandExecute);
+        }
 
         #region Execute methods
 
         private void PointerToolSelectedExecute(object obj)
         {
-            f_graphicContent.GraphicContentState.Dispose();
-            f_graphicContent.GraphicContentState = new PointerToolSelected(f_graphicContent);
+            GraphicContent.GraphicContentState.Dispose();
+            GraphicContent.GraphicContentState = new PointerToolSelected(GraphicContent);
+        }
+
+        private void FillToolSelectedCommandExecute(object obj)
+        {
+            GraphicContent.GraphicContentState.Dispose();
+            GraphicContent.GraphicContentState = new FillToolSelected(GraphicContent);
+            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((FillToolSelected)GraphicContent.GraphicContentState);
         }
 
         private void BrushToolSelectedExecute(object obj)
         {
-            f_graphicContent.GraphicContentState.Dispose();
-            f_graphicContent.GraphicContentState = new BrushToolSelected(f_graphicContent);
+            GraphicContent.GraphicContentState.Dispose();
+            GraphicContent.GraphicContentState = new BrushToolSelected(GraphicContent);
+            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((BrushToolSelected)GraphicContent.GraphicContentState);
         }
 
         private void NoToolSelectedExecute(object obj = null)
         {
-            f_graphicContent.GraphicContentState.Dispose();
-            f_graphicContent.GraphicContentState = new NoToolSelected(f_graphicContent);
+            GraphicContent.GraphicContentState.Dispose();
+            GraphicContent.GraphicContentState = new NoToolSelected(GraphicContent);
         }
 
         private void LineToolSelectedExecute(object obj)
         {
-            f_graphicContent.GraphicContentState.Dispose();
-            f_graphicContent.GraphicContentState = new LineToolSelected(f_graphicContent);
+            GraphicContent.GraphicContentState.Dispose();
+            GraphicContent.GraphicContentState = new LineToolSelected(GraphicContent);
+            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((LineToolSelected)GraphicContent.GraphicContentState);
         }
 
-        public void UndoExecute(object obj = null)
+        private void OpenImageExecute(object obj)
         {
-            f_graphicContent.Command.Undo(1);
-        }
-
-        public void RedoExecute(object obj = null)
-        {
-            f_graphicContent.Command.Redo(1);
+            // Create OpenFileDialog
+            var dlg = new OpenFileDialog
+            {
+                DefaultExt = ".png",
+                Filter =
+                    "JPG Files (*.jpg)|*.jpg|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|GIF Files (*.gif)|*.gif|All files (*.*)|*.*"
+            };
+            var result = dlg.ShowDialog();
+            if (result != true) return;
+            BitmapImage bitmapImage = new BitmapImage(new Uri(dlg.FileName));
+            Image image = new Image { Source = bitmapImage };
+            GraphicContent.Command.Insert(image, GraphicContent.SelectedLayer);
         }
 
         #endregion
+
+        public void ShowChildWindows(MainWindow window)
+        {
+            f_layersChildWindowFactory.ChildWindow.Show(window);
+            f_colorPickerChildWindowFactory.ChildWindow.Show(window);
+        }
     }
 }

@@ -10,7 +10,9 @@
              Background="White"
              MaxWidth="350"
              MinHeight="200"
-             MinWidth="200">
+             MinWidth="200"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top">
     <UserControl.Resources>
         <Storyboard x:Key="opacityEffectIn">
             <DoubleAnimation Storyboard.TargetName="ChildWindowControl"

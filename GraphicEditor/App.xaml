@@ -8,10 +8,11 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Combogallary;component/View/Resourses/Styles/FlatWindow.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Combogallary;component/View/Resourses/Styles/FlatButton.xaml"/>
-                <ResourceDictionary Source="View/Styles/FlatInnerWindow.xaml"/>
-                <ResourceDictionary Source="View/Styles/LayerItem.xaml"/>
+                <!--<ResourceDictionary Source="View/Styles/FlatInnerWindow.xaml"/>-->
+                <ResourceDictionary Source="pack://application:,,,/GraphicEditor;component/View/Styles/LayerItem.xaml"/>
                 <ResourceDictionary Source="View/Styles/LayersListBox.xaml"/>
                 <ResourceDictionary Source="View/Styles/ModificatedExpander.xaml"/>
+                <!--<ResourceDictionary Source="View/Styles/ChildWindowTest.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

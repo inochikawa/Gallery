@@ -17,6 +17,7 @@ namespace GraphicEditor
             f_mainWindowViewModel = new MainWindowViewModel();
             backgroundCanvas.Children.Add(f_mainWindowViewModel.GraphicContent.WorkSpace);
             DataContext = f_mainWindowViewModel;
+            f_mainWindowViewModel.ShowChildWindows(this);
         }
 
         private void imageProperties_Click(object sender, RoutedEventArgs e)

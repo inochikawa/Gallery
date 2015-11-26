@@ -24,11 +24,17 @@ namespace GraphicEditor.View.UserControls
         public ColorPicker()
         {
             InitializeComponent();
-            var colorPickerViewModel = new ColorPickerViewModel(f_colorPaletteImage, PickerEllipse);
-            DataContext = colorPickerViewModel;
-            f_colorPaletteImage.MouseLeftButtonDown += colorPickerViewModel.ColorPaletteMouseLeftButtonDown;
-            f_colorPaletteImage.MouseMove += colorPickerViewModel.ColorPaletteMouseMove;
-            f_slider.ValueChanged += colorPickerViewModel.AlphaSliderValueChanged;
+            ColorPickerViewModel = new ColorPickerViewModel(f_colorPaletteImage, PickerEllipse);
+            DataContext = ColorPickerViewModel;
+            f_colorPaletteImage.MouseLeftButtonDown += ColorPickerViewModel.ColorPaletteMouseLeftButtonDown;
+            f_colorPaletteImage.MouseMove += ColorPickerViewModel.ColorPaletteMouseMove;
+            f_slider.ValueChanged += ColorPickerViewModel.AlphaSliderValueChanged;
+        }
+
+        public ColorPickerViewModel ColorPickerViewModel
+        {
+            get;
+            set;
         }
     }
 }

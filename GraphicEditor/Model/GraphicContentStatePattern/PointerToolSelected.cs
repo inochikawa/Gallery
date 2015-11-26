@@ -21,7 +21,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         public override void MouseMoveHandler(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Released)
-                GraphicContent.DeltaPoint = e.GetPosition(GraphicContent.SelectedLayer());
+                GraphicContent.DeltaPoint = e.GetPosition(GraphicContent.SelectedLayer);
 
             if (e.LeftButton == MouseButtonState.Pressed)
             {

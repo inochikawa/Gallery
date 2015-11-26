@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using GraphicEditor.Model.Commands;
+using GraphicEditor.View.Styles.Helpers;
 
 namespace GraphicEditor.Model.GraphicContentStatePattern
 {
@@ -42,6 +43,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             ConfigureWorkSpace();
             Layers = new List<Layer>();
             AddLayer(new Layer("New layer " + Layers.Count));
+
             // Set current tool is Pointer
             f_graphicContentState = new PointerToolSelected(this);
         }
@@ -91,21 +93,19 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         /// Returns selected layer for now
         /// </summary>
         /// <returns>Layer</returns>
-        public Layer SelectedLayer()
+        public Layer SelectedLayer
         {
-            return Layers.FirstOrDefault(w => w.IsSelected);
+            get { return Layers.FirstOrDefault(layer => layer.IsSelected); }
         }
-
+        
         public void AddLayer(Layer layer)
         {
             // Unselect all layers
             foreach (var item in Layers)
-            {
                 item.IsSelected = false;
-            }
+
             Layers.Add(layer);
             f_workSpace.Children.Add(layer);
-            Panel.SetZIndex(layer, Layers.Count - 1);
             layer.Width = f_workSpace.Width;
             layer.Height = f_workSpace.Height;
         }
@@ -124,23 +124,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
 
         private void ConfigureWorkSpace()
         {
-            var visualBrush = new VisualBrush
-            {
-                TileMode = TileMode.Tile,
-                Viewport = new Rect(0, 0, 20, 20),
-                ViewportUnits = BrushMappingMode.Absolute,
-                Visual =
-                    new Image()
-                    {
-                        Source =
-                            new BitmapImage(
-                                new Uri(
-                                    @"pack://application:,,,/GraphicEditor;component/View/Resources/Images/transparent.png"))
-                    }
-            };
-
-
-            f_workSpace.Background = visualBrush;
+            f_workSpace.Background = TransparentViewVisualBrush.RenderTransparent();
             f_workSpace.Width = 500;
             f_workSpace.Height = 300;
 

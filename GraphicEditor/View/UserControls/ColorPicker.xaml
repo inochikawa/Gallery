@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="250" d:DesignWidth="200"
+             d:DesignHeight="200" d:DesignWidth="200"
              Background="#cccccc"
              Opacity="1"
+             Width="200"
+             Height="170"
              x:Name="ColorPickerControl">
     <Grid>
             <Grid.ColumnDefinitions>
@@ -32,8 +34,6 @@
                          Stroke="Black"
                          Width="12"
                          Height="12"
-                         Canvas.Left="50"
-                         Canvas.Top="100"
                          StrokeThickness="2"
                          IsHitTestVisible="False"/>
             </Canvas>
@@ -51,7 +51,7 @@
                 <Border Grid.Column="1">
                     <Border.Background>
                         <VisualBrush TileMode="Tile" 
-                                     Viewport="0,0,20,20"
+                                     Viewport="0,0,10,10"
                                      ViewportUnits="Absolute">
                             <VisualBrush.Visual>
                                 <Image Source="../Resources/Images/transparent.png"></Image>

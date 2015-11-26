@@ -11,17 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GraphicEditor.Model;
 
 namespace GraphicEditor.ViewModel
 {
-    public class ColorPickerViewModel : INotifyPropertyChanged
+    public class ColorPickerViewModel : INotifyPropertyChanged, IViewModel
     {
         private Color f_color;
         private Image f_image;
         private Ellipse f_ellipse;
+        private List<ITool> f_tools; 
 
         public ColorPickerViewModel(Image image, Ellipse pickerEllipse)
         {
+            f_tools = new List<ITool>();
             f_image = image;
             f_color = Colors.White;
             f_ellipse = pickerEllipse;
@@ -37,34 +40,54 @@ namespace GraphicEditor.ViewModel
             }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void AlphaSliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            f_color.A = (byte)((Slider)sender).Value;
+            NotifyPropertyChanged("Color");
+            Notify();
+        }
+
         public void ColorPaletteMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Color = GetColorFromImage((int)(e.GetPosition(f_image).X * ((800-1) / f_image.ActualWidth)), (int)(e.GetPosition(f_image).Y * ((276-1) / f_image.ActualHeight)));
+            Color = GetColorFromImage((int)(e.GetPosition(f_image).X * ((800 - 1) / f_image.ActualWidth)), (int)(e.GetPosition(f_image).Y * ((276 - 1) / f_image.ActualHeight)));
             SetEllipsePosition(e);
+            Notify();
         }
 
         public void ColorPaletteMouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                Color = GetColorFromImage((int)(e.GetPosition(f_image).X * ((800-1) / f_image.ActualWidth)), (int)(e.GetPosition(f_image).Y * ((276-1) / f_image.ActualHeight)));
+                Color = GetColorFromImage((int)(e.GetPosition(f_image).X * ((800 - 1) / f_image.ActualWidth)), (int)(e.GetPosition(f_image).Y * ((276 - 1) / f_image.ActualHeight)));
                 SetEllipsePosition(e);
+                Notify();
             }
         }
 
-        private void SetEllipsePosition(MouseEventArgs e)
+        public void Subscribe(ITool observer)
         {
-            Canvas.SetLeft(f_ellipse, e.GetPosition(f_image).X - (f_ellipse.Width / 2));
-            Canvas.SetTop(f_ellipse, e.GetPosition(f_image).Y - (f_ellipse.Height / 2));
+            f_tools.Clear();
+            f_tools.Add(observer);
         }
 
-        private void SetEllipsePosition(MouseButtonEventArgs e)
+        public void Unsubscribe(ITool observer)
         {
-            Canvas.SetLeft(f_ellipse, e.GetPosition(f_image).X - (f_ellipse.Width / 2));
-            Canvas.SetTop(f_ellipse, e.GetPosition(f_image).Y - (f_ellipse.Height / 2));
+            if (f_tools.Contains(observer))
+                f_tools.Remove(observer);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public void Notify()
+        {
+            f_tools.ForEach(tool => tool.UpdateColor(Color));
+        }
 
         /// <summary>
         /// 1*1 pixel copy is based on an article by Lee Brimelow
@@ -84,16 +107,16 @@ namespace GraphicEditor.ViewModel
                 System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
         }
 
-        public void NotifyPropertyChanged(string propertyName)
+        private void SetEllipsePosition(MouseEventArgs e)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            Canvas.SetLeft(f_ellipse, e.GetPosition(f_image).X - (f_ellipse.Width / 2));
+            Canvas.SetTop(f_ellipse, e.GetPosition(f_image).Y - (f_ellipse.Height / 2));
         }
 
-        public void AlphaSliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SetEllipsePosition(MouseButtonEventArgs e)
         {
-            f_color.A = (byte)((Slider)sender).Value;
-            NotifyPropertyChanged("Color");
+            Canvas.SetLeft(f_ellipse, e.GetPosition(f_image).X - (f_ellipse.Width / 2));
+            Canvas.SetTop(f_ellipse, e.GetPosition(f_image).Y - (f_ellipse.Height / 2));
         }
     }
 }

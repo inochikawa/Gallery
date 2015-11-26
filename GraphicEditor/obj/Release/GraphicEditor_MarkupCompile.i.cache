@@ -10,11 +10,11 @@ none
 false
 TRACE
 D:\GitHub\Gallery\GraphicEditor\App.xaml
-6-186675695
+9-1913999746
 
-21539145937
-181316649306
-UserControls\Resources\Brushes.xaml;UserControls\Resources\DesignerItem.xaml;UserControls\Resources\ZoomBox.xaml;View\Windows\ImagePropertiesWindow.xaml;View\Windows\MainWindow.xaml;UserControls\VerticalPanel.xaml;
+35156972338
+1980102476
+View\Styles\FlatInnerWindow.xaml;View\Styles\LayerItem.xaml;View\Styles\LayersListBox.xaml;View\Styles\ModificatedExpander.xaml;View\UserControls\ChildWindow.xaml;View\UserControls\ColorPicker.xaml;View\Windows\ImagePropertiesWindow.xaml;View\Windows\LayersWindow.xaml;View\Windows\MainWindow.xaml;
 
-True
+False
 
