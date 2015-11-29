@@ -127,6 +127,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             f_workSpace.Background = TransparentViewVisualBrush.RenderTransparent();
             f_workSpace.Width = 500;
             f_workSpace.Height = 300;
+            f_workSpace.Name = "PART_WorkSpaceCanvas";
 
             // Initialize a new DropShadowEffect 
             DropShadowEffect myDropShadowEffect = new DropShadowEffect();

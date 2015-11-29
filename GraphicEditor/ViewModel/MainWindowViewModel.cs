@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using GraphicEditor.Model;
+using GraphicEditor.Model.ChildWindowBehavior.ChildWondows;
 using GraphicEditor.Model.ChildWindowBehavior.Factories;
 using GraphicEditor.Model.ChildWindowBehavior.Interfaces;
 using GraphicEditor.Model.GraphicContentStatePattern;
@@ -22,13 +24,17 @@ namespace GraphicEditor.ViewModel
         private ICommand f_fillToolSelectedCommand;
         private IChildWindowFactory f_layersChildWindowFactory;
         private IChildWindowFactory f_colorPickerChildWindowFactory;
+        private IChildWindowFactory f_zoomBoxChildWindowFactory;
 
         public MainWindowViewModel()
         {
             SubscribeToCommands();
             GraphicContent = new GraphicContent();
+            ConfigureWprkSpace();
             f_layersChildWindowFactory = new LayersChildWindowFactory(GraphicContent);
             f_colorPickerChildWindowFactory = new ColorPickerChildWindowFactory();
+            f_zoomBoxChildWindowFactory = new ZoomBoxChildWindowFactory();
+            ((ZoomBoxChildWindow)f_zoomBoxChildWindowFactory.ChildWindow).ScrollViewer = ScrollViewer;
         }
 
         public GraphicContent GraphicContent { get; set; }
@@ -130,15 +136,9 @@ namespace GraphicEditor.ViewModel
 
         #endregion
 
-        public void UndoExecute(object obj = null)
-        {
-            GraphicContent.Command.Undo(1);
-        }
+        public ScrollViewer ScrollViewer { get; set; }
 
-        public void RedoExecute(object obj = null)
-        {
-            GraphicContent.Command.Redo(1);
-        }
+        public Canvas BackCanvas { get; set; }
 
         private void SubscribeToCommands()
         {
@@ -150,6 +150,33 @@ namespace GraphicEditor.ViewModel
             f_redoCommand = new RelayCommand(RedoExecute);
             f_openImage = new RelayCommand(OpenImageExecute);
             f_fillToolSelectedCommand = new RelayCommand(FillToolSelectedCommandExecute);
+        }
+
+        private void ConfigureWprkSpace()
+        {
+            ScrollViewer = new ScrollViewer
+            {
+                Background = Brushes.Transparent,
+                HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
+                VerticalScrollBarVisibility = ScrollBarVisibility.Auto
+            };
+
+            BackCanvas = new Canvas()
+            {
+                Background = Brushes.Transparent,
+                Children = { GraphicContent.WorkSpace},
+                MinHeight = 1000,
+                MinWidth = 1000
+            };
+
+            BackCanvas.MouseMove += BackCanvas_MouseMove;
+
+            ScrollViewer.Content = BackCanvas;
+        }
+
+        private void BackCanvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            GraphicContent.MousePositionOnWindow = e.GetPosition(BackCanvas);
         }
 
         #region Execute methods
@@ -207,8 +234,21 @@ namespace GraphicEditor.ViewModel
 
         public void ShowChildWindows(MainWindow window)
         {
+            window.ChildrenContent.Children.Insert(0, ScrollViewer);
+
             f_layersChildWindowFactory.ChildWindow.Show(window);
             f_colorPickerChildWindowFactory.ChildWindow.Show(window);
+            f_zoomBoxChildWindowFactory.ChildWindow.Show(window);
+        }
+
+        public void UndoExecute(object obj = null)
+        {
+            GraphicContent.Command.Undo(1);
+        }
+
+        public void RedoExecute(object obj = null)
+        {
+            GraphicContent.Command.Redo(1);
         }
     }
 }

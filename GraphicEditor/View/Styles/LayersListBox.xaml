@@ -54,7 +54,7 @@
         </Grid>
     </ControlTemplate>
 
-    <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+    <Style x:Key="CustomScrollBar" TargetType="{x:Type ScrollBar}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Vertical">
@@ -66,7 +66,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="{x:Type ScrollViewer}">
+    <Style x:Key="CustomScrollViewer" TargetType="{x:Type ScrollViewer}">
         <Setter Property="CanContentScroll" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>

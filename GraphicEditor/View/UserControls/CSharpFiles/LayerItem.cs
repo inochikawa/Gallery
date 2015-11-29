@@ -22,6 +22,19 @@ namespace GraphicEditor.View.UserControls.LayersControl
 
         public delegate void LayerUpdateDelegate();
 
+        public Canvas BindedCanvas
+        {
+            get { return (Canvas)GetValue(CanvasProperty); }
+            set
+            {
+                SetValue(CanvasProperty, value);
+                NotifyPropertyChanged("BindedCanvas");
+            }
+        }
+
+        public static readonly DependencyProperty CanvasProperty =
+            DependencyProperty.Register("Canvas", typeof(Canvas), typeof(LayerItem));
+
         public string LayerName
         {
             get
@@ -79,13 +92,7 @@ namespace GraphicEditor.View.UserControls.LayersControl
             f_checkBox.Unchecked += checkBox_Unchecked;
             f_checkBox.Checked += checkBox_Checked;
         }
-
-        public void LayerMouseLeftButtonUp(Layer layer)
-        {
-            if (IsChecked)
-                Preview = layer.Preview();
-        }
-
+        
         private void checkBox_Checked(object sender, RoutedEventArgs e)
         {
             f_isChecked = true;

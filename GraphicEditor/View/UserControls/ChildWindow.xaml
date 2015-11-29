@@ -9,9 +9,9 @@
              x:Name="ChildWindowControl"
              Background="White"
              MaxWidth="350"
-             MinHeight="200"
+             MinHeight="50"
              MinWidth="200"
-             HorizontalAlignment="Left"
+             HorizontalAlignment="Right"
              VerticalAlignment="Top">
     <UserControl.Resources>
         <Storyboard x:Key="opacityEffectIn">
@@ -88,7 +88,7 @@
             </Grid>
              <!---->
             
-            <Image Source="../Resources/Images/ResizeNW.png"
+            <Image Source="../Resources/Images/ResizeNW.png.png"
                     HorizontalAlignment="Right"
                     Grid.Row="2"/>
         </Grid>

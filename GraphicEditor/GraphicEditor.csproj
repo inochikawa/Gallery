@@ -88,8 +88,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\ChildWindowBehavior\ChildWondows\ColorPickerChildWindow.cs" />
+    <Compile Include="Model\ChildWindowBehavior\ChildWondows\ZoomBoxChildWindow.cs" />
     <Compile Include="Model\ChildWindowBehavior\Factories\ColorPickerChildWindowFactory.cs" />
     <Compile Include="Model\ChildWindowBehavior\Factories\LayersChildWindowFactory.cs" />
+    <Compile Include="Model\ChildWindowBehavior\Factories\ZoomBoxChildWindowFactory.cs" />
     <Compile Include="Model\ChildWindowBehavior\Interfaces\IChildWindow.cs" />
     <Compile Include="Model\ChildWindowBehavior\Interfaces\IChildWindowFactory.cs" />
     <Compile Include="Model\ChildWindowBehavior\ChildWondows\LayersViewChildWindow.cs" />
@@ -111,6 +113,10 @@
     <Compile Include="Model\IViewModel.cs" />
     <Compile Include="Model\Layer.cs" />
     <Compile Include="Model\RelayCommand.cs" />
+    <Page Include="View\Styles\CuteSlider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Styles\LayerItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Styles\ModificatedExpander.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Styles\ZoomBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,7 +174,8 @@
     <Compile Include="View\UserControls\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\LayersControl\LayerItem.cs" />
+    <Compile Include="View\UserControls\CSharpFiles\LayerItem.cs" />
+    <Compile Include="View\UserControls\CSharpFiles\ZoomBox.cs" />
     <Compile Include="View\UserControls\LayersView.xaml.cs">
       <DependentUpon>LayersView.xaml</DependentUpon>
     </Compile>
@@ -249,9 +260,6 @@
     <Resource Include="View\Resources\Images\UndoRedo\undo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Resources\Images\ResizeNW.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="View\Resources\Images\color-palette.png" />
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +267,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\Resources\Images\MainWindowMenu\image-fill-tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Images\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resources\Images\ResizeNW.png.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -23,6 +23,8 @@ namespace Combogallary
 
     public partial class FlatWindow
     {
+        private System.Windows.WindowState f_windowState = WindowState.Normal;
+
         void TopBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             sender.ForWindowFromTemplate(w => w.DragMove());
@@ -36,6 +38,20 @@ namespace Combogallary
         void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
             sender.ForWindowFromTemplate(w => w.WindowState = System.Windows.WindowState.Minimized);
+        }
+
+        void btnMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.f_windowState == System.Windows.WindowState.Normal)
+            {
+                sender.ForWindowFromTemplate(w => w.WindowState = System.Windows.WindowState.Maximized);
+                f_windowState = WindowState.Maximized;
+            }
+            else
+            {
+                sender.ForWindowFromTemplate(w => w.WindowState = System.Windows.WindowState.Normal);
+                f_windowState = WindowState.Normal;
+            }
         }
         
         private void ComboGalleryWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)

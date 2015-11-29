@@ -14,7 +14,7 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Factories
         {
             GraphicContent = graphicContent;
             ChildWindow = new LayersViewChildWindow {Header = "Layers"};
-            ChildWindow.Move(590, 10);
+            ChildWindow.Move(-20, 10);
             ((LayersViewViewModel)ChildWindow.ViewModel).AddLayer(GraphicContent.SelectedLayer);
             ((LayersViewViewModel)ChildWindow.ViewModel).OnLayerCreate += LayerWindowViewModel_OnLayerCreate;
             ((LayersViewViewModel)ChildWindow.ViewModel).OnLayerDelete += LayerWindowViewModel_OnLayerDelete;

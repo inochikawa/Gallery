@@ -1,19 +1,19 @@
 ﻿using GraphicEditor.Model.ChildWindowBehavior.ChildWondows;
 using GraphicEditor.Model.ChildWindowBehavior.Interfaces;
 using GraphicEditor.Model.GraphicContentStatePattern;
-using GraphicEditor.ViewModel;
 
 namespace GraphicEditor.Model.ChildWindowBehavior.Factories
 {
-    public class ColorPickerChildWindowFactory : IChildWindowFactory
+    class ZoomBoxChildWindowFactory : IChildWindowFactory
     {
-        public ColorPickerChildWindowFactory()
+        public ZoomBoxChildWindowFactory()
         {
-            ChildWindow = new ColorPickerChildWindow() {Header = "Color picker"};
-            ChildWindow.Move(-20, 220);
+            ChildWindow = new ZoomBoxChildWindow();
+            ChildWindow.Move(-20, 430);
         }
 
         public IChildWindow ChildWindow { get; set; }
+
         public GraphicContent GraphicContent { get; set; }
     }
 }

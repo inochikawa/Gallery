@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/mainwindowmenu/image-fill-tool.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resources/images/resizenw.png.png")]
 
 

@@ -10,104 +10,141 @@
              Width="200"
              Height="170"
              x:Name="ColorPickerControl">
-    <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="5"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="0"/>
-            </Grid.RowDefinitions>
-            <Image x:Name="f_colorPaletteImage"
-               Grid.Column="1"
-               Grid.Row="1"
-               Source="/View/Resources/Images/color-palette.png"
-               Stretch="Fill"/>
-            <Canvas Grid.Column="1"
-                Grid.Row="1">
-                <Ellipse x:Name="PickerEllipse" 
-                         Fill="White"
-                         Stroke="Black"
-                         Width="12"
-                         Height="12"
-                         StrokeThickness="2"
-                         IsHitTestVisible="False"/>
-            </Canvas>
-            <StackPanel Grid.Column="1"
-                    Grid.Row="2">
-                <Grid Margin="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Content="Preview"
-                       Grid.Column="0"
-                       HorizontalAlignment="Center"
-                       FontSize="15"/>
-                <Border Grid.Column="1">
-                    <Border.Background>
-                        <VisualBrush TileMode="Tile" 
-                                     Viewport="0,0,10,10"
-                                     ViewportUnits="Absolute">
-                            <VisualBrush.Visual>
-                                <Image Source="../Resources/Images/transparent.png"></Image>
-                            </VisualBrush.Visual>
-                        </VisualBrush>
-                    </Border.Background>
-                </Border>
-                <Rectangle HorizontalAlignment="Stretch"
-                           VerticalAlignment="Stretch"
-                           Stroke="Black"
-                           StrokeThickness="1"
-                           Grid.Column="1">
-                        <Rectangle.Fill>
-                            <SolidColorBrush Color="{Binding Color, Mode=TwoWay}"/>
-                        </Rectangle.Fill>
-                    </Rectangle>
-                </Grid>
-                <Grid Margin="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Content="Alpha"
-                       Grid.Column="0"
-                       HorizontalAlignment="Center"
-                       FontSize="15"/>
-                    <StackPanel Grid.Column="1">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Slider x:Name="f_slider"
-                                HorizontalAlignment="Stretch"
-                                Grid.ColumnSpan="2"
-                                Grid.Row="0"
-                                Minimum="0"
-                                Maximum="255"
-                                VerticalAlignment="Center"
-                                Interval="1"
-                                Value="255"/>
-                            <Label Grid.Row="1"
+    <TabControl>
+        
+        <TabItem Header="Picker 1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0"/>
+                </Grid.RowDefinitions>
+                <Image  x:Name="f_colorPaletteImage"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Source="/View/Resources/Images/color-palette.png"
+                        Stretch="Fill"/>
+                <Canvas Grid.Column="1"
+                        Grid.Row="1">
+                    <Ellipse x:Name="PickerEllipse" 
+                             Fill="White"
+                             Stroke="Black"
+                             Width="12"
+                             Height="12"
+                             StrokeThickness="2"
+                             IsHitTestVisible="False"/>
+                </Canvas>
+                <StackPanel Grid.Column="1"
+                            Grid.Row="2">
+                    <Grid Margin="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Preview"
                                Grid.Column="0"
-                               Content="0"/>
-                            <Label Grid.Row="1"
-                               Grid.Column="1"
-                               Content="255"
-                               HorizontalAlignment="Right"/>
-                        </Grid>
-                    </StackPanel>
+                               HorizontalAlignment="Center"
+                               FontSize="15"/>
+                        <Border Grid.Column="1">
+                            <Border.Background>
+                                <VisualBrush TileMode="Tile" 
+                                             Viewport="0,0,10,10"
+                                             ViewportUnits="Absolute">
+                                    <VisualBrush.Visual>
+                                        <Image Source="../Resources/Images/transparent.png"></Image>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Border.Background>
+                        </Border>
+                        <Rectangle HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   Stroke="Black"
+                                   StrokeThickness="1"
+                                   Grid.Column="1"> 
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="{Binding Color, Mode=TwoWay}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Grid>
+                    <Grid Margin="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Alpha"
+                               Grid.Column="0"
+                               HorizontalAlignment="Center"
+                               FontSize="15"/>
+                        <StackPanel Grid.Column="1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Slider x:Name="f_slider"
+                                        HorizontalAlignment="Stretch"
+                                        Grid.ColumnSpan="2"
+                                        Grid.Row="0"
+                                        Minimum="0"
+                                        Maximum="255"
+                                        VerticalAlignment="Center" 
+                                        IsSnapToTickEnabled="True"
+                                        TickFrequency="1"
+                                        AutoToolTipPlacement="BottomRight"
+                                        Value="255"
+                                        Style="{DynamicResource CuteSlider}"/>
+                                <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Content="0"/>
+                                <Label Grid.Row="1"
+                                       Grid.Column="1"
+                                       Content="255"
+                                       HorizontalAlignment="Right"/>
+                            </Grid>
+                        </StackPanel>
 
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            </ScrollViewer>
+        </TabItem>
+        
+        <TabItem Header="RGB">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Canvas>
+                        <Ellipse Width="50"
+                                 Height="50"
+                                 Fill="Red"
+                                 Opacity=".5"
+                                 Canvas.Left="50"
+                                 Canvas.Top="80"/>
+                        <Ellipse Width="50"
+                                 Height="50"
+                                 Fill="Green"
+                                 Opacity=".5"
+                                 Canvas.Left="80"
+                                 Canvas.Top="80"/>
+                        <Ellipse Width="50"
+                                 Height="50"
+                                 Fill="Blue"
+                                 Opacity=".5"
+                                 Canvas.Left="65"
+                                 Canvas.Top="50"/>
+                    </Canvas>
                 </Grid>
-            </StackPanel>
-        </Grid>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
 </UserControl>

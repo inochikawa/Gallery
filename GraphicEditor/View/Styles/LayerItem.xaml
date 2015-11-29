@@ -19,7 +19,7 @@
                           HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="15"/>
                         </Grid.ColumnDefinitions>
                         <CheckBox Grid.Column="2"
@@ -27,9 +27,12 @@
                                   IsChecked="True"/>
                         <Border VerticalAlignment="Stretch"
                                 HorizontalAlignment="Stretch"
+                                MinWidth="25"
+                                MinHeight="25"
                                 Grid.Column="0"
                                 BorderBrush="Black"
-                                BorderThickness="1">
+                                BorderThickness="1"
+                                Margin="2">
                                 <Border.Background>
                                     <VisualBrush TileMode="Tile" 
                                                  Viewport="0,0,10,10"
@@ -39,12 +42,17 @@
                                         </VisualBrush.Visual>
                                     </VisualBrush>
                                 </Border.Background>
-                                <Image Stretch="Uniform"
-                                   VerticalAlignment="Stretch"
-                                   HorizontalAlignment="Stretch"
-                                   Source="{Binding Path=Preview, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                   Margin="2"/>
-                        </Border>
+                                <!--<Image Stretch="Uniform"
+                                       VerticalAlignment="Stretch"
+                                       HorizontalAlignment="Stretch"
+                                       Source="{Binding Path=Preview, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+                                <Canvas Name="PART_ZoomCanvas">
+                                    <Canvas.Background>
+                                        <VisualBrush Stretch="Uniform"
+                                                     Visual="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BindedCanvas}" />
+                                    </Canvas.Background>
+                                </Canvas>
+                            </Border>
                         <TextBlock Text="{Binding LayerName}"
                                    FontSize="10"
                                    HorizontalAlignment="Stretch"

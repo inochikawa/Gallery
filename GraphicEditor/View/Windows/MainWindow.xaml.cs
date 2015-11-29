@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using GraphicEditor.ViewModel;
 
@@ -14,21 +15,12 @@ namespace GraphicEditor
         public MainWindow()
         {
             InitializeComponent();
-            f_mainWindowViewModel = new MainWindowViewModel();
-            backgroundCanvas.Children.Add(f_mainWindowViewModel.GraphicContent.WorkSpace);
+           // backgroundCanvas = new Canvas();
+            f_mainWindowViewModel = new MainWindowViewModel(); 
             DataContext = f_mainWindowViewModel;
             f_mainWindowViewModel.ShowChildWindows(this);
         }
-
-        private void imageProperties_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void backgroundCanvas_MouseMove(object sender, MouseEventArgs e)
-        {
-            f_mainWindowViewModel.GraphicContent.MousePositionOnWindow = e.GetPosition(backgroundCanvas);
-        }
-
+        
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.Z)

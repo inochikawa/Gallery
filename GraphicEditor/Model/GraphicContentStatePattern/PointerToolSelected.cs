@@ -1,9 +1,13 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Input;
 
 namespace GraphicEditor.Model.GraphicContentStatePattern
 {
     public class PointerToolSelected : GraphicContentState
     {
+        List<Point> logList= new List<Point>();
+             
         public PointerToolSelected(GraphicContent graphicContent)
             : base(graphicContent)
         {
@@ -25,6 +29,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
 
             if (e.LeftButton == MouseButtonState.Pressed)
             {
+                logList.Add(GraphicContent.MousePositionOnWindow);
                 GraphicContent.Command.Move(GraphicContent.WorkSpace,
                     GraphicContent.MousePositionOnWindow.X - GraphicContent.DeltaPoint.X,
                     GraphicContent.MousePositionOnWindow.Y - GraphicContent.DeltaPoint.Y);
@@ -33,6 +38,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
 
         public override void MouseUpHandler(object sender, MouseButtonEventArgs e)
         {
+            logList.Clear();
             Mouse.OverrideCursor = Cursors.Arrow;
             GraphicContent.Command.EndMove(GraphicContent.WorkSpace,
                     GraphicContent.MousePositionOnWindow.X - GraphicContent.DeltaPoint.X,

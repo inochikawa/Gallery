@@ -51,14 +51,14 @@
                                         </Border.Effect>
                                     </Border>
                                     <DockPanel LastChildFill="False">
-                                        <TextBlock Margin="8,0,0,4" 
+                                        <!--<TextBlock Margin="8,0,0,4" 
                                                    VerticalAlignment="Center" 
                                                    FontStretch="UltraExpanded" 
                                                    Foreground="Black" 
                                                    TextTrimming="CharacterEllipsis" 
                                                    TextWrapping="NoWrap" 
                                                    Text="{TemplateBinding Title}" 
-                                                   FontSize="16" />
+                                                   FontSize="16" />-->
                                         <Button x:Name="ButtonClose"  
                                                 Style="{DynamicResource FlatButton}"
                                                 DockPanel.Dock="Right" 
@@ -69,6 +69,37 @@
                                                 Background="#c8373a"
                                                 Click="btnClose_Click"
                                                 Content="X">
+                                        </Button>
+                                        <Button x:Name="ButtonMaximize" 
+                                                Style="{DynamicResource  FlatButton}"
+                                                DockPanel.Dock="Right" 
+                                                VerticalAlignment="Center" 
+                                                Opacity="1"  
+                                                Height="25" 
+                                                Width="35" 
+                                                Background="#FFE4E4E4"
+                                                Click="btnMaximize_Click"
+                                                Margin="0,0,5,0">
+                                            <Button.Content>
+                                                <Grid>
+                                                    <Polygon Points="2,5 13,5 13,13 2,13"
+                                                             Stroke="Black"
+                                                             Fill="White">
+                                                        <Polygon.RenderTransform>
+                                                            <TranslateTransform X="2"
+                                                                                Y="-2"/>
+                                                        </Polygon.RenderTransform>
+                                                    </Polygon>
+                                                    <Polygon Points="2,5 13,5 13,13 2,13"
+                                                             Stroke="Black"
+                                                             Fill="White">
+                                                        <Polygon.RenderTransform>
+                                                            <TranslateTransform X="-2"
+                                                                                Y="2"/>
+                                                        </Polygon.RenderTransform>
+                                                    </Polygon>
+                                                </Grid>
+                                            </Button.Content>
                                         </Button>
                                         <Button x:Name="ButtonMinimize" 
                                                 Style="{DynamicResource  FlatButton}"

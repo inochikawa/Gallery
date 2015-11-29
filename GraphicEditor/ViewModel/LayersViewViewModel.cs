@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Input;
 using GraphicEditor.Model;
@@ -74,31 +73,21 @@ namespace GraphicEditor.ViewModel
 
         public void AddLayer(Layer layer)
         {
-            LayerItem layerItem = new LayerItem();
-            layerItem.IsChecked = layer.IsActive;
-            layerItem.IsSelected = layer.IsSelected;
-            layerItem.LayerName = layer.LayerName;
-            layerItem.Preview = layer.Preview();
+            LayerItem layerItem = new LayerItem
+            {
+                IsChecked = layer.IsActive,
+                IsSelected = layer.IsSelected,
+                LayerName = layer.LayerName,
+                BindedCanvas = layer
+            };
             layerItem.OnCheckBoxChecked += layer.Activate;
             layerItem.OnCheckBoxUnchecked += layer.Unactivate;
             layerItem.Selected += layer.Select;
             layerItem.Unselected += layer.Unselect;
-            layer.OnLayerMouseLeftButtonUp += layerItem.LayerMouseLeftButtonUp;
 
             f_layerItems.Insert(0, layerItem);
         }
-        public void UpdateLayers(List<Layer> layers)
-        {
-            if (layers.Count != f_layerItems.Count)
-                return;
-
-            for (int i = 0; i < layers.Count; i++)
-            {
-                layers[i].IsActive = f_layerItems[i].IsChecked;
-                layers[i].IsSelected = f_layerItems[i].IsSelected;
-            }
-        }
-
+        
         internal void RemoveLayer(LayerItem layerItem)
         {
             f_layerItems.Remove(layerItem);

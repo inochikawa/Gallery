@@ -9,7 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using GraphicEditor.View.Styles;
 using GraphicEditor.View.Styles.Helpers;
+using GraphicEditor.View.UserControls.CSharpFiles;
 using GraphicEditor.View.UserControls.LayersControl;
 using GraphicEditor.ViewModel;
 using System;

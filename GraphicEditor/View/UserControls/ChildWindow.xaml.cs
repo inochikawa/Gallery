@@ -5,6 +5,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using GraphicEditor.View.Styles;
 using GraphicEditor.ViewModel;
 
 namespace GraphicEditor.View.UserControls
@@ -17,6 +18,7 @@ namespace GraphicEditor.View.UserControls
     {
         private bool f_resizeInProcess;
         private Point f_clickPosition;
+        private double f_windowWidth;
 
         public static readonly DependencyPropertyKey ChildrenProperty = DependencyProperty.RegisterReadOnly(
              "Children",
@@ -44,7 +46,7 @@ namespace GraphicEditor.View.UserControls
             get { return HeaderTxt.Text; }
             set { HeaderTxt.Text = value; }
         }
-        
+
         public UIElement Child
         {
             get { return Children[0]; }
@@ -57,10 +59,10 @@ namespace GraphicEditor.View.UserControls
 
         public void Move(int x, int y)
         {
-            TranslateTransform translateTransform = new TranslateTransform(x ,y);
+            TranslateTransform translateTransform = new TranslateTransform(x, y);
             RenderTransform = translateTransform;
         }
-        
+
         private void Resize_Init(object sender, MouseButtonEventArgs e)
         {
             Rectangle senderRect = sender as Rectangle;
@@ -139,15 +141,15 @@ namespace GraphicEditor.View.UserControls
             if (e.LeftButton == MouseButtonState.Pressed && draggableControl != null)
             {
                 Point currentPosition = e.GetPosition(this.Parent as UIElement);
-                
+
                 var transform = draggableControl.RenderTransform as TranslateTransform;
                 if (transform == null)
                 {
                     transform = new TranslateTransform();
                     draggableControl.RenderTransform = transform;
                 }
-
-                transform.X = currentPosition.X - f_clickPosition.X;
+                f_windowWidth = ((Grid)Parent).ActualWidth;
+                transform.X = f_clickPosition.X - (f_windowWidth - currentPosition.X);
                 transform.Y = currentPosition.Y - f_clickPosition.Y;
             }
         }

@@ -2,7 +2,6 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -19,14 +18,8 @@ namespace GraphicEditor.Model
             Background = Brushes.Transparent;
             VerticalAlignment = VerticalAlignment.Stretch;
             HorizontalAlignment = HorizontalAlignment.Stretch;
-            MouseLeftButtonUp += Layer_MouseLeftButtonUp;
         }
-
-        private void Layer_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            OnLayerMouseLeftButtonUp?.Invoke(this);
-        }
-
+        
         public Layer(string name)
             : this()
         {
@@ -34,11 +27,7 @@ namespace GraphicEditor.Model
             Name = n[1] + n[n.Length - 1];
             LayerName = name;
         }
-
-        public delegate void LayerUpdating(Layer layer);
-
-        public event LayerUpdating OnLayerMouseLeftButtonUp;
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propertyName)
