@@ -1476,37 +1476,6 @@
     </timestamps>
     <violations />
   </sourcecode>
-  <sourcecode name="ColorPicker.xaml.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/11/02 02:01:30.512</settingsFile>
-      <sourceFile>2015/11/26 03:41:15.963</sourceFile>
-      <parser>2014/04/01 10:18:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2014/04/01 10:18:24.000</StyleCop.CSharp.LayoutRules>
-      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.MaintainabilityRules>
-      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.NamingRules>
-      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.OrderingRules>
-      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.ReadabilityRules>
-      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.SpacingRules>
-      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
-      <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
-      <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
-    </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementDocumentationMustBeSpelledCorrectly" ruleCheckId="SA1650">
-        <context>The documentation text within the summary tag contains incorrectly spelled words: xaml</context>
-        <line>22</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
   <sourcecode name="ITool.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
@@ -1589,72 +1558,6 @@
       <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustBeOrderedByAccess" ruleCheckId="SA1202">
         <context>All private methods must be placed after all public methods.</context>
         <line>99</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="ColorPickerVIewModel.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/11/02 02:01:30.512</settingsFile>
-      <sourceFile>2015/11/26 06:35:11.021</sourceFile>
-      <parser>2014/04/01 10:18:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2014/04/01 10:18:24.000</StyleCop.CSharp.LayoutRules>
-      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.MaintainabilityRules>
-      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.NamingRules>
-      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.OrderingRules>
-      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.ReadabilityRules>
-      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.SpacingRules>
-      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
-      <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
-      <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
-    </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
-        <context>All properties must be placed after all events.</context>
-        <line>43</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.LayoutRules" rule="AllAccessorsMustBeMultiLineOrSingleLine" ruleCheckId="SA1504">
-        <context>An accessor can only be placed on a single line if all of the accessors in the property are placed on a single line.</context>
-        <line>35</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementDocumentationMustBeSpelledCorrectly" ruleCheckId="SA1650">
-        <context>The documentation text within the summary tag contains incorrectly spelled words: Brimelow</context>
-        <line>95</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementParametersMustBeDocumented" ruleCheckId="SA1611">
-        <context>The documentation header must contain param tags matching the element's parameter list.</context>
-        <line>95</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementReturnValueMustBeDocumented" ruleCheckId="SA1615">
-        <context>The documentation header must contain a returns tag since the element has a return value.</context>
-        <line>95</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="ParametersMustBeOnSameLineOrSeparateLines" ruleCheckId="SA1117">
-        <context>All method parameters must be placed on the same line, or each parameter must be placed on a separate line.</context>
-        <line>106</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="SplitParametersMustStartOnLineAfterDeclaration" ruleCheckId="SA1116">
-        <context>If the method parameters are on separate lines, the first parameter must begin on the line beneath the name of the method.</context>
-        <line>106</line>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="ParameterMustFollowComma" ruleCheckId="SA1115">
-        <context>The parameter must begin on the line after the previous parameter.</context>
-        <line>106</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -1980,68 +1883,6 @@
         <startColumn>54</startColumn>
         <endLine>167</endLine>
         <endColumn>54</endColumn>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="ColorPickerChildWindow.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/11/02 02:01:30.512</settingsFile>
-      <sourceFile>2015/11/28 03:53:36.795</sourceFile>
-      <parser>2014/04/01 10:18:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2014/04/01 10:18:24.000</StyleCop.CSharp.LayoutRules>
-      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.MaintainabilityRules>
-      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.NamingRules>
-      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.OrderingRules>
-      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.ReadabilityRules>
-      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.SpacingRules>
-      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
-      <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
-      <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
-    </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\GitHub\Gallery\GraphicEditor\Model\ChildWindowBehavior\ChildWondows\ColorPickerChildWindow.cs on line 16.</context>
-        <line>16</line>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
-  <sourcecode name="ZoomBoxChildWindow.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/11/02 02:01:30.512</settingsFile>
-      <sourceFile>2015/11/28 03:53:36.807</sourceFile>
-      <parser>2014/04/01 10:18:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2014/04/01 10:18:24.000</StyleCop.CSharp.LayoutRules>
-      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.MaintainabilityRules>
-      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.NamingRules>
-      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.OrderingRules>
-      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.ReadabilityRules>
-      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.SpacingRules>
-      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
-      <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
-      <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
-    </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
-        <context>A syntax error has been discovered in file D:\GitHub\Gallery\GraphicEditor\Model\ChildWindowBehavior\ChildWondows\ZoomBoxChildWindow.cs on line 18.</context>
-        <line>18</line>
         <warning>False</warning>
       </violation>
     </violations>
@@ -2444,54 +2285,6 @@
       </violation>
     </violations>
   </sourcecode>
-  <sourcecode name="ColorPickerChildWindowFactory.cs" parser="StyleCop.CSharp.CsParser">
-    <timestamps>
-      <styleCop>2014/04/01 10:18:24.000</styleCop>
-      <settingsFile>2015/11/02 02:01:30.512</settingsFile>
-      <sourceFile>2015/11/29 01:52:41.650</sourceFile>
-      <parser>2014/04/01 10:18:24.000</parser>
-      <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
-      <StyleCop.CSharp.LayoutRules>2014/04/01 10:18:24.000</StyleCop.CSharp.LayoutRules>
-      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
-      <StyleCop.CSharp.MaintainabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.MaintainabilityRules>
-      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
-      <StyleCop.CSharp.NamingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.NamingRules>
-      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
-      <StyleCop.CSharp.OrderingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.OrderingRules>
-      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
-      <StyleCop.CSharp.ReadabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.ReadabilityRules>
-      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
-      <StyleCop.CSharp.SpacingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.SpacingRules>
-      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
-      <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
-      <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
-    </timestamps>
-    <violations>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="OpeningCurlyBracketsMustBeSpacedCorrectly" ruleCheckId="SA1012">
-        <context>Invalid spacing around the opening curly bracket.</context>
-        <line>12</line>
-        <index>464</index>
-        <endIndex>464</endIndex>
-        <startLine>12</startLine>
-        <startColumn>56</startColumn>
-        <endLine>12</endLine>
-        <endColumn>56</endColumn>
-        <warning>False</warning>
-      </violation>
-      <violation namespace="StyleCop.CSharp.SpacingRules" rule="ClosingCurlyBracketsMustBeSpacedCorrectly" ruleCheckId="SA1013">
-        <context>Invalid spacing around the closing curly bracket.</context>
-        <line>12</line>
-        <index>488</index>
-        <endIndex>488</endIndex>
-        <startLine>12</startLine>
-        <startColumn>80</startColumn>
-        <endLine>12</endLine>
-        <endColumn>80</endColumn>
-        <warning>False</warning>
-      </violation>
-    </violations>
-  </sourcecode>
   <sourcecode name="LayersChildWindowFactory.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2014/04/01 10:18:24.000</styleCop>
@@ -2567,6 +2360,273 @@
       <violation namespace="StyleCop.CSharp.MaintainabilityRules" rule="AccessModifierMustBeDeclared" ruleCheckId="SA1400">
         <context>The class must have an access modifier.</context>
         <line>7</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="ColorPickerChildWindowFactory.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2014/04/01 10:18:24.000</styleCop>
+      <settingsFile>2015/11/02 02:01:30.512</settingsFile>
+      <sourceFile>2015/11/29 01:52:41.650</sourceFile>
+      <parser>2014/04/01 10:18:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2014/04/01 10:18:24.000</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+      <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
+      <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.SpacingRules" rule="OpeningCurlyBracketsMustBeSpacedCorrectly" ruleCheckId="SA1012">
+        <context>Invalid spacing around the opening curly bracket.</context>
+        <line>12</line>
+        <index>464</index>
+        <endIndex>464</endIndex>
+        <startLine>12</startLine>
+        <startColumn>56</startColumn>
+        <endLine>12</endLine>
+        <endColumn>56</endColumn>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.SpacingRules" rule="ClosingCurlyBracketsMustBeSpacedCorrectly" ruleCheckId="SA1013">
+        <context>Invalid spacing around the closing curly bracket.</context>
+        <line>12</line>
+        <index>488</index>
+        <endIndex>488</endIndex>
+        <startLine>12</startLine>
+        <startColumn>80</startColumn>
+        <endLine>12</endLine>
+        <endColumn>80</endColumn>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="ColorPickerVIewModel.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2014/04/01 10:18:24.000</styleCop>
+      <settingsFile>2015/11/02 02:01:30.512</settingsFile>
+      <sourceFile>2015/12/05 04:20:27.748</sourceFile>
+      <parser>2014/04/01 10:18:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2014/04/01 10:18:24.000</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+      <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
+      <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="CodeMustNotContainMultipleBlankLinesInARow" ruleCheckId="SA1507">
+        <context>The code must not contain multiple blank lines in a row.</context>
+        <line>123</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.OrderingRules" rule="ElementsMustAppearInTheCorrectOrder" ruleCheckId="SA1201">
+        <context>All properties must be placed after all events.</context>
+        <line>124</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="AllAccessorsMustBeMultiLineOrSingleLine" ruleCheckId="SA1504">
+        <context>An accessor can only be placed on a single line if all of the accessors in the property are placed on a single line.</context>
+        <line>45</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="AllAccessorsMustBeMultiLineOrSingleLine" ruleCheckId="SA1504">
+        <context>An accessor can only be placed on a single line if all of the accessors in the property are placed on a single line.</context>
+        <line>55</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="AllAccessorsMustBeMultiLineOrSingleLine" ruleCheckId="SA1504">
+        <context>An accessor can only be placed on a single line if all of the accessors in the property are placed on a single line.</context>
+        <line>65</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="AllAccessorsMustBeMultiLineOrSingleLine" ruleCheckId="SA1504">
+        <context>An accessor can only be placed on a single line if all of the accessors in the property are placed on a single line.</context>
+        <line>75</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="AllAccessorsMustBeMultiLineOrSingleLine" ruleCheckId="SA1504">
+        <context>An accessor can only be placed on a single line if all of the accessors in the property are placed on a single line.</context>
+        <line>85</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="AllAccessorsMustBeMultiLineOrSingleLine" ruleCheckId="SA1504">
+        <context>An accessor can only be placed on a single line if all of the accessors in the property are placed on a single line.</context>
+        <line>95</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="AllAccessorsMustBeMultiLineOrSingleLine" ruleCheckId="SA1504">
+        <context>An accessor can only be placed on a single line if all of the accessors in the property are placed on a single line.</context>
+        <line>105</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.LayoutRules" rule="AllAccessorsMustBeMultiLineOrSingleLine" ruleCheckId="SA1504">
+        <context>An accessor can only be placed on a single line if all of the accessors in the property are placed on a single line.</context>
+        <line>115</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementParametersMustBeDocumented" ruleCheckId="SA1611">
+        <context>The documentation header must contain param tags matching the element's parameter list.</context>
+        <line>201</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementReturnValueMustBeDocumented" ruleCheckId="SA1615">
+        <context>The documentation header must contain a returns tag since the element has a return value.</context>
+        <line>201</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="ParametersMustBeOnSameLineOrSeparateLines" ruleCheckId="SA1117">
+        <context>All method parameters must be placed on the same line, or each parameter must be placed on a separate line.</context>
+        <line>212</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="SplitParametersMustStartOnLineAfterDeclaration" ruleCheckId="SA1116">
+        <context>If the method parameters are on separate lines, the first parameter must begin on the line beneath the name of the method.</context>
+        <line>212</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="StyleCop.CSharp.ReadabilityRules" rule="ParameterMustFollowComma" ruleCheckId="SA1115">
+        <context>The parameter must begin on the line after the previous parameter.</context>
+        <line>212</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="RgbConverter.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2014/04/01 10:18:24.000</styleCop>
+      <settingsFile>2015/11/02 02:01:30.512</settingsFile>
+      <sourceFile>2015/12/05 04:20:27.723</sourceFile>
+      <parser>2014/04/01 10:18:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2014/04/01 10:18:24.000</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+      <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
+      <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
+    </timestamps>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ColorPicker.xaml.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2014/04/01 10:18:24.000</styleCop>
+      <settingsFile>2015/11/02 02:01:30.512</settingsFile>
+      <sourceFile>2015/12/05 04:20:27.757</sourceFile>
+      <parser>2014/04/01 10:18:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2014/04/01 10:18:24.000</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+      <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
+      <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.DocumentationRules" rule="ElementDocumentationMustBeSpelledCorrectly" ruleCheckId="SA1650">
+        <context>The documentation text within the summary tag contains incorrectly spelled words: xaml</context>
+        <line>22</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="ColorPickerChildWindow.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2014/04/01 10:18:24.000</styleCop>
+      <settingsFile>2015/11/02 02:01:30.512</settingsFile>
+      <sourceFile>2015/11/28 03:53:36.795</sourceFile>
+      <parser>2014/04/01 10:18:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2014/04/01 10:18:24.000</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+      <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
+      <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file D:\GitHub\Gallery\GraphicEditor\Model\ChildWindowBehavior\ChildWondows\ColorPickerChildWindow.cs on line 16.</context>
+        <line>16</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
+  </sourcecode>
+  <sourcecode name="ZoomBoxChildWindow.cs" parser="StyleCop.CSharp.CsParser">
+    <timestamps>
+      <styleCop>2014/04/01 10:18:24.000</styleCop>
+      <settingsFile>2015/11/02 02:01:30.512</settingsFile>
+      <sourceFile>2015/11/28 03:53:36.807</sourceFile>
+      <parser>2014/04/01 10:18:24.000</parser>
+      <StyleCop.CSharp.DocumentationRules>2014/04/01 10:18:24.000</StyleCop.CSharp.DocumentationRules>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>940218293</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.LayoutRules>2014/04/01 10:18:24.000</StyleCop.CSharp.LayoutRules>
+      <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
+      <StyleCop.CSharp.MaintainabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.MaintainabilityRules>
+      <StyleCop.CSharp.MaintainabilityRules.FilesHashCode>0</StyleCop.CSharp.MaintainabilityRules.FilesHashCode>
+      <StyleCop.CSharp.NamingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.NamingRules>
+      <StyleCop.CSharp.NamingRules.FilesHashCode>0</StyleCop.CSharp.NamingRules.FilesHashCode>
+      <StyleCop.CSharp.OrderingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.OrderingRules>
+      <StyleCop.CSharp.OrderingRules.FilesHashCode>0</StyleCop.CSharp.OrderingRules.FilesHashCode>
+      <StyleCop.CSharp.ReadabilityRules>2014/04/01 10:18:24.000</StyleCop.CSharp.ReadabilityRules>
+      <StyleCop.CSharp.ReadabilityRules.FilesHashCode>0</StyleCop.CSharp.ReadabilityRules.FilesHashCode>
+      <StyleCop.CSharp.SpacingRules>2014/04/01 10:18:24.000</StyleCop.CSharp.SpacingRules>
+      <StyleCop.CSharp.SpacingRules.FilesHashCode>0</StyleCop.CSharp.SpacingRules.FilesHashCode>
+      <StyleCopPlus.StyleCopPlusRules>2014/04/01 10:18:24.000</StyleCopPlus.StyleCopPlusRules>
+      <StyleCopPlus.StyleCopPlusRules.FilesHashCode>0</StyleCopPlus.StyleCopPlusRules.FilesHashCode>
+    </timestamps>
+    <violations>
+      <violation namespace="StyleCop.CSharp.CsParser" rule="SyntaxException" ruleCheckId="SA0102">
+        <context>A syntax error has been discovered in file D:\GitHub\Gallery\GraphicEditor\Model\ChildWindowBehavior\ChildWondows\ZoomBoxChildWindow.cs on line 18.</context>
+        <line>18</line>
         <warning>False</warning>
       </violation>
     </violations>

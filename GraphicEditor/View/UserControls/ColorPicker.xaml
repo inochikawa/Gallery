@@ -3,13 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:helpers="clr-namespace:GraphicEditor.View.UserControls.Helpers"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200"
              Background="#cccccc"
              Opacity="1"
-             Width="200"
-             Height="170"
+             Width="290"
+             Height="350"
              x:Name="ColorPickerControl">
+    <UserControl.Resources>
+        <helpers:RgbConverter x:Key="RgbConverter"/>
+    </UserControl.Resources>
     <TabControl>
         
         <TabItem Header="Picker 1">
@@ -123,26 +127,253 @@
         <TabItem Header="RGB">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <Grid>
-                    <Canvas>
-                        <Ellipse Width="50"
-                                 Height="50"
-                                 Fill="Red"
-                                 Opacity=".5"
-                                 Canvas.Left="50"
-                                 Canvas.Top="80"/>
-                        <Ellipse Width="50"
-                                 Height="50"
-                                 Fill="Green"
-                                 Opacity=".5"
-                                 Canvas.Left="80"
-                                 Canvas.Top="80"/>
-                        <Ellipse Width="50"
-                                 Height="50"
-                                 Fill="Blue"
-                                 Opacity=".5"
-                                 Canvas.Left="65"
-                                 Canvas.Top="50"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Canvas Grid.Row="0">
+                        
+                        <Path x:Name="StrokePath"
+                              Data="M -140, -90 A370, 370,0,1,1, 600, -70
+                                    M  230, 560 A360, 360,0,0,0, 600, -70
+                                    M -140, -90 A370 ,370,0,1,0, 230, 560"
+                              Fill="Transparent"
+                              Stroke="Black"
+                              StrokeThickness="15"
+                              Canvas.Left="100"
+                              Canvas.Top="100">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="0.2"
+                                                ScaleY="0.2"/>
+                            </Path.RenderTransform>
+                        </Path>
+                        
+                        <Path x:Name="RedPath"
+                              Data="M -140,-90 A370, 370,0,1,1, 600, -70"
+                              Stroke="White"
+                              StrokeThickness="0"
+                              Canvas.Left="100"
+                              Canvas.Top="100">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="0.2"
+                                                ScaleY="0.2"/>
+                            </Path.RenderTransform>
+                            <Path.Fill>
+                                <SolidColorBrush>
+                                    <SolidColorBrush.Color>
+                                        <MultiBinding Converter="{StaticResource RgbConverter}">
+                                            <Binding Path="Value" ElementName="RedSlider" />
+                                            <Binding Path="Minimum" ElementName="GreenSlider"/>
+                                            <Binding Path="Minimum" ElementName="BlueSlider" />
+                                        </MultiBinding>
+                                    </SolidColorBrush.Color>
+                                </SolidColorBrush>
+                            </Path.Fill>
+                        </Path>
+
+                        <Path x:Name="GreenPath"
+                              Data="M -140, -90 A370 ,370,0,1,0, 230, 560"
+                              Stroke="White"
+                              StrokeThickness="0"
+                              Canvas.Left="100"
+                              Canvas.Top="100"
+                              >
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="0.2"
+                                                ScaleY="0.2"/>
+                            </Path.RenderTransform>
+                            <Path.Fill>
+                                <SolidColorBrush>
+                                    <SolidColorBrush.Color>
+                                        <MultiBinding Converter="{StaticResource RgbConverter}">
+                                            <Binding Path="Minimum" ElementName="RedSlider" />
+                                            <Binding Path="Value" ElementName="GreenSlider"/>
+                                            <Binding Path="Minimum" ElementName="BlueSlider" />
+                                        </MultiBinding>
+                                    </SolidColorBrush.Color>
+                                </SolidColorBrush>
+                            </Path.Fill>
+                        </Path>
+
+                        <Path x:Name="RedGreenPath"
+                              Data="M-140,-90 A370, 370, 0,0,0, 45, 230
+                                    M-140,-90 A370, 370, 0,0,1, 230,-80
+                                    L 45,230
+                                    M 230,-80 A370, 370, 0,0,0, 45, 230"
+                              Stroke="White"
+                              StrokeThickness="0"
+                              Canvas.Left="100"
+                              Canvas.Top="100">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="0.2"
+                                                ScaleY="0.2"/>
+                            </Path.RenderTransform>
+                            <Path.Fill>
+                                <SolidColorBrush>
+                                    <SolidColorBrush.Color>
+                                        <MultiBinding Converter="{StaticResource RgbConverter}">
+                                            <Binding Path="Value" ElementName="RedSlider" />
+                                            <Binding Path="Value" ElementName="GreenSlider"/>
+                                            <Binding Path="Minimum" ElementName="BlueSlider" />
+                                        </MultiBinding>
+                                    </SolidColorBrush.Color>
+                                </SolidColorBrush>
+                            </Path.Fill>
+                        </Path>
+
+                        <Path x:Name="BluePath"
+                              Data="M 230, 560 A 360,360,0,0,0, 600, -70"
+                              Stroke="White"
+                              StrokeThickness="0"
+                              Canvas.Left="100"
+                              Canvas.Top="100">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="0.2"
+                                                ScaleY="0.2"/>
+                            </Path.RenderTransform>
+                            <Path.Fill>
+                                <SolidColorBrush>
+                                    <SolidColorBrush.Color>
+                                        <MultiBinding Converter="{StaticResource RgbConverter}">
+                                            <Binding Path="Minimum" ElementName="RedSlider" />
+                                            <Binding Path="Minimum" ElementName="GreenSlider"/>
+                                            <Binding Path="Value" ElementName="BlueSlider" />
+                                        </MultiBinding>
+                                    </SolidColorBrush.Color>
+                                </SolidColorBrush>
+                            </Path.Fill>
+                        </Path>
+
+                        <Path x:Name="GreenBluePath"
+                              Data="M 45,  235 A370, 370,0,0,0, 415, 245
+                                    M 415, 245 A370, 370,0,0,1, 230, 560
+                                    M 45,  235 A370, 370,0,0,0, 230, 560
+                                    L 415, 245"
+                              Stroke="White"
+                              StrokeThickness="0"
+                              Canvas.Left="100"
+                              Canvas.Top="100">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="0.2"
+                                                ScaleY="0.2"/>
+                            </Path.RenderTransform>
+                            <Path.Fill>
+                                <SolidColorBrush>
+                                    <SolidColorBrush.Color>
+                                        <MultiBinding Converter="{StaticResource RgbConverter}">
+                                            <Binding Path="Minimum" ElementName="RedSlider" />
+                                            <Binding Path="Value" ElementName="GreenSlider"/>
+                                            <Binding Path="Value" ElementName="BlueSlider" />
+                                        </MultiBinding>
+                                    </SolidColorBrush.Color>
+                                </SolidColorBrush>
+                            </Path.Fill>
+                        </Path>
+
+                        <Path x:Name="RedBluePath"
+                              Data="M 232, -80 A370, 370,0,0,1, 415, 245
+                                    M 600, -70 A370, 370,0,0,1, 415, 245
+                                    M 232, -80 A370, 370,0,0,1, 600, -70
+                                    L 415, 245"
+                              Stroke="White"
+                              StrokeThickness="0"
+                              Canvas.Left="100"
+                              Canvas.Top="100">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="0.2"
+                                                ScaleY="0.2"/>
+                            </Path.RenderTransform>
+                            <Path.Fill>
+                                <SolidColorBrush>
+                                    <SolidColorBrush.Color>
+                                        <MultiBinding Converter="{StaticResource RgbConverter}">
+                                            <Binding Path="Value" ElementName="RedSlider" />
+                                            <Binding Path="Minimum" ElementName="GreenSlider"/>
+                                            <Binding Path="Value" ElementName="BlueSlider" />
+                                        </MultiBinding>
+                                    </SolidColorBrush.Color>
+                                </SolidColorBrush>
+                            </Path.Fill>
+                        </Path>
+
+                        <Path x:Name="RGBPath"
+                              Data="M 45,  230 A370, 370,0,0,0, 415, 245
+                                    M 230, -79 A370, 370,0,0,0, 45,  230
+                                    L 415, 245
+                                    M 230, -80 A370, 370,0,0,1, 415, 245"
+                              Stroke="White"
+                              StrokeThickness="0"
+                              Canvas.Left="100"
+                              Canvas.Top="100">
+                            <Path.RenderTransform>
+                                <ScaleTransform ScaleX="0.2"
+                                                ScaleY="0.2"/>
+                            </Path.RenderTransform>
+                            <Path.Fill>
+                                <SolidColorBrush>
+                                    <SolidColorBrush.Color>
+                                        <MultiBinding Converter="{StaticResource RgbConverter}">
+                                            <Binding Path="Value" ElementName="RedSlider" />
+                                            <Binding Path="Value" ElementName="GreenSlider"/>
+                                            <Binding Path="Value" ElementName="BlueSlider" />
+                                        </MultiBinding>
+                                    </SolidColorBrush.Color>
+                                </SolidColorBrush>
+                            </Path.Fill>
+                        </Path>
+
+                        <Ellipse Width="15"
+                                 Height="15"
+                                 Stroke="Black"
+                                 StrokeThickness="3"
+                                 Fill="White"
+                                 Canvas.Left="135"
+                                 Canvas.Top="115"/>
+                        
                     </Canvas>
+                    
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <Label Content="R:"/>
+                            <Label Content="G:"/>
+                            <Label Content="B:"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <Slider x:Name="RedSlider"
+                                    Style="{DynamicResource CuteSlider}"
+                                    Maximum="255"
+                                    Minimum="0"
+                                    TickFrequency="1"
+                                    IsSnapToTickEnabled="True"
+                                    Margin="5"
+                                    Value="255"/>
+                            <Slider x:Name="GreenSlider"
+                                    Style="{DynamicResource CuteSlider}"
+                                    Maximum="255"
+                                    Minimum="0"
+                                    TickFrequency="1"
+                                    IsSnapToTickEnabled="True"
+                                    Margin="5,0,5,0"
+                                    Value="255"/>
+                            <Slider x:Name="BlueSlider"
+                                    Style="{DynamicResource CuteSlider}"
+                                    Maximum="255"
+                                    Minimum="0"
+                                    TickFrequency="1"
+                                    IsSnapToTickEnabled="True"
+                                    Margin="5"
+                                    Value="255"/>
+                        </StackPanel>
+
+                    </Grid>
+                    
                 </Grid>
             </ScrollViewer>
         </TabItem>

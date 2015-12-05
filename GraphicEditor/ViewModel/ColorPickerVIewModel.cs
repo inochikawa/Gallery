@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -20,7 +16,7 @@ namespace GraphicEditor.ViewModel
         private Color f_color;
         private Image f_image;
         private Ellipse f_ellipse;
-        private List<ITool> f_tools; 
+        private List<ITool> f_tools;
 
         public ColorPickerViewModel(Image image, Ellipse pickerEllipse)
         {
@@ -39,7 +35,7 @@ namespace GraphicEditor.ViewModel
                 NotifyPropertyChanged("Color");
             }
         }
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propertyName)
@@ -54,6 +50,31 @@ namespace GraphicEditor.ViewModel
             NotifyPropertyChanged("Color");
             Notify();
         }
+
+        #region Color slider value changed
+
+        public void RedSliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            f_color.R = (byte)((Slider)sender).Value;
+            NotifyPropertyChanged("Color");
+            Notify();
+        }
+
+        public void GreenSliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            f_color.G = (byte)((Slider)sender).Value;
+            NotifyPropertyChanged("Color");
+            Notify();
+        }
+
+        public void BlueSliderValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            f_color.B = (byte)((Slider)sender).Value;
+            NotifyPropertyChanged("Color");
+            Notify();
+        }
+
+        #endregion
 
         public void ColorPaletteMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -89,22 +110,10 @@ namespace GraphicEditor.ViewModel
             f_tools.ForEach(tool => tool.UpdateColor(Color));
         }
 
-        /// <summary>
-        /// 1*1 pixel copy is based on an article by Lee Brimelow
-        /// </summary>
-        private Color GetColorFromImage(int x, int y)
-        {
-            var cb = new CroppedBitmap(f_image.Source as BitmapSource, new Int32Rect(x, y, 1, 1));
-            var color = new byte[4];
-            cb.CopyPixels(color, 4, 0);
-            var colorFromImage = Color.FromArgb(a: f_color.A, r: color[2], g: color[1], b: color[0]);
-            return colorFromImage;
-        }
-
-        private BitmapSource LoadBitmap(System.Drawing.Bitmap source)
+        public BitmapSource LoadBitmap(System.Drawing.Bitmap source)
         {
             return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(source.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty,
-                System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
+                BitmapSizeOptions.FromEmptyOptions());
         }
 
         private void SetEllipsePosition(MouseEventArgs e)
@@ -117,6 +126,18 @@ namespace GraphicEditor.ViewModel
         {
             Canvas.SetLeft(f_ellipse, e.GetPosition(f_image).X - (f_ellipse.Width / 2));
             Canvas.SetTop(f_ellipse, e.GetPosition(f_image).Y - (f_ellipse.Height / 2));
+        }
+
+        /// <summary>
+        /// 1*1 pixel copy
+        /// </summary>
+        private Color GetColorFromImage(int x, int y)
+        {
+            var cb = new CroppedBitmap((BitmapSource)f_image.Source, new Int32Rect(x, y, 1, 1));
+            var color = new byte[4];
+            cb.CopyPixels(color, 4, 0);
+            var colorFromImage = Color.FromArgb(a: f_color.A, r: color[2], g: color[1], b: color[0]);
+            return colorFromImage;
         }
     }
 }

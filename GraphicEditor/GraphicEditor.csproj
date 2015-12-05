@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="View\UserControls\CSharpFiles\LayerItem.cs" />
     <Compile Include="View\UserControls\CSharpFiles\ZoomBox.cs" />
+    <Compile Include="View\UserControls\Helpers\RgbConverter.cs" />
     <Compile Include="View\UserControls\LayersView.xaml.cs">
       <DependentUpon>LayersView.xaml</DependentUpon>
     </Compile>

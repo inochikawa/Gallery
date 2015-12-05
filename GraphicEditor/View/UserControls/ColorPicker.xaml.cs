@@ -29,6 +29,9 @@ namespace GraphicEditor.View.UserControls
             f_colorPaletteImage.MouseLeftButtonDown += ColorPickerViewModel.ColorPaletteMouseLeftButtonDown;
             f_colorPaletteImage.MouseMove += ColorPickerViewModel.ColorPaletteMouseMove;
             f_slider.ValueChanged += ColorPickerViewModel.AlphaSliderValueChanged;
+            RedSlider.ValueChanged += ColorPickerViewModel.RedSliderValueChanged;
+            GreenSlider.ValueChanged += ColorPickerViewModel.GreenSliderValueChanged;
+            BlueSlider.ValueChanged += ColorPickerViewModel.BlueSliderValueChanged;
         }
 
         public ColorPickerViewModel ColorPickerViewModel
