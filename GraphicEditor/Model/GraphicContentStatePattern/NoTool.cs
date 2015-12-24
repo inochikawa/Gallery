@@ -2,9 +2,9 @@
 
 namespace GraphicEditor.Model.GraphicContentStatePattern
 {
-    public class NoToolSelected : GraphicContentState
+    public class NoTool : Tool
     {
-        public NoToolSelected(GraphicContent graphicContent)
+        public NoTool(GraphicContent graphicContent)
             : base(graphicContent)
         {
         }

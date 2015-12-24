@@ -102,18 +102,23 @@
     <Compile Include="Model\Commands\MoveCommand.cs" />
     <Compile Include="Model\Commands\OpenImageCommand.cs" />
     <Compile Include="Model\Commands\ResizeCommand.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\BrushToolSelected.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\FillToolSelected.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\BrushTool.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\FillTool.cs" />
     <Compile Include="Model\GraphicContentStatePattern\GraphicContent.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\GraphicContentState.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\LineToolSelected.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\NoToolSelected.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\PointerToolSelected.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\GraphicTool.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\Tool.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\LineTool.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\NoTool.cs" />
+    <Compile Include="Model\GraphicContentStatePattern\PointerTool.cs" />
     <Compile Include="Model\ITool.cs" />
     <Compile Include="Model\IViewModel.cs" />
     <Compile Include="Model\Layer.cs" />
     <Compile Include="Model\RelayCommand.cs" />
     <Page Include="View\Styles\CuteSlider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Styles\MenuItemStyeRadioButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

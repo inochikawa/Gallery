@@ -24,7 +24,7 @@ namespace GraphicEditor.View.UserControls
         public ColorPicker()
         {
             InitializeComponent();
-            ColorPickerViewModel = new ColorPickerViewModel(f_colorPaletteImage, PickerEllipse);
+            ColorPickerViewModel = new ColorPickerViewModel(f_colorPaletteImage, PickerEllipse, this);
             DataContext = ColorPickerViewModel;
             f_colorPaletteImage.MouseLeftButtonDown += ColorPickerViewModel.ColorPaletteMouseLeftButtonDown;
             f_colorPaletteImage.MouseMove += ColorPickerViewModel.ColorPaletteMouseMove;

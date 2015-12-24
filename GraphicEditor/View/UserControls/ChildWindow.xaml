@@ -9,7 +9,7 @@
              x:Name="ChildWindowControl"
              Background="White"
              MaxWidth="350"
-             MinHeight="50"
+             MinHeight="100"
              MinWidth="200"
              HorizontalAlignment="Right"
              VerticalAlignment="Top">

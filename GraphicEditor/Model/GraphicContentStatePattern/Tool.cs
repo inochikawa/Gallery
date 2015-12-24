@@ -1,12 +1,13 @@
 ﻿using System.Windows.Input;
+using System.Windows.Media;
 
 namespace GraphicEditor.Model.GraphicContentStatePattern
 {
-    public abstract class GraphicContentState
+    public abstract class Tool
     {
         private GraphicContent f_graphicContent;
 
-        public GraphicContentState(GraphicContent graphicContent)
+        public Tool(GraphicContent graphicContent)
         {
             f_graphicContent = graphicContent;
             f_graphicContent.WorkSpace.MouseMove += MouseMoveHandler;
@@ -19,7 +20,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             get { return f_graphicContent; }
             set { f_graphicContent = value; }
         }
-
+        
         public abstract void MouseMoveHandler(object sender, MouseEventArgs e);
 
         public abstract void MouseDownHandler(object sender, MouseButtonEventArgs e);

@@ -184,34 +184,34 @@ namespace GraphicEditor.ViewModel
         private void PointerToolSelectedExecute(object obj)
         {
             GraphicContent.GraphicContentState.Dispose();
-            GraphicContent.GraphicContentState = new PointerToolSelected(GraphicContent);
+            GraphicContent.GraphicContentState = new PointerTool(GraphicContent);
         }
 
         private void FillToolSelectedCommandExecute(object obj)
         {
             GraphicContent.GraphicContentState.Dispose();
-            GraphicContent.GraphicContentState = new FillToolSelected(GraphicContent);
-            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((FillToolSelected)GraphicContent.GraphicContentState);
+            GraphicContent.GraphicContentState = new FillTool(GraphicContent);
+            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((FillTool)GraphicContent.GraphicContentState);
         }
 
         private void BrushToolSelectedExecute(object obj)
         {
             GraphicContent.GraphicContentState.Dispose();
-            GraphicContent.GraphicContentState = new BrushToolSelected(GraphicContent);
-            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((BrushToolSelected)GraphicContent.GraphicContentState);
+            GraphicContent.GraphicContentState = new BrushTool(GraphicContent);
+            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((BrushTool)GraphicContent.GraphicContentState);
         }
 
         private void NoToolSelectedExecute(object obj = null)
         {
             GraphicContent.GraphicContentState.Dispose();
-            GraphicContent.GraphicContentState = new NoToolSelected(GraphicContent);
+            GraphicContent.GraphicContentState = new NoTool(GraphicContent);
         }
 
         private void LineToolSelectedExecute(object obj)
         {
             GraphicContent.GraphicContentState.Dispose();
-            GraphicContent.GraphicContentState = new LineToolSelected(GraphicContent);
-            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((LineToolSelected)GraphicContent.GraphicContentState);
+            GraphicContent.GraphicContentState = new LineTool(GraphicContent);
+            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((LineTool)GraphicContent.GraphicContentState);
         }
 
         private void OpenImageExecute(object obj)

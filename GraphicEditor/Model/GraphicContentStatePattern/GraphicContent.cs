@@ -32,7 +32,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         /// <summary>
         /// State of graphic content. Defends selected tool in now moment.
         /// </summary>
-        private GraphicContentState f_graphicContentState;
+        private Tool f_graphicContentState;
 
         private CommandReceiver f_command;
 
@@ -45,7 +45,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             AddLayer(new Layer("New layer " + Layers.Count));
 
             // Set current tool is Pointer
-            f_graphicContentState = new PointerToolSelected(this);
+            f_graphicContentState = new PointerTool(this);
         }
 
         public List<Layer> Layers { get; set; }
@@ -64,7 +64,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
 
         public Point MousePositionOnWindow { get; set; }
 
-        public GraphicContentState GraphicContentState
+        public Tool GraphicContentState
         {
             get { return f_graphicContentState; }
             set { f_graphicContentState = value; }
@@ -75,7 +75,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             get { return f_windowSize; }
             set { f_windowSize = value; }
         }
-
+        
         public CommandReceiver Command
         {
             get

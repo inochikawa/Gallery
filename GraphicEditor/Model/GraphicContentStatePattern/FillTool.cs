@@ -5,13 +5,10 @@ using Color = System.Windows.Media.Color;
 
 namespace GraphicEditor.Model.GraphicContentStatePattern
 {
-    public class FillToolSelected : GraphicContentState, ITool
+    public class FillTool : GraphicTool
     {
-        private Color f_color;
-
-        public FillToolSelected(GraphicContent graphicContent) : base(graphicContent)
+        public FillTool(GraphicContent graphicContent) : base(graphicContent)
         {
-            f_color = Colors.White;
         }
 
         public override void MouseMoveHandler(object sender, MouseEventArgs e)
@@ -27,7 +24,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             {
                 Width = GraphicContent.WorkSpace.ActualWidth,
                 Height = GraphicContent.WorkSpace.ActualHeight,
-                Fill = new SolidColorBrush(f_color)
+                Fill = new SolidColorBrush(Color)
             };
             GraphicContent.Command.Insert(rect, GraphicContent.SelectedLayer);
         }
@@ -36,9 +33,9 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         {
         }
 
-        public void UpdateColor(Color color)
+        public override void UpdateColor(Color color)
         {
-            f_color = color;
+            Color = color;
         }
     }
 }

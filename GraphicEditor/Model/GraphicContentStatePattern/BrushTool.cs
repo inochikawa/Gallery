@@ -5,19 +5,17 @@ using System.Windows.Shapes;
 
 namespace GraphicEditor.Model.GraphicContentStatePattern
 {
-    public class BrushToolSelected : GraphicContentState, ITool
+    public class BrushTool : GraphicTool
     {
-        private Color f_color;
         private double f_thickness;
         private double f_opacity;
         private readonly Layer f_layer;
         private double f_softness;
         private Polyline f_polyLine;
 
-        public BrushToolSelected(GraphicContent graphicContent)
+        public BrushTool(GraphicContent graphicContent)
             : base(graphicContent)
         {
-            f_color = Colors.Blue;
             f_thickness = 2;
             f_opacity = 1;
             f_softness = 10;
@@ -62,7 +60,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             f_polyLine = new Polyline
             {
                 StrokeThickness = f_thickness,
-                Stroke = new SolidColorBrush(f_color),
+                Stroke = new SolidColorBrush(Color),
                 Effect = DropShadowEffect()
             };
         }
@@ -73,7 +71,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             DropShadowEffect myDropShadowEffect = new DropShadowEffect();
 
             // Set the color of the shadow to Black.
-            Color myShadowColor = f_color;
+            Color myShadowColor = Color;
             myDropShadowEffect.Color = myShadowColor;
 
             // Set the direction of where the shadow is cast to 320 degrees.
@@ -96,9 +94,9 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             f_polyLine.MouseMove += GraphicContent.ElementMouseMove;
         }
 
-        public void UpdateColor(Color color)
+        public override void UpdateColor(Color color)
         {
-            f_color = color;
+            Color = color;
         }
     }
 }

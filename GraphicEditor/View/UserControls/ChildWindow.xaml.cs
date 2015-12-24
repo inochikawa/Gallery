@@ -19,6 +19,7 @@ namespace GraphicEditor.View.UserControls
         private bool f_resizeInProcess;
         private Point f_clickPosition;
         private double f_windowWidth;
+        private TranslateTransform f_translateTransform;
 
         public static readonly DependencyPropertyKey ChildrenProperty = DependencyProperty.RegisterReadOnly(
              "Children",
@@ -33,6 +34,8 @@ namespace GraphicEditor.View.UserControls
 
             MouseLeftButtonDown += TopPanelMouseLeftButtonDown;
             MouseMove += TopPanelMouseMove;
+            f_translateTransform = new TranslateTransform();
+            RenderTransform = f_translateTransform;
         }
 
         public UIElementCollection Children
@@ -57,10 +60,11 @@ namespace GraphicEditor.View.UserControls
             }
         }
 
-        public void Move(int x, int y)
+        public void Move(int x, int? y)
         {
-            TranslateTransform translateTransform = new TranslateTransform(x, y);
-            RenderTransform = translateTransform;
+            f_translateTransform.X = x;
+            if (y != null)
+                f_translateTransform.Y = (int)y;
         }
 
         private void Resize_Init(object sender, MouseButtonEventArgs e)
@@ -94,20 +98,13 @@ namespace GraphicEditor.View.UserControls
                     double width = e.GetPosition(control).X;
                     double height = e.GetPosition(control).Y;
                     senderRect.CaptureMouse();
-                    if (senderRect.Name.ToLower().Contains("right"))
+                    if (senderRect.Name.ToLower().Contains("right")) //right
                     {
                         width += 5;
                         if (width > 0)
-                            control.Width = width;
-                    }
-                    if (senderRect.Name.ToLower().Contains("left"))
-                    {
-                        width -= 5;
-                        //mainWindow.Width += width;
-                        width = control.Width - width;
-                        if (width > 0)
                         {
                             control.Width = width;
+                            Move((int)(e.GetPosition(this.Parent as UIElement).X - ((Grid)Parent).ActualWidth + 5), null);
                         }
                     }
                     if (senderRect.Name.ToLower().Contains("bottom"))
@@ -116,41 +113,23 @@ namespace GraphicEditor.View.UserControls
                         if (height > 0)
                             control.Height = height;
                     }
-                    if (senderRect.Name.ToLower().Contains("top"))
-                    {
-                        height -= 5;
-                        //mainWindow.Height += height;
-                        height = control.Height - height;
-                        if (height > 0)
-                        {
-                            control.Height = height;
-                        }
-                    }
                 }
             }
         }
 
         private void TopPanelMouseMove(object sender, MouseEventArgs e)
         {
-            // If not clicked on border
-            if (f_clickPosition.Y > TopPanel.Height || f_clickPosition.Y < 1)
-                return;
-
-            var draggableControl = sender as UserControl;
-
-            if (e.LeftButton == MouseButtonState.Pressed && draggableControl != null)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
+                // If not clicked on border
+                if (e.GetPosition(this).Y > TopPanel.Height || e.GetPosition(this).Y < 1)
+                    return;
+
                 Point currentPosition = e.GetPosition(this.Parent as UIElement);
 
-                var transform = draggableControl.RenderTransform as TranslateTransform;
-                if (transform == null)
-                {
-                    transform = new TranslateTransform();
-                    draggableControl.RenderTransform = transform;
-                }
                 f_windowWidth = ((Grid)Parent).ActualWidth;
-                transform.X = f_clickPosition.X - (f_windowWidth - currentPosition.X);
-                transform.Y = currentPosition.Y - f_clickPosition.Y;
+                Move((int)(e.GetPosition(this).X - (f_windowWidth - currentPosition.X) - (e.GetPosition(this).X - ActualWidth / 2)),
+                    (int)(currentPosition.Y - 10));
             }
         }
 

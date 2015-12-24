@@ -107,7 +107,8 @@
                                         TickFrequency="1"
                                         AutoToolTipPlacement="BottomRight"
                                         Value="255"
-                                        Style="{DynamicResource CuteSlider}"/>
+                                        Style="{DynamicResource CuteSlider}"
+                                        Background="Black"/>
                                 <Label Grid.Row="1"
                                        Grid.Column="0"
                                        Content="0"/>

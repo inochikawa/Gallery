@@ -8,6 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using GraphicEditor.Model;
+using GraphicEditor.Model.GraphicContentStatePattern;
+using GraphicEditor.View.UserControls;
 
 namespace GraphicEditor.ViewModel
 {
@@ -16,14 +18,16 @@ namespace GraphicEditor.ViewModel
         private Color f_color;
         private Image f_image;
         private Ellipse f_ellipse;
-        private List<ITool> f_tools;
+        private List<GraphicTool> f_tools;
+        private ColorPicker f_colorPicker;
 
-        public ColorPickerViewModel(Image image, Ellipse pickerEllipse)
+        public ColorPickerViewModel(Image image, Ellipse pickerEllipse, ColorPicker colorPicker)
         {
-            f_tools = new List<ITool>();
+            f_tools = new List<GraphicTool>();
             f_image = image;
             f_color = Colors.White;
             f_ellipse = pickerEllipse;
+            f_colorPicker = colorPicker;
         }
 
         public Color Color
@@ -81,6 +85,7 @@ namespace GraphicEditor.ViewModel
             Color = GetColorFromImage((int)(e.GetPosition(f_image).X * ((800 - 1) / f_image.ActualWidth)), (int)(e.GetPosition(f_image).Y * ((276 - 1) / f_image.ActualHeight)));
             SetEllipsePosition(e);
             Notify();
+            SetSliderValues();
         }
 
         public void ColorPaletteMouseMove(object sender, MouseEventArgs e)
@@ -90,16 +95,24 @@ namespace GraphicEditor.ViewModel
                 Color = GetColorFromImage((int)(e.GetPosition(f_image).X * ((800 - 1) / f_image.ActualWidth)), (int)(e.GetPosition(f_image).Y * ((276 - 1) / f_image.ActualHeight)));
                 SetEllipsePosition(e);
                 Notify();
+                SetSliderValues();
             }
         }
 
-        public void Subscribe(ITool observer)
+        private void SetSliderValues()
+        {
+            f_colorPicker.RedSlider.Value = Color.R;
+            f_colorPicker.BlueSlider.Value = Color.B;
+            f_colorPicker.GreenSlider.Value = Color.G;
+        }
+
+        public void Subscribe(GraphicTool observer)
         {
             f_tools.Clear();
             f_tools.Add(observer);
         }
 
-        public void Unsubscribe(ITool observer)
+        public void Unsubscribe(GraphicTool observer)
         {
             if (f_tools.Contains(observer))
                 f_tools.Remove(observer);

@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace GraphicEditor.Model.GraphicContentStatePattern
 {
-    public class PointerToolSelected : GraphicContentState
+    public class PointerTool : Tool
     {
         List<Point> logList= new List<Point>();
              
-        public PointerToolSelected(GraphicContent graphicContent)
+        public PointerTool(GraphicContent graphicContent)
             : base(graphicContent)
         {
 
