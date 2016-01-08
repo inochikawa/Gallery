@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,9 +9,10 @@ using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using GraphicEditor.Model.Commands;
+using GraphicEditor.Model.ToolBehavior.ToolProperties;
 using GraphicEditor.View.Styles.Helpers;
 
-namespace GraphicEditor.Model.GraphicContentStatePattern
+namespace GraphicEditor.Model.ToolBehavior
 {
     public class GraphicContent
     {
@@ -35,11 +37,19 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         private Tool f_graphicContentState;
 
         private CommandReceiver f_command;
+        
+        private GraphicToolProperties f_graphicToolProperties;
 
         public GraphicContent()
         {
             Command = new CommandReceiver();
             f_workSpace = new Canvas();
+            f_graphicToolProperties = new GraphicToolProperties()
+            {
+                Color = Colors.White,
+                Softness = 1,
+                Thickness = 10
+            };
             ConfigureWorkSpace();
             Layers = new List<Layer>();
             AddLayer(new Layer("New layer " + Layers.Count));
@@ -98,6 +108,12 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             get { return Layers.FirstOrDefault(layer => layer.IsSelected); }
         }
         
+        public GraphicToolProperties GraphicToolProperties
+        {
+            get { return f_graphicToolProperties; }
+            set { f_graphicToolProperties = value; }
+        }
+
         public void AddLayer(Layer layer)
         {
             // Unselect all layers
@@ -108,6 +124,49 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             f_workSpace.Children.Add(layer);
             layer.Width = f_workSpace.Width;
             layer.Height = f_workSpace.Height;
+        }
+
+        public BitmapImage ConvertToRasterImage(UIElement source, double scale, int quality)
+        {
+            double actualHeight = source.RenderSize.Height;
+            double actualWidth = source.RenderSize.Width;
+
+            if (actualHeight == 0 || actualWidth == 0)
+                return null;
+
+            double renderHeight = actualHeight * scale;
+            double renderWidth = actualWidth * scale;
+
+            RenderTargetBitmap renderTarget = new RenderTargetBitmap((int)renderWidth, (int)renderHeight, 96, 96, PixelFormats.Pbgra32);
+            VisualBrush sourceBrush = new VisualBrush(source);
+
+            DrawingVisual drawingVisual = new DrawingVisual();
+            DrawingContext drawingContext = drawingVisual.RenderOpen();
+
+            using (drawingContext)
+            {
+                drawingContext.PushTransform(new ScaleTransform(scale, scale));
+                drawingContext.DrawRectangle(sourceBrush, null, new Rect(new Point(0, 0), new Point(actualWidth, actualHeight)));
+            }
+            renderTarget.Render(drawingVisual);
+
+            PngBitmapEncoder jpgEncoder = new PngBitmapEncoder();
+            jpgEncoder.Frames.Add(BitmapFrame.Create(renderTarget));
+
+            BitmapImage bitmapImage = new BitmapImage();
+
+            using (var stream = new MemoryStream())
+            {
+                jpgEncoder.Save(stream);
+                stream.Seek(0, SeekOrigin.Begin);
+
+                bitmapImage.BeginInit();
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.StreamSource = stream;
+                bitmapImage.EndInit();
+            }
+
+            return bitmapImage;
         }
 
         public void ElementMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

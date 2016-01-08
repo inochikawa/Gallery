@@ -30,6 +30,13 @@
                         <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-folder-open.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem x:Name="saveFileMenuItem"
+					Header="Save image as" Foreground="Black"
+					Command="{Binding SaveImage}">
+                    <MenuItem.Icon>
+                        <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-folder-open.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
             <MenuItem Header="Image"

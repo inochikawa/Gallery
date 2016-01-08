@@ -56,54 +56,6 @@ namespace GraphicEditor.Model
             }
             return null;
         }
-
-        public BitmapImage Preview()
-        {
-            return NewPreview(this, 1, 20);
-        }
-
-        private BitmapImage NewPreview(UIElement source, double scale, int quality)
-        {
-            double actualHeight = source.RenderSize.Height;
-            double actualWidth = source.RenderSize.Width;
-
-            if (actualHeight == 0 || actualWidth == 0)
-                return null;
-
-            double renderHeight = actualHeight * scale;
-            double renderWidth = actualWidth * scale;
-
-            RenderTargetBitmap renderTarget = new RenderTargetBitmap((int)renderWidth, (int)renderHeight, 96, 96, PixelFormats.Pbgra32);
-            VisualBrush sourceBrush = new VisualBrush(source);
-
-            DrawingVisual drawingVisual = new DrawingVisual();
-            DrawingContext drawingContext = drawingVisual.RenderOpen();
-
-            using (drawingContext)
-            {
-                drawingContext.PushTransform(new ScaleTransform(scale, scale));
-                drawingContext.DrawRectangle(sourceBrush, null, new Rect(new Point(0, 0), new Point(actualWidth, actualHeight)));
-            }
-            renderTarget.Render(drawingVisual);
-
-            PngBitmapEncoder jpgEncoder = new PngBitmapEncoder();
-            jpgEncoder.Frames.Add(BitmapFrame.Create(renderTarget));
-
-            BitmapImage bitmapImage = new BitmapImage();
-
-            using (var stream = new MemoryStream())
-            {
-                jpgEncoder.Save(stream);
-                stream.Seek(0, SeekOrigin.Begin);
-
-                bitmapImage.BeginInit();
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapImage.StreamSource = stream;
-                bitmapImage.EndInit();
-            }
-
-            return bitmapImage;
-        }
         
         public void Unactivate()
         {

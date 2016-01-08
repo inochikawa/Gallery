@@ -3,7 +3,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace GraphicEditor.Model.GraphicContentStatePattern
+namespace GraphicEditor.Model.ToolBehavior
 {
     public class LineTool : GraphicTool
     {
@@ -26,7 +26,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
 
         public override void MouseDownHandler(object sender, MouseButtonEventArgs e)
         {
-            if(f_layer == null)
+            if (f_layer == null)
                 return;
 
             if (!f_layer.IsActive)
@@ -75,14 +75,9 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         {
             f_line = new Line
             {
-                Stroke = new SolidColorBrush(Color),
-                StrokeThickness = f_thickness
-            };
-        }
-
-        public override void UpdateColor(Color color)
-        {
-            Color = color;
-        }
+                Stroke = new SolidColorBrush((Color)GraphicContent.GraphicToolProperties.Color),
+                StrokeThickness = (double)GraphicContent.GraphicToolProperties.Thickness
+        };
     }
+}
 }

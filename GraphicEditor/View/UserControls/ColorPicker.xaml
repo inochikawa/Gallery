@@ -8,8 +8,7 @@
              d:DesignHeight="200" d:DesignWidth="200"
              Background="#cccccc"
              Opacity="1"
-             Width="290"
-             Height="350"
+             Width="200"
              x:Name="ColorPickerControl">
     <UserControl.Resources>
         <helpers:RgbConverter x:Key="RgbConverter"/>
@@ -134,7 +133,9 @@
                     </Grid.RowDefinitions>
                     
                     <Canvas Grid.Row="0">
-                        
+                        <Canvas.RenderTransform>
+                            <ScaleTransform ScaleX=".4" ScaleY=".4"/>
+                        </Canvas.RenderTransform>
                         <Path x:Name="StrokePath"
                               Data="M -140, -90 A370, 370,0,1,1, 600, -70
                                     M  230, 560 A360, 360,0,0,0, 600, -70

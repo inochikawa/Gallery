@@ -1,11 +1,11 @@
-﻿using GraphicEditor.Model.GraphicContentStatePattern;
+﻿using GraphicEditor.Model.ToolBehavior.ToolProperties;
 
 namespace GraphicEditor.Model
 {
     public interface IViewModel
     {
-        void Subscribe(GraphicTool observer);
-        void Unsubscribe(GraphicTool observer);
+        void Subscribe(GraphicToolProperties observer);
+        void Unsubscribe(GraphicToolProperties observer);
         void Notify();
     }
 }

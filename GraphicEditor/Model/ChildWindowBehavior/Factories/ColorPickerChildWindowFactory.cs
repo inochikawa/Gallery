@@ -1,6 +1,6 @@
 ﻿using GraphicEditor.Model.ChildWindowBehavior.ChildWondows;
 using GraphicEditor.Model.ChildWindowBehavior.Interfaces;
-using GraphicEditor.Model.GraphicContentStatePattern;
+using GraphicEditor.Model.ToolBehavior;
 using GraphicEditor.ViewModel;
 
 namespace GraphicEditor.Model.ChildWindowBehavior.Factories

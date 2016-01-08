@@ -3,7 +3,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using Color = System.Windows.Media.Color;
 
-namespace GraphicEditor.Model.GraphicContentStatePattern
+namespace GraphicEditor.Model.ToolBehavior
 {
     public class FillTool : GraphicTool
     {
@@ -24,18 +24,13 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             {
                 Width = GraphicContent.WorkSpace.ActualWidth,
                 Height = GraphicContent.WorkSpace.ActualHeight,
-                Fill = new SolidColorBrush(Color)
+                Fill = new SolidColorBrush((Color)GraphicContent.GraphicToolProperties.Color)
             };
             GraphicContent.Command.Insert(rect, GraphicContent.SelectedLayer);
         }
 
         public override void MouseUpHandler(object sender, MouseButtonEventArgs e)
         {
-        }
-
-        public override void UpdateColor(Color color)
-        {
-            Color = color;
         }
     }
 }

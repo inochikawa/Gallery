@@ -99,18 +99,21 @@
     <Compile Include="Model\Commands\DeleteCommand.cs" />
     <Compile Include="Model\Commands\ICommand.cs" />
     <Compile Include="Model\Commands\InsertCommand.cs" />
+    <Compile Include="Model\Commands\InsertImageCommand.cs" />
     <Compile Include="Model\Commands\MoveCommand.cs" />
     <Compile Include="Model\Commands\OpenImageCommand.cs" />
     <Compile Include="Model\Commands\ResizeCommand.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\BrushTool.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\FillTool.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\GraphicContent.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\GraphicTool.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\Tool.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\LineTool.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\NoTool.cs" />
-    <Compile Include="Model\GraphicContentStatePattern\PointerTool.cs" />
-    <Compile Include="Model\ITool.cs" />
+    <Compile Include="Model\ToolBehavior\BrushTool.cs" />
+    <Compile Include="Model\ToolBehavior\FillTool.cs" />
+    <Compile Include="Model\ToolBehavior\GraphicBuilder.cs" />
+    <Compile Include="Model\ToolBehavior\GraphicContent.cs" />
+    <Compile Include="Model\ToolBehavior\GraphicTool.cs" />
+    <Compile Include="Model\ToolBehavior\ToolProperties\GraphicToolProperties.cs" />
+    <Compile Include="Model\ToolBehavior\ToolProperties\IToolProperties.cs" />
+    <Compile Include="Model\ToolBehavior\Tool.cs" />
+    <Compile Include="Model\ToolBehavior\LineTool.cs" />
+    <Compile Include="Model\ToolBehavior\NoTool.cs" />
+    <Compile Include="Model\ToolBehavior\PointerTool.cs" />
     <Compile Include="Model\IViewModel.cs" />
     <Compile Include="Model\Layer.cs" />
     <Compile Include="Model\RelayCommand.cs" />
@@ -162,6 +165,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\ToolBehavior\ToolProperties\TextToolProperties.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -280,6 +284,7 @@
   <ItemGroup>
     <Resource Include="View\Resources\Images\ResizeNW.png.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

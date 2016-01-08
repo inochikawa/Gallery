@@ -1,4 +1,4 @@
-﻿using GraphicEditor.Model.GraphicContentStatePattern;
+﻿using GraphicEditor.Model.ToolBehavior;
 
 namespace GraphicEditor.Model.ChildWindowBehavior.Interfaces
 {

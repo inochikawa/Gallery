@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace GraphicEditor.Model.GraphicContentStatePattern
+namespace GraphicEditor.Model.ToolBehavior
 {
     public class NoTool : Tool
     {

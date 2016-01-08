@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Windows;
+using System.IO;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -7,7 +10,7 @@ using GraphicEditor.Model;
 using GraphicEditor.Model.ChildWindowBehavior.ChildWondows;
 using GraphicEditor.Model.ChildWindowBehavior.Factories;
 using GraphicEditor.Model.ChildWindowBehavior.Interfaces;
-using GraphicEditor.Model.GraphicContentStatePattern;
+using GraphicEditor.Model.ToolBehavior;
 using Microsoft.Win32;
 
 namespace GraphicEditor.ViewModel
@@ -21,20 +24,23 @@ namespace GraphicEditor.ViewModel
         private ICommand f_undoCommand;
         private ICommand f_redoCommand;
         private ICommand f_openImage;
+        private ICommand f_saveImage;
         private ICommand f_fillToolSelectedCommand;
         private IChildWindowFactory f_layersChildWindowFactory;
         private IChildWindowFactory f_colorPickerChildWindowFactory;
         private IChildWindowFactory f_zoomBoxChildWindowFactory;
 
+
         public MainWindowViewModel()
         {
             SubscribeToCommands();
             GraphicContent = new GraphicContent();
-            ConfigureWprkSpace();
+            ConfigureWorkSpace();
             f_layersChildWindowFactory = new LayersChildWindowFactory(GraphicContent);
             f_colorPickerChildWindowFactory = new ColorPickerChildWindowFactory();
             f_zoomBoxChildWindowFactory = new ZoomBoxChildWindowFactory();
             ((ZoomBoxChildWindow)f_zoomBoxChildWindowFactory.ChildWindow).ScrollViewer = ScrollViewer;
+            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe(GraphicContent.GraphicToolProperties);
         }
 
         public GraphicContent GraphicContent { get; set; }
@@ -133,6 +139,12 @@ namespace GraphicEditor.ViewModel
             get { return f_fillToolSelectedCommand; }
             set { f_fillToolSelectedCommand = value; }
         }
+        
+        public ICommand SaveImage
+        {
+            get { return f_saveImage; }
+            set { f_saveImage = value; }
+        }
 
         #endregion
 
@@ -149,10 +161,11 @@ namespace GraphicEditor.ViewModel
             f_undoCommand = new RelayCommand(UndoExecute);
             f_redoCommand = new RelayCommand(RedoExecute);
             f_openImage = new RelayCommand(OpenImageExecute);
+            f_saveImage = new RelayCommand(SaveImageExecute);
             f_fillToolSelectedCommand = new RelayCommand(FillToolSelectedCommandExecute);
         }
 
-        private void ConfigureWprkSpace()
+        private void ConfigureWorkSpace()
         {
             ScrollViewer = new ScrollViewer
             {
@@ -191,14 +204,12 @@ namespace GraphicEditor.ViewModel
         {
             GraphicContent.GraphicContentState.Dispose();
             GraphicContent.GraphicContentState = new FillTool(GraphicContent);
-            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((FillTool)GraphicContent.GraphicContentState);
         }
 
         private void BrushToolSelectedExecute(object obj)
         {
             GraphicContent.GraphicContentState.Dispose();
             GraphicContent.GraphicContentState = new BrushTool(GraphicContent);
-            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((BrushTool)GraphicContent.GraphicContentState);
         }
 
         private void NoToolSelectedExecute(object obj = null)
@@ -211,7 +222,6 @@ namespace GraphicEditor.ViewModel
         {
             GraphicContent.GraphicContentState.Dispose();
             GraphicContent.GraphicContentState = new LineTool(GraphicContent);
-            ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe((LineTool)GraphicContent.GraphicContentState);
         }
 
         private void OpenImageExecute(object obj)
@@ -226,8 +236,59 @@ namespace GraphicEditor.ViewModel
             var result = dlg.ShowDialog();
             if (result != true) return;
             BitmapImage bitmapImage = new BitmapImage(new Uri(dlg.FileName));
-            Image image = new Image { Source = bitmapImage };
-            GraphicContent.Command.Insert(image, GraphicContent.SelectedLayer);
+            // Image image = new Image { Source = bitmapImage };
+            GraphicContent.Command.InsertImage(bitmapImage, GraphicContent.SelectedLayer);
+        }
+
+        private void SaveImageExecute(object obj)
+        {
+            // Create OpenFileDialog
+            var dlg = new SaveFileDialog()
+            {
+                Filter =
+                    "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|Bmp Files (*.bmp)|*.bmp",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Title = "Save as",
+                AddExtension = true
+            };
+
+            var result = dlg.ShowDialog();
+
+            if (result != true) return;
+
+            string fileName = dlg.FileName;
+            
+            GraphicBuilder graphicBuilder = new GraphicBuilder();
+            graphicBuilder = GraphicContent.Layers.Aggregate(graphicBuilder, (current, layer) => current.BuildLayer(layer));
+
+            Canvas finalImage = graphicBuilder.Buid();
+            finalImage.Measure(new Size((int)finalImage.Width, (int)finalImage.Height));
+            finalImage.Arrange(new Rect(new Size((int)finalImage.Width, (int)finalImage.Height)));
+
+            int height = (int)GraphicContent.WorkSpace.ActualHeight;
+            int width = (int)GraphicContent.WorkSpace.ActualWidth;
+
+            RenderTargetBitmap bmp = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Pbgra32);
+            bmp.Render(finalImage);
+            
+            string extension = Path.GetExtension(fileName)?.ToLower();
+
+            BitmapEncoder encoder;
+            if (extension == ".bmp")
+                encoder = new BmpBitmapEncoder();
+            else if (extension == ".png")
+                encoder = new PngBitmapEncoder();
+            else if (extension == ".jpg")
+                encoder = new JpegBitmapEncoder();
+            else
+                return;
+
+            encoder.Frames.Add(BitmapFrame.Create(bmp));
+
+            using (Stream stm = File.Create(fileName))
+            {
+                encoder.Save(stm);
+            }
         }
 
         #endregion

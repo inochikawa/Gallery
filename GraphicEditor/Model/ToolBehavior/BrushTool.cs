@@ -2,8 +2,9 @@
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Shapes;
+using GraphicEditor.Model.ToolBehavior.ToolProperties;
 
-namespace GraphicEditor.Model.GraphicContentStatePattern
+namespace GraphicEditor.Model.ToolBehavior
 {
     public class BrushTool : GraphicTool
     {
@@ -31,6 +32,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
                 return;
 
             ConfigurePolyLine();
+
             f_polyLine.Points.Add(e.GetPosition(f_layer));
 
             // subscribe events for layer's child
@@ -59,8 +61,8 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
         {
             f_polyLine = new Polyline
             {
-                StrokeThickness = f_thickness,
-                Stroke = new SolidColorBrush(Color),
+                StrokeThickness = (double)GraphicContent.GraphicToolProperties.Thickness,
+                Stroke = new SolidColorBrush((Color)GraphicContent.GraphicToolProperties.Color),
                 Effect = DropShadowEffect()
             };
         }
@@ -71,7 +73,7 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             DropShadowEffect myDropShadowEffect = new DropShadowEffect();
 
             // Set the color of the shadow to Black.
-            Color myShadowColor = Color;
+            Color myShadowColor = (Color)GraphicContent.GraphicToolProperties.Color;
             myDropShadowEffect.Color = myShadowColor;
 
             // Set the direction of where the shadow is cast to 320 degrees.
@@ -92,11 +94,6 @@ namespace GraphicEditor.Model.GraphicContentStatePattern
             f_polyLine.MouseLeftButtonDown += GraphicContent.ElementMouseLeftButtonDown;
             f_polyLine.MouseLeftButtonUp += GraphicContent.ElementMouseLeftButtonUp;
             f_polyLine.MouseMove += GraphicContent.ElementMouseMove;
-        }
-
-        public override void UpdateColor(Color color)
-        {
-            Color = color;
         }
     }
 }

@@ -8,7 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using GraphicEditor.Model;
-using GraphicEditor.Model.GraphicContentStatePattern;
+using GraphicEditor.Model.ToolBehavior;
+using GraphicEditor.Model.ToolBehavior.ToolProperties;
 using GraphicEditor.View.UserControls;
 
 namespace GraphicEditor.ViewModel
@@ -18,12 +19,12 @@ namespace GraphicEditor.ViewModel
         private Color f_color;
         private Image f_image;
         private Ellipse f_ellipse;
-        private List<GraphicTool> f_tools;
+        private List<GraphicToolProperties> f_tools;
         private ColorPicker f_colorPicker;
 
         public ColorPickerViewModel(Image image, Ellipse pickerEllipse, ColorPicker colorPicker)
         {
-            f_tools = new List<GraphicTool>();
+            f_tools = new List<GraphicToolProperties>();
             f_image = image;
             f_color = Colors.White;
             f_ellipse = pickerEllipse;
@@ -39,7 +40,7 @@ namespace GraphicEditor.ViewModel
                 NotifyPropertyChanged("Color");
             }
         }
-        
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged(string propertyName)
@@ -106,13 +107,13 @@ namespace GraphicEditor.ViewModel
             f_colorPicker.GreenSlider.Value = Color.G;
         }
 
-        public void Subscribe(GraphicTool observer)
+        public void Subscribe(GraphicToolProperties observer)
         {
             f_tools.Clear();
             f_tools.Add(observer);
         }
 
-        public void Unsubscribe(GraphicTool observer)
+        public void Unsubscribe(GraphicToolProperties observer)
         {
             if (f_tools.Contains(observer))
                 f_tools.Remove(observer);
@@ -120,7 +121,8 @@ namespace GraphicEditor.ViewModel
 
         public void Notify()
         {
-            f_tools.ForEach(tool => tool.UpdateColor(Color));
+            IToolProperties properties = new GraphicToolProperties() { Color = this.Color, Softness = null, Thickness = null };
+            f_tools.ForEach(tool => tool.UpdateProperties(properties));
         }
 
         public BitmapSource LoadBitmap(System.Drawing.Bitmap source)
