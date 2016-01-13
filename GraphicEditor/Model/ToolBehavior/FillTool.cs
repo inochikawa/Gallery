@@ -20,13 +20,16 @@ namespace GraphicEditor.Model.ToolBehavior
             if (GraphicContent.SelectedLayer == null)
                 return;
 
-            Rectangle rect = new Rectangle()
+            if (GraphicContent.GraphicToolProperties.Color != null)
             {
-                Width = GraphicContent.WorkSpace.ActualWidth,
-                Height = GraphicContent.WorkSpace.ActualHeight,
-                Fill = new SolidColorBrush((Color)GraphicContent.GraphicToolProperties.Color)
-            };
-            GraphicContent.Command.Insert(rect, GraphicContent.SelectedLayer);
+                Rectangle rect = new Rectangle()
+                {
+                    Width = GraphicContent.WorkSpace.ActualWidth,
+                    Height = GraphicContent.WorkSpace.ActualHeight,
+                    Fill = new SolidColorBrush((Color)GraphicContent.GraphicToolProperties.Color)
+                };
+                GraphicContent.Command.Insert(rect, GraphicContent.SelectedLayer);
+            }
         }
 
         public override void MouseUpHandler(object sender, MouseButtonEventArgs e)

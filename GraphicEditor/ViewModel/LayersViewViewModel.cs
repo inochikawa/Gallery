@@ -80,6 +80,7 @@ namespace GraphicEditor.ViewModel
                 LayerName = layer.LayerName,
                 BindedCanvas = layer
             };
+
             layerItem.OnCheckBoxChecked += layer.Activate;
             layerItem.OnCheckBoxUnchecked += layer.Unactivate;
             layerItem.Selected += layer.Select;

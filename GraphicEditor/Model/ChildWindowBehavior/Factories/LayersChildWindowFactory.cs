@@ -19,6 +19,13 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Factories
             ((LayersViewViewModel)ChildWindow.ViewModel).OnLayerCreate += LayerWindowViewModel_OnLayerCreate;
             ((LayersViewViewModel)ChildWindow.ViewModel).OnLayerDelete += LayerWindowViewModel_OnLayerDelete;
             ((LayersViewViewModel)ChildWindow.ViewModel).OnLayerDublicate += LayerWindowViewModel_OnLayerDublicate;
+            GraphicContent.OnLayerCreate += GraphicContentOnOnLayerCreate;
+        }
+
+        private void GraphicContentOnOnLayerCreate(Layer layer)
+        {
+            ((LayersViewViewModel)ChildWindow.ViewModel).AddLayer(layer);
+            GraphicContent.AddLayer(layer);
         }
 
         public IChildWindow ChildWindow { get; set; }

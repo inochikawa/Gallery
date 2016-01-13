@@ -2,7 +2,6 @@
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Shapes;
-using GraphicEditor.Model.ToolBehavior.ToolProperties;
 
 namespace GraphicEditor.Model.ToolBehavior
 {
@@ -10,7 +9,7 @@ namespace GraphicEditor.Model.ToolBehavior
     {
         private double f_thickness;
         private double f_opacity;
-        private readonly Layer f_layer;
+        private Layer f_layer;
         private double f_softness;
         private Polyline f_polyLine;
 
@@ -20,11 +19,12 @@ namespace GraphicEditor.Model.ToolBehavior
             f_thickness = 2;
             f_opacity = 1;
             f_softness = 10;
-            f_layer = graphicContent.SelectedLayer;
         }
 
         public override void MouseDownHandler(object sender, MouseButtonEventArgs e)
         {
+            f_layer = GraphicContent.SelectedLayer;
+
             if (f_layer == null)
                 return;
 

@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using GraphicEditor.Model.ToolBehavior;
 
 namespace GraphicEditor.Model.Commands
 {
@@ -56,6 +57,14 @@ namespace GraphicEditor.Model.Commands
         public void InsertImage(BitmapImage image, Layer layer)
         {
             f_command = new InsertImageCommand(image, layer);
+            f_undoCommands.Push(f_command);
+            f_redoCommands.Clear();
+            f_command.Execute();
+        }
+
+        public void InsertGEFile(string filename, GraphicContent graphicContent)
+        {
+            f_command = new InsertGeFileCommand(filename, graphicContent);
             f_undoCommands.Push(f_command);
             f_redoCommands.Clear();
             f_command.Execute();

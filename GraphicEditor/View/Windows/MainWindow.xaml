@@ -23,13 +23,25 @@
             <MenuItem Header="File"
 				FontFamily="Century Gothic"
 				Foreground="White">
+
                 <MenuItem x:Name="openFileMenuItem"
-					Header="Open" Foreground="Black"
-					Command="{Binding OpenImage}">
+					      Header="Open" Foreground="Black">
                     <MenuItem.Icon>
                         <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-folder-open.png"/>
                     </MenuItem.Icon>
+
+                    <MenuItem x:Name="openImageMenuItem"
+					          Header="image" Foreground="Black"
+					          Command="{Binding OpenImage}">
+                    </MenuItem>
+
+                    <MenuItem x:Name="openGEFileMenuItem"
+					          Header="graphic editor file (*.gef)" Foreground="Black"
+					          Command="{Binding OpenGEFile}">
+                    </MenuItem>
+                    
                 </MenuItem>
+                
                 <MenuItem x:Name="saveFileMenuItem"
 					      Header="Save as" Foreground="Black">
                     <MenuItem.Icon>
@@ -47,7 +59,9 @@
                     </MenuItem>
 
                 </MenuItem>
+                
             </MenuItem>
+            
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
             <MenuItem Header="Image"
 				FontFamily="Century Gothic"

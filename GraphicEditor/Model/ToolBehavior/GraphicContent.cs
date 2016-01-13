@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -11,6 +10,7 @@ using System.Windows.Media.Imaging;
 using GraphicEditor.Model.Commands;
 using GraphicEditor.Model.ToolBehavior.ToolProperties;
 using GraphicEditor.View.Styles.Helpers;
+using GraphicEditor.ViewModel;
 
 namespace GraphicEditor.Model.ToolBehavior
 {
@@ -34,7 +34,7 @@ namespace GraphicEditor.Model.ToolBehavior
         /// <summary>
         /// State of graphic content. Defends selected tool in now moment.
         /// </summary>
-        private Tool f_graphicContentState;
+        private Tool f_currentTool;
 
         private CommandReceiver f_command;
         
@@ -55,8 +55,12 @@ namespace GraphicEditor.Model.ToolBehavior
             AddLayer(new Layer("New layer " + Layers.Count));
 
             // Set current tool is Pointer
-            f_graphicContentState = new PointerTool(this);
+            f_currentTool = new PointerTool(this);
         }
+
+        public delegate void LayerProcessing(Layer layer);
+
+        public event LayerProcessing OnLayerCreate;
 
         public List<Layer> Layers { get; set; }
 
@@ -74,10 +78,10 @@ namespace GraphicEditor.Model.ToolBehavior
 
         public Point MousePositionOnWindow { get; set; }
 
-        public Tool GraphicContentState
+        public Tool CurrentTool
         {
-            get { return f_graphicContentState; }
-            set { f_graphicContentState = value; }
+            get { return f_currentTool; }
+            set { f_currentTool = value; }
         }
 
         public Size WindowSize
@@ -120,10 +124,19 @@ namespace GraphicEditor.Model.ToolBehavior
             foreach (var item in Layers)
                 item.IsSelected = false;
 
+            // Unselect all layers
+            foreach (Layer item in f_workSpace.Children)
+                item.IsSelected = false;
+
             Layers.Add(layer);
             f_workSpace.Children.Add(layer);
             layer.Width = f_workSpace.Width;
             layer.Height = f_workSpace.Height;
+        }
+
+        public void AddLayerEventHandler(Layer layer)
+        {
+            OnLayerCreate?.Invoke(layer);
         }
 
         public BitmapImage ConvertToRasterImage(UIElement source, double scale, int quality)
@@ -150,14 +163,14 @@ namespace GraphicEditor.Model.ToolBehavior
             }
             renderTarget.Render(drawingVisual);
 
-            PngBitmapEncoder jpgEncoder = new PngBitmapEncoder();
-            jpgEncoder.Frames.Add(BitmapFrame.Create(renderTarget));
+            PngBitmapEncoder pngBitmapEncoder = new PngBitmapEncoder();
+            pngBitmapEncoder.Frames.Add(BitmapFrame.Create(renderTarget));
 
             BitmapImage bitmapImage = new BitmapImage();
 
             using (var stream = new MemoryStream())
             {
-                jpgEncoder.Save(stream);
+                pngBitmapEncoder.Save(stream);
                 stream.Seek(0, SeekOrigin.Begin);
 
                 bitmapImage.BeginInit();

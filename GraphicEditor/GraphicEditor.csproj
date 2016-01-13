@@ -99,6 +99,7 @@
     <Compile Include="Model\Commands\DeleteCommand.cs" />
     <Compile Include="Model\Commands\ICommand.cs" />
     <Compile Include="Model\Commands\InsertCommand.cs" />
+    <Compile Include="Model\Commands\InsertGEFileCommand.cs" />
     <Compile Include="Model\Commands\InsertImageCommand.cs" />
     <Compile Include="Model\Commands\MoveCommand.cs" />
     <Compile Include="Model\Commands\OpenImageCommand.cs" />

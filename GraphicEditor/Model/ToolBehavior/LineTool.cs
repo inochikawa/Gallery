@@ -9,7 +9,7 @@ namespace GraphicEditor.Model.ToolBehavior
     {
         private readonly double f_thickness;
         private double f_opacity;
-        private readonly Layer f_layer;
+        private Layer f_layer;
         private double f_softness;
         private Point f_startPoint;
         private Point f_endPoint;
@@ -21,11 +21,12 @@ namespace GraphicEditor.Model.ToolBehavior
             f_thickness = 10;
             f_opacity = 1;
             f_softness = 10;
-            f_layer = GraphicContent.SelectedLayer;
         }
 
         public override void MouseDownHandler(object sender, MouseButtonEventArgs e)
         {
+            f_layer = GraphicContent.SelectedLayer;
+
             if (f_layer == null)
                 return;
 

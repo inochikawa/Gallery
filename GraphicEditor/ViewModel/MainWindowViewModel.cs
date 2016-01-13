@@ -25,10 +25,12 @@ namespace GraphicEditor.ViewModel
         private ICommand f_openImage;
         private ICommand f_saveImage;
         private ICommand f_saveGEFile;
+        private ICommand f_openGEFile;
         private ICommand f_fillToolSelectedCommand;
         private IChildWindowFactory f_layersChildWindowFactory;
         private IChildWindowFactory f_colorPickerChildWindowFactory;
         private IChildWindowFactory f_zoomBoxChildWindowFactory;
+        private GraphicBuilder f_graphicBuilderForSave;
 
 
         public MainWindowViewModel()
@@ -158,6 +160,12 @@ namespace GraphicEditor.ViewModel
             set { f_saveGEFile = value; }
         }
 
+        public ICommand OpenGEFile
+        {
+            get { return f_openGEFile; }
+            set { f_openGEFile = value; }
+        }
+
         private void SubscribeToCommands()
         {
             f_pointerToolSelectedCommand = new RelayCommand(PointerToolSelectedExecute);
@@ -167,8 +175,9 @@ namespace GraphicEditor.ViewModel
             f_undoCommand = new RelayCommand(UndoExecute);
             f_redoCommand = new RelayCommand(RedoExecute);
             f_openImage = new RelayCommand(OpenImageExecute);
+            f_openGEFile = new RelayCommand(OpenGEFileExecute);
             f_saveImage = new RelayCommand(SaveImageExecute);
-            SaveGEFile = new RelayCommand(SaveGEFileExecute);
+            f_saveGEFile = new RelayCommand(SaveGEFileExecute);
             f_fillToolSelectedCommand = new RelayCommand(FillToolSelectedCommandExecute);
         }
 
@@ -203,32 +212,32 @@ namespace GraphicEditor.ViewModel
 
         private void PointerToolSelectedExecute(object obj)
         {
-            GraphicContent.GraphicContentState.Dispose();
-            GraphicContent.GraphicContentState = new PointerTool(GraphicContent);
+            GraphicContent.CurrentTool.Dispose();
+            GraphicContent.CurrentTool = new PointerTool(GraphicContent);
         }
 
         private void FillToolSelectedCommandExecute(object obj)
         {
-            GraphicContent.GraphicContentState.Dispose();
-            GraphicContent.GraphicContentState = new FillTool(GraphicContent);
+            GraphicContent.CurrentTool.Dispose();
+            GraphicContent.CurrentTool = new FillTool(GraphicContent);
         }
 
         private void BrushToolSelectedExecute(object obj)
         {
-            GraphicContent.GraphicContentState.Dispose();
-            GraphicContent.GraphicContentState = new BrushTool(GraphicContent);
+            GraphicContent.CurrentTool.Dispose();
+            GraphicContent.CurrentTool = new BrushTool(GraphicContent);
         }
 
         private void NoToolSelectedExecute(object obj = null)
         {
-            GraphicContent.GraphicContentState.Dispose();
-            GraphicContent.GraphicContentState = new NoTool(GraphicContent);
+            GraphicContent.CurrentTool.Dispose();
+            GraphicContent.CurrentTool = new NoTool(GraphicContent);
         }
 
         private void LineToolSelectedExecute(object obj)
         {
-            GraphicContent.GraphicContentState.Dispose();
-            GraphicContent.GraphicContentState = new LineTool(GraphicContent);
+            GraphicContent.CurrentTool.Dispose();
+            GraphicContent.CurrentTool = new LineTool(GraphicContent);
         }
 
         private void OpenImageExecute(object obj)
@@ -247,18 +256,32 @@ namespace GraphicEditor.ViewModel
             GraphicContent.Command.InsertImage(bitmapImage, GraphicContent.SelectedLayer);
         }
 
+        private void OpenGEFileExecute(object obj)
+        {
+            // Create OpenFileDialog
+            var dlg = new OpenFileDialog
+            {
+                DefaultExt = ".gef",
+                Filter = "Graphic editor files (*.gef)|*.gef"
+            };
+            var result = dlg.ShowDialog();
+            if (result != true) return;
+
+            GraphicContent.Command.InsertGEFile(dlg.FileName, GraphicContent);
+        }
+
         private void SaveImageExecute(object obj)
         {
-            GraphicBuilder gb = new ImageBuilder();
-            gb = GraphicContent.Layers.Aggregate(gb, (current, layer) => current.BuildLayer(layer));
-            gb.Buid(gb.FileName());
+            f_graphicBuilderForSave = new ImageBuilder();
+            f_graphicBuilderForSave = GraphicContent.Layers.Aggregate(f_graphicBuilderForSave, (current, layer) => current.BuildLayer(layer));
+            f_graphicBuilderForSave.Buid(f_graphicBuilderForSave.FileName());
         }
 
         private void SaveGEFileExecute(object obj)
         {
-            GraphicBuilder gb = new GEFileBuilder();
-            gb = GraphicContent.Layers.Aggregate(gb, (current, layer) => current.BuildLayer(layer));
-            gb.Buid(gb.FileName());
+            f_graphicBuilderForSave = new GEFileBuilder();
+            f_graphicBuilderForSave = GraphicContent.Layers.Aggregate(f_graphicBuilderForSave, (current, layer) => current.BuildLayer(layer));
+            f_graphicBuilderForSave.Buid(f_graphicBuilderForSave.FileName());
         }
 
         #endregion

@@ -1,21 +1,15 @@
-﻿using System.IO;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Xml;
+﻿using System.Windows.Controls;
 
 namespace GraphicEditor.Model.ToolBehavior.GraphicBuilderBehavior
 {
     public abstract class GraphicBuilder
     {
-        public GraphicBuilder()
+        protected GraphicBuilder()
         {
             Panel = new Canvas();
         }
 
-        public Canvas Panel { get; set; }
+        protected Canvas Panel { get; }
 
         public GraphicBuilder BuildLayer(Layer layer)
         {
