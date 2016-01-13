@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Windows;
-using System.IO;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,6 +9,7 @@ using GraphicEditor.Model.ChildWindowBehavior.ChildWondows;
 using GraphicEditor.Model.ChildWindowBehavior.Factories;
 using GraphicEditor.Model.ChildWindowBehavior.Interfaces;
 using GraphicEditor.Model.ToolBehavior;
+using GraphicEditor.Model.ToolBehavior.GraphicBuilderBehavior;
 using Microsoft.Win32;
 
 namespace GraphicEditor.ViewModel
@@ -25,6 +24,7 @@ namespace GraphicEditor.ViewModel
         private ICommand f_redoCommand;
         private ICommand f_openImage;
         private ICommand f_saveImage;
+        private ICommand f_saveGEFile;
         private ICommand f_fillToolSelectedCommand;
         private IChildWindowFactory f_layersChildWindowFactory;
         private IChildWindowFactory f_colorPickerChildWindowFactory;
@@ -152,6 +152,12 @@ namespace GraphicEditor.ViewModel
 
         public Canvas BackCanvas { get; set; }
 
+        public ICommand SaveGEFile
+        {
+            get { return f_saveGEFile; }
+            set { f_saveGEFile = value; }
+        }
+
         private void SubscribeToCommands()
         {
             f_pointerToolSelectedCommand = new RelayCommand(PointerToolSelectedExecute);
@@ -162,6 +168,7 @@ namespace GraphicEditor.ViewModel
             f_redoCommand = new RelayCommand(RedoExecute);
             f_openImage = new RelayCommand(OpenImageExecute);
             f_saveImage = new RelayCommand(SaveImageExecute);
+            SaveGEFile = new RelayCommand(SaveGEFileExecute);
             f_fillToolSelectedCommand = new RelayCommand(FillToolSelectedCommandExecute);
         }
 
@@ -242,53 +249,16 @@ namespace GraphicEditor.ViewModel
 
         private void SaveImageExecute(object obj)
         {
-            // Create OpenFileDialog
-            var dlg = new SaveFileDialog()
-            {
-                Filter =
-                    "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|Bmp Files (*.bmp)|*.bmp",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                Title = "Save as",
-                AddExtension = true
-            };
+            GraphicBuilder gb = new ImageBuilder();
+            gb = GraphicContent.Layers.Aggregate(gb, (current, layer) => current.BuildLayer(layer));
+            gb.Buid(gb.FileName());
+        }
 
-            var result = dlg.ShowDialog();
-
-            if (result != true) return;
-
-            string fileName = dlg.FileName;
-            
-            GraphicBuilder graphicBuilder = new GraphicBuilder();
-            graphicBuilder = GraphicContent.Layers.Aggregate(graphicBuilder, (current, layer) => current.BuildLayer(layer));
-
-            Canvas finalImage = graphicBuilder.Buid();
-            finalImage.Measure(new Size((int)finalImage.Width, (int)finalImage.Height));
-            finalImage.Arrange(new Rect(new Size((int)finalImage.Width, (int)finalImage.Height)));
-
-            int height = (int)GraphicContent.WorkSpace.ActualHeight;
-            int width = (int)GraphicContent.WorkSpace.ActualWidth;
-
-            RenderTargetBitmap bmp = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Pbgra32);
-            bmp.Render(finalImage);
-            
-            string extension = Path.GetExtension(fileName)?.ToLower();
-
-            BitmapEncoder encoder;
-            if (extension == ".bmp")
-                encoder = new BmpBitmapEncoder();
-            else if (extension == ".png")
-                encoder = new PngBitmapEncoder();
-            else if (extension == ".jpg")
-                encoder = new JpegBitmapEncoder();
-            else
-                return;
-
-            encoder.Frames.Add(BitmapFrame.Create(bmp));
-
-            using (Stream stm = File.Create(fileName))
-            {
-                encoder.Save(stm);
-            }
+        private void SaveGEFileExecute(object obj)
+        {
+            GraphicBuilder gb = new GEFileBuilder();
+            gb = GraphicContent.Layers.Aggregate(gb, (current, layer) => current.BuildLayer(layer));
+            gb.Buid(gb.FileName());
         }
 
         #endregion

@@ -105,7 +105,9 @@
     <Compile Include="Model\Commands\ResizeCommand.cs" />
     <Compile Include="Model\ToolBehavior\BrushTool.cs" />
     <Compile Include="Model\ToolBehavior\FillTool.cs" />
-    <Compile Include="Model\ToolBehavior\GraphicBuilder.cs" />
+    <Compile Include="Model\ToolBehavior\GraphicBuilderBehavior\GEFileBuilder.cs" />
+    <Compile Include="Model\ToolBehavior\GraphicBuilderBehavior\GraphicBuilder.cs" />
+    <Compile Include="Model\ToolBehavior\GraphicBuilderBehavior\ImageBuilder.cs" />
     <Compile Include="Model\ToolBehavior\GraphicContent.cs" />
     <Compile Include="Model\ToolBehavior\GraphicTool.cs" />
     <Compile Include="Model\ToolBehavior\ToolProperties\GraphicToolProperties.cs" />

@@ -31,11 +31,21 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem x:Name="saveFileMenuItem"
-					Header="Save image as" Foreground="Black"
-					Command="{Binding SaveImage}">
+					      Header="Save as" Foreground="Black">
                     <MenuItem.Icon>
-                        <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-folder-open.png"/>
+                        <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-save.png"/>
                     </MenuItem.Icon>
+
+                    <MenuItem x:Name="saveAsImage"
+				              Header="image" Foreground="Black"
+				              Command="{Binding SaveImage}">
+                    </MenuItem>
+
+                    <MenuItem x:Name="saveAsGEFile"
+				              Header="graphic editor file (*.gef)" Foreground="Black"
+				              Command="{Binding SaveGEFile}">
+                    </MenuItem>
+
                 </MenuItem>
             </MenuItem>
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
