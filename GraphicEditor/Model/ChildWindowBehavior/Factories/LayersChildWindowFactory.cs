@@ -13,13 +13,23 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Factories
         public LayersChildWindowFactory(GraphicContent graphicContent)
         {
             GraphicContent = graphicContent;
-            ChildWindow = new LayersViewChildWindow {Header = "Layers"};
+            ChildWindow = new LayersViewChildWindow { Header = "Layers" };
             ChildWindow.Move(-20, 10);
             ((LayersViewViewModel)ChildWindow.ViewModel).AddLayer(GraphicContent.SelectedLayer);
             ((LayersViewViewModel)ChildWindow.ViewModel).OnLayerCreate += LayerWindowViewModel_OnLayerCreate;
             ((LayersViewViewModel)ChildWindow.ViewModel).OnLayerDelete += LayerWindowViewModel_OnLayerDelete;
             ((LayersViewViewModel)ChildWindow.ViewModel).OnLayerDublicate += LayerWindowViewModel_OnLayerDublicate;
             GraphicContent.OnLayerCreate += GraphicContentOnOnLayerCreate;
+            GraphicContent.OnLayerRemove += GraphicContentOnOnLayerRemove;
+        }
+
+        private void GraphicContentOnOnLayerRemove(Layer layer)
+        {
+            if (layer == null) return;
+
+            GraphicContent.WorkSpace.Children.Remove(layer);
+            GraphicContent.Layers.Remove(layer);
+            ((LayersViewViewModel)ChildWindow.ViewModel).RemoveLayer(layer);
         }
 
         private void GraphicContentOnOnLayerCreate(Layer layer)

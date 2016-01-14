@@ -10,7 +10,6 @@ using System.Windows.Media.Imaging;
 using GraphicEditor.Model.Commands;
 using GraphicEditor.Model.ToolBehavior.ToolProperties;
 using GraphicEditor.View.Styles.Helpers;
-using GraphicEditor.ViewModel;
 
 namespace GraphicEditor.Model.ToolBehavior
 {
@@ -61,6 +60,7 @@ namespace GraphicEditor.Model.ToolBehavior
         public delegate void LayerProcessing(Layer layer);
 
         public event LayerProcessing OnLayerCreate;
+        public event LayerProcessing OnLayerRemove;
 
         public List<Layer> Layers { get; set; }
 
@@ -137,6 +137,11 @@ namespace GraphicEditor.Model.ToolBehavior
         public void AddLayerEventHandler(Layer layer)
         {
             OnLayerCreate?.Invoke(layer);
+        }
+
+        public void RemoveLayerEventHandler(Layer layer)
+        {
+            OnLayerRemove?.Invoke(layer);
         }
 
         public BitmapImage ConvertToRasterImage(UIElement source, double scale, int quality)

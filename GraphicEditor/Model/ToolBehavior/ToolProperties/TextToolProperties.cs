@@ -1,4 +1,5 @@
-﻿using System.Windows.Media;
+﻿using System;
+using System.Windows.Media;
 
 namespace GraphicEditor.Model.ToolBehavior.ToolProperties
 {
@@ -9,7 +10,7 @@ namespace GraphicEditor.Model.ToolBehavior.ToolProperties
 
         public void UpdateProperties(IToolProperties toolProperties)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

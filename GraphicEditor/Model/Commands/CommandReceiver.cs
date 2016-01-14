@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using GraphicEditor.Model.ToolBehavior;
 
@@ -62,7 +61,7 @@ namespace GraphicEditor.Model.Commands
             f_command.Execute();
         }
 
-        public void InsertGEFile(string filename, GraphicContent graphicContent)
+        public void InsertGeFile(string filename, GraphicContent graphicContent)
         {
             f_command = new InsertGeFileCommand(filename, graphicContent);
             f_undoCommands.Push(f_command);

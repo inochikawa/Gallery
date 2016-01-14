@@ -93,5 +93,17 @@ namespace GraphicEditor.ViewModel
         {
             f_layerItems.Remove(layerItem);
         }
+
+        public void RemoveLayer(Layer layer)
+        {
+            foreach (LayerItem layerItem in f_layerItems)
+            {
+                if (layerItem.LayerName == layer.LayerName)
+                {
+                    f_layerItems.Remove(layerItem);
+                    break;
+                }
+            }
+        }
     }
 }

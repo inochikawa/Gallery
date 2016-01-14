@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using GraphicEditor.Model;
-using GraphicEditor.Model.ToolBehavior;
 using GraphicEditor.Model.ToolBehavior.ToolProperties;
 using GraphicEditor.View.UserControls;
+using Color = System.Windows.Media.Color;
+using Image = System.Windows.Controls.Image;
 
 namespace GraphicEditor.ViewModel
 {
@@ -125,9 +128,9 @@ namespace GraphicEditor.ViewModel
             f_tools.ForEach(tool => tool.UpdateProperties(properties));
         }
 
-        public BitmapSource LoadBitmap(System.Drawing.Bitmap source)
+        public BitmapSource LoadBitmap(Bitmap source)
         {
-            return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(source.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty,
+            return Imaging.CreateBitmapSourceFromHBitmap(source.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty,
                 BitmapSizeOptions.FromEmptyOptions());
         }
 

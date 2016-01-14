@@ -1,7 +1,6 @@
 ﻿using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using Color = System.Windows.Media.Color;
 
 namespace GraphicEditor.Model.ToolBehavior
 {

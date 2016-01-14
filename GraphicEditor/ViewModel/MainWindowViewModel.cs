@@ -175,9 +175,9 @@ namespace GraphicEditor.ViewModel
             f_undoCommand = new RelayCommand(UndoExecute);
             f_redoCommand = new RelayCommand(RedoExecute);
             f_openImage = new RelayCommand(OpenImageExecute);
-            f_openGEFile = new RelayCommand(OpenGEFileExecute);
+            f_openGEFile = new RelayCommand(OpenGeFileExecute);
             f_saveImage = new RelayCommand(SaveImageExecute);
-            f_saveGEFile = new RelayCommand(SaveGEFileExecute);
+            f_saveGEFile = new RelayCommand(SaveGeFileExecute);
             f_fillToolSelectedCommand = new RelayCommand(FillToolSelectedCommandExecute);
         }
 
@@ -240,7 +240,7 @@ namespace GraphicEditor.ViewModel
             GraphicContent.CurrentTool = new LineTool(GraphicContent);
         }
 
-        private void OpenImageExecute(object obj)
+        private void OpenImageExecute(object obj = null)
         {
             // Create OpenFileDialog
             var dlg = new OpenFileDialog
@@ -256,7 +256,7 @@ namespace GraphicEditor.ViewModel
             GraphicContent.Command.InsertImage(bitmapImage, GraphicContent.SelectedLayer);
         }
 
-        private void OpenGEFileExecute(object obj)
+        private void OpenGeFileExecute(object obj = null)
         {
             // Create OpenFileDialog
             var dlg = new OpenFileDialog
@@ -267,17 +267,17 @@ namespace GraphicEditor.ViewModel
             var result = dlg.ShowDialog();
             if (result != true) return;
 
-            GraphicContent.Command.InsertGEFile(dlg.FileName, GraphicContent);
+            GraphicContent.Command.InsertGeFile(dlg.FileName, GraphicContent);
         }
 
-        private void SaveImageExecute(object obj)
+        private void SaveImageExecute(object obj = null)
         {
             f_graphicBuilderForSave = new ImageBuilder();
             f_graphicBuilderForSave = GraphicContent.Layers.Aggregate(f_graphicBuilderForSave, (current, layer) => current.BuildLayer(layer));
             f_graphicBuilderForSave.Buid(f_graphicBuilderForSave.FileName());
         }
 
-        private void SaveGEFileExecute(object obj)
+        private void SaveGeFileExecute(object obj = null)
         {
             f_graphicBuilderForSave = new GEFileBuilder();
             f_graphicBuilderForSave = GraphicContent.Layers.Aggregate(f_graphicBuilderForSave, (current, layer) => current.BuildLayer(layer));
@@ -303,6 +303,11 @@ namespace GraphicEditor.ViewModel
         public void RedoExecute(object obj = null)
         {
             GraphicContent.Command.Redo(1);
+        }
+
+        public void OpenGeFileOnStartup(string fileName)
+        {
+            GraphicContent.Command.InsertGeFile(fileName, GraphicContent);
         }
     }
 }

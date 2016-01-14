@@ -9,7 +9,6 @@ namespace GraphicEditor.Model.Commands
     public class InsertGeFileCommand : ICommand
     {
         private List<Layer> f_layers;
-        private Canvas f_container;
         private GraphicContent f_graphicContent;
 
         public InsertGeFileCommand(string fileName, GraphicContent graphicContent)
@@ -27,7 +26,6 @@ namespace GraphicEditor.Model.Commands
                 f_layers.Add(layer.Clone());
 
             f_graphicContent = graphicContent;
-            f_container = f_graphicContent.WorkSpace;
         }
 
         public void Execute()
@@ -39,8 +37,8 @@ namespace GraphicEditor.Model.Commands
         public void Unexecute()
         {
             foreach (Layer layer in f_layers)
-                if (f_container.Children.Contains(layer))
-                    f_container.Children.Remove(layer);
+                if (f_graphicContent.WorkSpace.Children.Contains(layer))
+                    f_graphicContent.RemoveLayerEventHandler(layer);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using GraphicEditor.Model.ChildWindowBehavior.Interfaces;
 using GraphicEditor.View.UserControls;
-using GraphicEditor.ViewModel;
 
 namespace GraphicEditor.Model.ChildWindowBehavior.ChildWondows
 {
