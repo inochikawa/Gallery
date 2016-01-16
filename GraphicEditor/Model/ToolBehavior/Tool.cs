@@ -1,10 +1,12 @@
 ﻿using System.Windows.Input;
+using GraphicEditor.ViewModel;
 
 namespace GraphicEditor.Model.ToolBehavior
 {
     public abstract class Tool
     {
         private GraphicContent f_graphicContent;
+        private string f_name;
 
         public Tool(GraphicContent graphicContent)
         {
@@ -20,6 +22,12 @@ namespace GraphicEditor.Model.ToolBehavior
             set { f_graphicContent = value; }
         }
         
+        public string Name
+        {
+            get { return f_name; }
+            set { f_name = value; }
+        }
+
         public abstract void MouseMoveHandler(object sender, MouseEventArgs e);
 
         public abstract void MouseDownHandler(object sender, MouseButtonEventArgs e);

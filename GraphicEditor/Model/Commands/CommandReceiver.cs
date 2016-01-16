@@ -10,15 +10,7 @@ namespace GraphicEditor.Model.Commands
         private readonly Stack<ICommand> f_undoCommands = new Stack<ICommand>();
         private readonly Stack<ICommand> f_redoCommands = new Stack<ICommand>();
         private ICommand f_command;
-
-        //// public event EventHandler CommandEvent;
-        //// private Canvas f_сontainer;
-        //// public Canvas Container
-        //// {
-        ////    get { return f_сontainer; }
-        ////    set { f_сontainer = value; }
-        //// }
-
+        
         public void Redo(int levels)
         {
             for (var i = 1; i <= levels; i++)

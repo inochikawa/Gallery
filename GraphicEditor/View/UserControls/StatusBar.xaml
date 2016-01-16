@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="GraphicEditor.View.UserControls.StatusBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModel="clr-namespace:GraphicEditor.ViewModel"
+             Height="25"
+             Background="WhiteSmoke">
+    <UserControl.DataContext>
+        <viewModel:StatusBarViewModel x:Name="viewModel"/>
+    </UserControl.DataContext>
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Size: "
+                   FontWeight="Bold"/>
+            <Label Content="{Binding Size, Mode=TwoWay}"
+                   x:Name="labeSize"
+                   FontStyle="Italic"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,25,0"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Pos: "
+                   FontWeight="Bold"/>
+            <Label Content="{Binding Pos, Mode=TwoWay}"
+                   x:Name="labePos"
+                   FontStyle="Italic"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,25,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Tool: "
+                   FontWeight="Bold"/>
+            <Label Content="{Binding Tool, Mode=TwoWay}"
+                   x:Name="labeTool"
+                   FontStyle="Italic"
+                   HorizontalAlignment="Left"
+                   Margin="0,0,25,0"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

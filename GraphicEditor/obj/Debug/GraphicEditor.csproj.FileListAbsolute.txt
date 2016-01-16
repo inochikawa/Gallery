@@ -47,3 +47,5 @@ D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\UserControls\LayersView.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\ZoomBox.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\CuteSlider.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\MenuItemStyeRadioButton.baml
+D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\UserControls\StatusBar.g.cs
+D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\UserControls\StatusBar.baml

@@ -159,6 +159,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UserControls\StatusBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\ImagePropertiesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -180,6 +184,7 @@
     <Compile Include="ViewModel\ColorPickerVIewModel.cs" />
     <Compile Include="ViewModel\LayersViewViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\StatusBarViewModel.cs" />
     <Compile Include="View\Styles\FlatInnerWindow.cs" />
     <Compile Include="View\Styles\Helpers\MultiplyConverter.cs" />
     <Compile Include="View\Styles\Helpers\TransparentViewVisualBrush.cs" />
@@ -194,6 +199,9 @@
     <Compile Include="View\UserControls\Helpers\RgbConverter.cs" />
     <Compile Include="View\UserControls\LayersView.xaml.cs">
       <DependentUpon>LayersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\StatusBar.xaml.cs">
+      <DependentUpon>StatusBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\ImagePropertiesWindow.xaml.cs">
       <DependentUpon>ImagePropertiesWindow.xaml</DependentUpon>

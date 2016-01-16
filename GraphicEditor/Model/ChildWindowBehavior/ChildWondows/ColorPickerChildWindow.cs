@@ -7,12 +7,17 @@ namespace GraphicEditor.Model.ChildWindowBehavior.ChildWondows
     {
         public ColorPickerChildWindow()
         {
-            ChildWindow = new ChildWindow() { Child = new ColorPicker() };
+            ChildWindow = new ChildWindow()
+            {
+                Child = new ColorPicker(),
+                Width = 190,
+                Height = 210
+            };
         }
 
         public ChildWindow ChildWindow { get; set; }
 
-        public object ViewModel => ((ColorPicker) ChildWindow.Child).ColorPickerViewModel;
+        public object ViewModel => ((ColorPicker)ChildWindow.Child).ColorPickerViewModel;
 
         public string Header
         {

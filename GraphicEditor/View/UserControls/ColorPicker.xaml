@@ -5,10 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:helpers="clr-namespace:GraphicEditor.View.UserControls.Helpers"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="200"
              Background="#cccccc"
              Opacity="1"
-             Width="200"
              x:Name="ColorPickerControl">
     <UserControl.Resources>
         <helpers:RgbConverter x:Key="RgbConverter"/>

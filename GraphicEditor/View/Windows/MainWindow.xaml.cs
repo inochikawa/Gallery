@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using GraphicEditor.ViewModel;
 
@@ -17,6 +19,13 @@ namespace GraphicEditor
             f_mainWindowViewModel = new MainWindowViewModel();
             DataContext = f_mainWindowViewModel;
             f_mainWindowViewModel.ShowChildWindows(this);
+            f_mainWindowViewModel.SubscribeMenuItemsToChildWindows(new List<MenuItem>()
+            {
+                layersMenuItem,
+                colorPickerMenuItem,
+                overviewMenuItem
+            });
+            f_mainWindowViewModel.StatusBar = statusBar.viewModel;
 
             Loaded += MainContainer_Loaded;
         }

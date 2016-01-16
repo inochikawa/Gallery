@@ -9,7 +9,12 @@ namespace GraphicEditor.Model.ChildWindowBehavior.ChildWondows
     {
         public ZoomBoxChildWindow()
         {
-            ChildWindow = new ChildWindow() { Child = new ZoomBox() };
+            ChildWindow = new ChildWindow()
+            {
+                Child = new ZoomBox(),
+                Width = 190,
+                Height = 210
+            };
             Header = "Overview";
         }
 

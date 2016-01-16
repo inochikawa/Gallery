@@ -1,9 +1,11 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using GraphicEditor.Model;
 
 namespace GraphicEditor.View.UserControls
 {
@@ -17,6 +19,7 @@ namespace GraphicEditor.View.UserControls
         private Point f_clickPosition;
         private double f_windowWidth;
         private TranslateTransform f_translateTransform;
+        private List<MenuItem> f_menuItems;
 
         public static readonly DependencyPropertyKey ChildrenProperty = DependencyProperty.RegisterReadOnly(
              "Children",
@@ -33,6 +36,7 @@ namespace GraphicEditor.View.UserControls
             MouseMove += TopPanelMouseMove;
             f_translateTransform = new TranslateTransform();
             RenderTransform = f_translateTransform;
+            f_menuItems = new List<MenuItem>();
         }
 
         public UIElementCollection Children
@@ -133,6 +137,28 @@ namespace GraphicEditor.View.UserControls
         private void TopPanelMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             f_clickPosition = e.GetPosition(this);
+        }
+
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+            Notify();
+        }
+
+        public void Subscribe(MenuItem observer)
+        {
+            f_menuItems.Add(observer);
+        }
+
+        public void Unsubscribe(MenuItem observer)
+        {
+            f_menuItems.Remove(observer);
+        }
+
+        public void Notify()
+        {
+            foreach (MenuItem menuItem in f_menuItems) 
+                menuItem.IsChecked = IsVisible; 
         }
     }
 }

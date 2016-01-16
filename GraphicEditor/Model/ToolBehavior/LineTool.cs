@@ -21,6 +21,7 @@ namespace GraphicEditor.Model.ToolBehavior
             f_thickness = 10;
             f_opacity = 1;
             f_softness = 10;
+            Name = "Line";
         }
 
         public override void MouseDownHandler(object sender, MouseButtonEventArgs e)
@@ -44,6 +45,13 @@ namespace GraphicEditor.Model.ToolBehavior
             f_line.X2 = f_startPoint.X;
             f_line.Y2 = f_startPoint.Y;
             GraphicContent.Command.Insert(f_line, f_layer);
+            //GraphicContent.Command.Insert(new Ellipse()
+            //{
+            //    Width = (double)GraphicContent.GraphicToolProperties.Thickness,
+            //    Height = (double)GraphicContent.GraphicToolProperties.Thickness,
+            //    Stroke = new SolidColorBrush((Color)GraphicContent.GraphicToolProperties.Color),
+                
+            //}, f_layer);
         }
 
         public override void MouseMoveHandler(object sender, MouseEventArgs e)

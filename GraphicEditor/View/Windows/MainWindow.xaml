@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:local="clr-namespace:GraphicEditor.View.UserControls"
         mc:Ignorable="d" 
         x:Class="GraphicEditor.MainWindow"
         Background="#3b3b3b"
@@ -16,6 +17,11 @@
         Icon="../Resources/Images/icon.png">
     <Grid x:Name="ChildrenContent">
 
+        <local:StatusBar x:Name="statusBar"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Bottom"
+                         />
+
         <Menu Height="25"
 			VerticalAlignment="Top"
 			HorizontalAlignment="Left"
@@ -26,56 +32,102 @@
 				Foreground="White">
 
                 <MenuItem x:Name="openFileMenuItem"
-					      Header="Open" Foreground="Black">
+					      Header="Open" 
+                          Foreground="Black"
+                          Background="White">
                     <MenuItem.Icon>
                         <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-folder-open.png"/>
                     </MenuItem.Icon>
 
                     <MenuItem x:Name="openImageMenuItem"
-					          Header="image" Foreground="Black"
+					          Header="image"
+                              Foreground="Black"
+                              Background="White"
 					          Command="{Binding OpenImage}">
                     </MenuItem>
 
                     <MenuItem x:Name="openGEFileMenuItem"
-					          Header="graphic editor file (*.gef)" Foreground="Black"
-					          Command="{Binding OpenGEFile}">
+					          Header="graphic editor file (*.gef)" 
+                              Foreground="Black"
+                              Background="White"
+					          Command="{Binding OpenGeFile}">
                     </MenuItem>
                     
                 </MenuItem>
                 
                 <MenuItem x:Name="saveFileMenuItem"
-					      Header="Save as" Foreground="Black">
+					      Header="Save as" 
+                          Foreground="Black"
+                          Background="White">
                     <MenuItem.Icon>
                         <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-save.png"/>
                     </MenuItem.Icon>
 
                     <MenuItem x:Name="saveAsImage"
-				              Header="image" Foreground="Black"
+				              Header="image"
+                              Foreground="Black"
+                              Background="White"
 				              Command="{Binding SaveImage}">
                     </MenuItem>
 
                     <MenuItem x:Name="saveAsGEFile"
-				              Header="graphic editor file (*.gef)" Foreground="Black"
-				              Command="{Binding SaveGEFile}">
+				              Header="graphic editor file (*.gef)" 
+                              Foreground="Black"
+                              Background="White"
+				              Command="{Binding SaveGeFile}">
                     </MenuItem>
 
                 </MenuItem>
-                
             </MenuItem>
             
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+            
             <MenuItem Header="Image"
-				FontFamily="Century Gothic"
-				Foreground="White">
+				      FontFamily="Century Gothic"
+				      Foreground="White">
                 <MenuItem x:Name="imageProperties"
-					Header="Propeties" Foreground="Black"
-                          >
+					      Header="Propeties"
+                          Foreground="Black"
+                          Background="White">
                     <MenuItem.Icon>
                         <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-properties.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
+
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+            
+            <MenuItem Header="Window"
+				      FontFamily="Century Gothic"
+				      Foreground="White">
+                <MenuItem x:Name="overviewMenuItem"
+                          IsCheckable="True"
+                          Header="Overview"
+                          Foreground="Black"
+                          Background="White"
+                          IsChecked="True"
+                          Command="{Binding ShowOrHideOverviewWindow}"
+                          CommandParameter="{Binding ElementName=overviewMenuItem, Path=IsChecked}"/>
+                <MenuItem x:Name="layersMenuItem"
+                          IsCheckable="True"
+                          Header="Layers"
+                          Foreground="Black"
+                          Background="White"
+                          IsChecked="True"
+                          Command="{Binding ShowOrHideLayersWindow}"
+                          CommandParameter="{Binding ElementName=layersMenuItem, Path=IsChecked}"/>
+                <MenuItem x:Name="colorPickerMenuItem"
+                          IsCheckable="True"
+                          Header="Color picker"
+                          Foreground="Black"
+                          Background="White"
+                          IsChecked="True"
+                          Command="{Binding ShowOrHideColorPickerWindow}"
+                          CommandParameter="{Binding ElementName=colorPickerMenuItem, Path=IsChecked}"/>
+            </MenuItem>
+
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+            
             <MenuItem ToolTip="Undo"
 				Width="25"
 				Command="{Binding UndoCommand}">
@@ -83,7 +135,9 @@
                     <Image Source="/GraphicEditor;component/View/Resources/Images/UndoRedo/undo.png"/>
                 </MenuItem.Icon>
             </MenuItem>
+            
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+            
             <MenuItem ToolTip="Redo"
 				Width="25"
 				Command="{Binding RedoCommand}">
@@ -91,6 +145,7 @@
                     <Image Source="/GraphicEditor;component/View/Resources/Images/UndoRedo/redo.png"/>
                 </MenuItem.Icon>
             </MenuItem>
+            
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
         </Menu>
 
@@ -150,8 +205,6 @@
                 </RadioButton>
             </ToolBar>
         </ToolBarTray>
-        
-        
         
     </Grid>
 </Window>

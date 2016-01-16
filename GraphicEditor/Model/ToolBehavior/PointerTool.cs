@@ -11,7 +11,7 @@ namespace GraphicEditor.Model.ToolBehavior
         public PointerTool(GraphicContent graphicContent)
             : base(graphicContent)
         {
-
+            Name = "Pointer";
         }
 
         public override void MouseDownHandler(object sender, MouseButtonEventArgs e)

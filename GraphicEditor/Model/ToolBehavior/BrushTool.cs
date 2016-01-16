@@ -19,6 +19,7 @@ namespace GraphicEditor.Model.ToolBehavior
             f_thickness = 2;
             f_opacity = 1;
             f_softness = 10;
+            Name = "Brush";
         }
 
         public override void MouseDownHandler(object sender, MouseButtonEventArgs e)

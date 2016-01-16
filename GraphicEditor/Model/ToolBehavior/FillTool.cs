@@ -8,6 +8,7 @@ namespace GraphicEditor.Model.ToolBehavior
     {
         public FillTool(GraphicContent graphicContent) : base(graphicContent)
         {
+            Name = "Fill";
         }
 
         public override void MouseMoveHandler(object sender, MouseEventArgs e)

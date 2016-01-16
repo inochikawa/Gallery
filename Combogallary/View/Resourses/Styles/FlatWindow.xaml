@@ -84,7 +84,7 @@
                                                 <Grid>
                                                     <Polygon Points="2,5 13,5 13,13 2,13"
                                                              Stroke="Black"
-                                                             Fill="White">
+                                                             Fill="Transparent">
                                                         <Polygon.RenderTransform>
                                                             <TranslateTransform X="2"
                                                                                 Y="-2"/>

@@ -9,7 +9,9 @@ namespace GraphicEditor.Model.ChildWindowBehavior.ChildWondows
         {
             ChildWindow = new ChildWindow()
             {
-                Child = new LayersView()
+                Child = new LayersView(),
+                Width = 190,
+                Height = 210
             };
         }
         

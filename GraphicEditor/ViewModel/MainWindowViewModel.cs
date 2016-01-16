@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -10,6 +12,7 @@ using GraphicEditor.Model.ChildWindowBehavior.Factories;
 using GraphicEditor.Model.ChildWindowBehavior.Interfaces;
 using GraphicEditor.Model.ToolBehavior;
 using GraphicEditor.Model.ToolBehavior.GraphicBuilderBehavior;
+using GraphicEditor.View.UserControls;
 using Microsoft.Win32;
 
 namespace GraphicEditor.ViewModel
@@ -24,25 +27,42 @@ namespace GraphicEditor.ViewModel
         private ICommand f_redoCommand;
         private ICommand f_openImage;
         private ICommand f_saveImage;
-        private ICommand f_saveGEFile;
-        private ICommand f_openGEFile;
+        private ICommand f_saveGeFile;
+        private ICommand f_openGeFile;
         private ICommand f_fillToolSelectedCommand;
-        private IChildWindowFactory f_layersChildWindowFactory;
-        private IChildWindowFactory f_colorPickerChildWindowFactory;
-        private IChildWindowFactory f_zoomBoxChildWindowFactory;
+        private ICommand f_showOrHideOverviewWindow;
+        private ICommand f_showOrHideLayersWindow;
+        private ICommand f_showOrHideColorPickerWindow;
         private GraphicBuilder f_graphicBuilderForSave;
+        private readonly List<ChildWindow> f_childWindows;
+        private readonly IChildWindowFactory f_layersChildWindowFactory;
+        private readonly IChildWindowFactory f_colorPickerChildWindowFactory;
+        private readonly IChildWindowFactory f_zoomBoxChildWindowFactory;
+        private StatusBarViewModel f_statusBar;
 
 
         public MainWindowViewModel()
         {
             SubscribeToCommands();
             GraphicContent = new GraphicContent();
+            GraphicContent.WorkSpace.MouseMove += GraphicContentWorkSpaceMouseMove;
             ConfigureWorkSpace();
             f_layersChildWindowFactory = new LayersChildWindowFactory(GraphicContent);
             f_colorPickerChildWindowFactory = new ColorPickerChildWindowFactory();
             f_zoomBoxChildWindowFactory = new ZoomBoxChildWindowFactory();
             ((ZoomBoxChildWindow)f_zoomBoxChildWindowFactory.ChildWindow).ScrollViewer = ScrollViewer;
             ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe(GraphicContent.GraphicToolProperties);
+            f_childWindows = new List<ChildWindow>()
+            {
+                f_layersChildWindowFactory.ChildWindow.ChildWindow,
+                f_colorPickerChildWindowFactory.ChildWindow.ChildWindow,
+                f_zoomBoxChildWindowFactory.ChildWindow.ChildWindow
+            };
+        }
+
+        private void GraphicContentWorkSpaceMouseMove(object sender, MouseEventArgs e)
+        {
+            f_statusBar.UpdatePosition(e.GetPosition((Canvas)sender));
         }
 
         public GraphicContent GraphicContent { get; set; }
@@ -141,7 +161,7 @@ namespace GraphicEditor.ViewModel
             get { return f_fillToolSelectedCommand; }
             set { f_fillToolSelectedCommand = value; }
         }
-        
+
         public ICommand SaveImage
         {
             get { return f_saveImage; }
@@ -154,16 +174,46 @@ namespace GraphicEditor.ViewModel
 
         public Canvas BackCanvas { get; set; }
 
-        public ICommand SaveGEFile
+        public ICommand SaveGeFile
         {
-            get { return f_saveGEFile; }
-            set { f_saveGEFile = value; }
+            get { return f_saveGeFile; }
+            set { f_saveGeFile = value; }
         }
 
-        public ICommand OpenGEFile
+        public ICommand OpenGeFile
         {
-            get { return f_openGEFile; }
-            set { f_openGEFile = value; }
+            get { return f_openGeFile; }
+            set { f_openGeFile = value; }
+        }
+
+        public ICommand ShowOrHideOverviewWindow
+        {
+            get { return f_showOrHideOverviewWindow; }
+            set { f_showOrHideOverviewWindow = value; }
+        }
+
+        public ICommand ShowOrHideLayersWindow
+        {
+            get { return f_showOrHideLayersWindow; }
+            set { f_showOrHideLayersWindow = value; }
+        }
+
+        public ICommand ShowOrHideColorPickerWindow
+        {
+            get { return f_showOrHideColorPickerWindow; }
+            set { f_showOrHideColorPickerWindow = value; }
+        }
+
+        public StatusBarViewModel StatusBar
+        {
+            get { return f_statusBar; }
+            set { f_statusBar = value; }
+        }
+
+        public void SubscribeMenuItemsToChildWindows(List<MenuItem> menuItems)
+        {
+            for (int i = 0; i < menuItems.Count; i++)
+                f_childWindows[i].Subscribe(menuItems[i]);
         }
 
         private void SubscribeToCommands()
@@ -175,10 +225,18 @@ namespace GraphicEditor.ViewModel
             f_undoCommand = new RelayCommand(UndoExecute);
             f_redoCommand = new RelayCommand(RedoExecute);
             f_openImage = new RelayCommand(OpenImageExecute);
-            f_openGEFile = new RelayCommand(OpenGeFileExecute);
+            f_openGeFile = new RelayCommand(OpenGeFileExecute);
             f_saveImage = new RelayCommand(SaveImageExecute);
-            f_saveGEFile = new RelayCommand(SaveGeFileExecute);
+            f_saveGeFile = new RelayCommand(SaveGeFileExecute);
+            f_showOrHideColorPickerWindow = new RelayCommand(ShowOrHideColorPickerWindowExecute);
+            f_showOrHideLayersWindow = new RelayCommand(ShowOrHideLayersWindowExecute);
+            f_showOrHideOverviewWindow = new RelayCommand(ShowOrHideOverviewWindowExecute);
             f_fillToolSelectedCommand = new RelayCommand(FillToolSelectedCommandExecute);
+        }
+
+        private void ShowOrHideChildWindow(IChildWindowFactory childWindowFactory, bool isVisible)
+        {
+            childWindowFactory.ChildWindow.ChildWindow.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void ConfigureWorkSpace()
@@ -193,7 +251,7 @@ namespace GraphicEditor.ViewModel
             BackCanvas = new Canvas()
             {
                 Background = Brushes.Transparent,
-                Children = { GraphicContent.WorkSpace},
+                Children = { GraphicContent.WorkSpace },
                 MinHeight = 1000,
                 MinWidth = 1000
             };
@@ -214,30 +272,35 @@ namespace GraphicEditor.ViewModel
         {
             GraphicContent.CurrentTool.Dispose();
             GraphicContent.CurrentTool = new PointerTool(GraphicContent);
+            StatusBar.UpdateTool(GraphicContent.CurrentTool.Name);
         }
 
         private void FillToolSelectedCommandExecute(object obj)
         {
             GraphicContent.CurrentTool.Dispose();
             GraphicContent.CurrentTool = new FillTool(GraphicContent);
+            StatusBar.UpdateTool(GraphicContent.CurrentTool.Name);
         }
 
         private void BrushToolSelectedExecute(object obj)
         {
             GraphicContent.CurrentTool.Dispose();
             GraphicContent.CurrentTool = new BrushTool(GraphicContent);
+            StatusBar.UpdateTool(GraphicContent.CurrentTool.Name);
         }
 
         private void NoToolSelectedExecute(object obj = null)
         {
             GraphicContent.CurrentTool.Dispose();
             GraphicContent.CurrentTool = new NoTool(GraphicContent);
+            StatusBar.UpdateTool(GraphicContent.CurrentTool.Name);
         }
 
         private void LineToolSelectedExecute(object obj)
         {
             GraphicContent.CurrentTool.Dispose();
             GraphicContent.CurrentTool = new LineTool(GraphicContent);
+            StatusBar.UpdateTool(GraphicContent.CurrentTool.Name);
         }
 
         private void OpenImageExecute(object obj = null)
@@ -282,6 +345,21 @@ namespace GraphicEditor.ViewModel
             f_graphicBuilderForSave = new GEFileBuilder();
             f_graphicBuilderForSave = GraphicContent.Layers.Aggregate(f_graphicBuilderForSave, (current, layer) => current.BuildLayer(layer));
             f_graphicBuilderForSave.Buid(f_graphicBuilderForSave.FileName());
+        }
+
+        private void ShowOrHideOverviewWindowExecute(object obj)
+        {
+            ShowOrHideChildWindow(f_zoomBoxChildWindowFactory, (bool)obj);
+        }
+
+        private void ShowOrHideLayersWindowExecute(object obj)
+        {
+            ShowOrHideChildWindow(f_layersChildWindowFactory, (bool)obj);
+        }
+
+        private void ShowOrHideColorPickerWindowExecute(object obj)
+        {
+            ShowOrHideChildWindow(f_colorPickerChildWindowFactory, (bool)obj);
         }
 
         #endregion

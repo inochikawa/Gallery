@@ -13,10 +13,11 @@ namespace GraphicEditor.Model.ToolBehavior.GraphicBuilderBehavior
 
         public override void Buid(string fileName)
         {
-            using (FileStream xamlFile = new FileStream(fileName, FileMode.Create, FileAccess.ReadWrite))
-            {
-                XamlWriter.Save(Panel, xamlFile);
-            }
+            if (fileName != null)
+                using (FileStream xamlFile = new FileStream(fileName, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    XamlWriter.Save(Panel, xamlFile);
+                }
         }
 
         public override string FileName()

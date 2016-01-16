@@ -54,17 +54,23 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <Border x:Name="TopPanel"
-                    Height="15"
-                    Background="#484b5f"
-                    VerticalAlignment="Top"
-                    Grid.Row="0">
-                <Border.Effect>
-                    <DropShadowEffect Direction="-90"
-                                      Opacity=".3"
-                                      ShadowDepth="3"/>
-                </Border.Effect>
-                <Grid>
+            <Grid>
+                    <Border x:Name="TopPanel"
+                            Height="15"
+                            Background="#484b5f"
+                            VerticalAlignment="Top"
+                            Grid.Row="0">
+                        <Border.Effect>
+                            <DropShadowEffect Direction="-90"
+                                              Opacity=".3"
+                                              ShadowDepth="3"/>
+                        </Border.Effect>
+                        <TextBlock x:Name="HeaderTxt"
+                                   Text="Header"
+                                   VerticalAlignment="Center"
+                                   Foreground="White"/>
+                    </Border>
+
                     <Button x:Name="ButtonClose" 
                             Content="X"
                             FontSize="8"
@@ -73,13 +79,10 @@
                             Height="15"
                             Style="{DynamicResource FlatButton}"
                             Background="#cd4800"
-                            HorizontalAlignment="Right"/>
-                    <TextBlock x:Name="HeaderTxt"
-                               Text="Header"
-                               VerticalAlignment="Center"
-                               Foreground="White"/>
-                    </Grid>
-                </Border>
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Click="ButtonClose_Click"/>
+                </Grid>
             
             <!--Container-->
             <Grid Grid.Row="1"
