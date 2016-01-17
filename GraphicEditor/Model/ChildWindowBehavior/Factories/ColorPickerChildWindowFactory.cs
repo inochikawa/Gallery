@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
@@ -12,7 +14,7 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Factories
 {
     public class ColorPickerChildWindowFactory : IChildWindowFactory
     {
-        private const string Path = @"Parameters\ColorPickerChildWindow.cwd";
+        private string Path = AppDomain.CurrentDomain.BaseDirectory + @"\Parameters\ColorPickerChildWindow.cwd";
 
         public ColorPickerChildWindowFactory()
         {
@@ -49,10 +51,7 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Factories
             ((TranslateTransform)ChildWindow.ChildWindow.RenderTransform).Y = windowParameters.Y;
             ((TranslateTransform)ChildWindow.ChildWindow.RenderTransform).X = windowParameters.X;
 
-            if (windowParameters.IsVisible)
-                ChildWindow.ChildWindow.Visibility = Visibility.Visible;
-            else
-                ChildWindow.ChildWindow.Visibility = Visibility.Hidden;
+            ChildWindow.ChildWindow.Visibility = windowParameters.IsVisible ? Visibility.Visible : Visibility.Hidden;
         }
     }
 }

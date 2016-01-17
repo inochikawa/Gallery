@@ -12,7 +12,7 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Factories
 {
     public class LayersChildWindowFactory : IChildWindowFactory
     {
-        private const string Path = @"Parameters\LayersChildWindow.cwd";
+        private  string Path = AppDomain.CurrentDomain.BaseDirectory + @"\Parameters\LayersChildWindow.cwd";
 
         public LayersChildWindowFactory(GraphicContent graphicContent)
         {
@@ -71,10 +71,7 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Factories
             ((TranslateTransform)ChildWindow.ChildWindow.RenderTransform).Y = windowParameters.Y;
             ((TranslateTransform)ChildWindow.ChildWindow.RenderTransform).X = windowParameters.X;
 
-            if (windowParameters.IsVisible)
-                ChildWindow.ChildWindow.Visibility = Visibility.Visible;
-            else
-                ChildWindow.ChildWindow.Visibility = Visibility.Hidden;
+            ChildWindow.ChildWindow.Visibility = windowParameters.IsVisible ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void LayerWindowViewModel_OnLayerCreate()

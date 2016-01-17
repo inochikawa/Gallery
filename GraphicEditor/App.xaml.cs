@@ -19,7 +19,7 @@ namespace GraphicEditor
                 try
                 {
                     var fname = e.Args[0];
-
+                    // var fname = @"E:\Test1.gef";
                     // It comes in as a URI; this helps to convert it to a path.
                     Uri uri = new Uri(fname);
                     fname = uri.LocalPath;

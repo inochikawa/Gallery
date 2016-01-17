@@ -58,8 +58,6 @@ namespace GraphicEditor.ViewModel
                 f_colorPickerChildWindowFactory,
                 f_zoomBoxChildWindowFactory
             };
-
-            LoadChildWindowsStates();
         }
 
         private void GraphicContentWorkSpaceMouseMove(object sender, MouseEventArgs e)

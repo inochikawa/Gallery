@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,6 +54,7 @@ namespace GraphicEditor
                 string fname = Application.Current.Properties["ArbitraryArgName"].ToString();
                 f_mainWindowViewModel.OpenGeFileOnStartup(fname);
             }
+            f_mainWindowViewModel.LoadChildWindowsStates();
         }
     }
 }

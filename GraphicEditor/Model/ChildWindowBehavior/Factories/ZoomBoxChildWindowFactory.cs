@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Media;
 using GraphicEditor.Model.ChildWindowBehavior.ChildWondows;
 using GraphicEditor.Model.ChildWindowBehavior.Interfaces;
@@ -8,7 +9,7 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Factories
 {
     class ZoomBoxChildWindowFactory : IChildWindowFactory
     {
-        private const string Path = @"Parameters\ZoomBoxChildWindow.cwd";
+        private  string Path = AppDomain.CurrentDomain.BaseDirectory + @"\Parameters\ZoomBoxChildWindow.cwd";
 
         public ZoomBoxChildWindowFactory()
         {
@@ -45,10 +46,7 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Factories
             ((TranslateTransform)ChildWindow.ChildWindow.RenderTransform).Y = windowParameters.Y;
             ((TranslateTransform)ChildWindow.ChildWindow.RenderTransform).X = windowParameters.X;
             
-            if(windowParameters.IsVisible)
-                ChildWindow.ChildWindow.Visibility = Visibility.Visible;
-            else
-                ChildWindow.ChildWindow.Visibility = Visibility.Hidden;
+            ChildWindow.ChildWindow.Visibility = windowParameters.IsVisible ? Visibility.Visible : Visibility.Hidden;
         }
     }
 }
