@@ -6,5 +6,7 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Interfaces
     {
         IChildWindow ChildWindow { get; set; }
         GraphicContent GraphicContent { get; set; }
+        void SaveState();
+        void LoadState();
     }
 }

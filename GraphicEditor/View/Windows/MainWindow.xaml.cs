@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -28,7 +30,14 @@ namespace GraphicEditor
             f_mainWindowViewModel.StatusBar = statusBar.viewModel;
 
             Loaded += MainContainer_Loaded;
+            Closing += MainContainer_Unloaded;
         }
+
+        private void MainContainer_Unloaded(object sender, CancelEventArgs e)
+        {
+            f_mainWindowViewModel.SaveChildWindowsStates();
+        }
+
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {

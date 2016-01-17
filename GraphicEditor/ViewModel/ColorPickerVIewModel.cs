@@ -25,6 +25,11 @@ namespace GraphicEditor.ViewModel
         private List<GraphicToolProperties> f_tools;
         private ColorPicker f_colorPicker;
 
+        public ColorPickerViewModel()
+        {
+            
+        }
+
         public ColorPickerViewModel(Image image, Ellipse pickerEllipse, ColorPicker colorPicker)
         {
             f_tools = new List<GraphicToolProperties>();

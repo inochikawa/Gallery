@@ -92,6 +92,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\ChildWindowBehavior\ChildWondows\ColorPickerChildWindow.cs" />
     <Compile Include="Model\ChildWindowBehavior\ChildWondows\ZoomBoxChildWindow.cs" />
+    <Compile Include="Model\ChildWindowBehavior\WindowParameters.cs" />
     <Compile Include="Model\ChildWindowBehavior\Factories\ColorPickerChildWindowFactory.cs" />
     <Compile Include="Model\ChildWindowBehavior\Factories\LayersChildWindowFactory.cs" />
     <Compile Include="Model\ChildWindowBehavior\Factories\ZoomBoxChildWindowFactory.cs" />

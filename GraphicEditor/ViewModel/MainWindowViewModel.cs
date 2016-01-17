@@ -34,7 +34,7 @@ namespace GraphicEditor.ViewModel
         private ICommand f_showOrHideLayersWindow;
         private ICommand f_showOrHideColorPickerWindow;
         private GraphicBuilder f_graphicBuilderForSave;
-        private readonly List<ChildWindow> f_childWindows;
+        private readonly List<IChildWindowFactory> f_childWindows;
         private readonly IChildWindowFactory f_layersChildWindowFactory;
         private readonly IChildWindowFactory f_colorPickerChildWindowFactory;
         private readonly IChildWindowFactory f_zoomBoxChildWindowFactory;
@@ -52,12 +52,14 @@ namespace GraphicEditor.ViewModel
             f_zoomBoxChildWindowFactory = new ZoomBoxChildWindowFactory();
             ((ZoomBoxChildWindow)f_zoomBoxChildWindowFactory.ChildWindow).ScrollViewer = ScrollViewer;
             ((ColorPickerViewModel)f_colorPickerChildWindowFactory.ChildWindow.ViewModel).Subscribe(GraphicContent.GraphicToolProperties);
-            f_childWindows = new List<ChildWindow>()
+            f_childWindows = new List<IChildWindowFactory>()
             {
-                f_layersChildWindowFactory.ChildWindow.ChildWindow,
-                f_colorPickerChildWindowFactory.ChildWindow.ChildWindow,
-                f_zoomBoxChildWindowFactory.ChildWindow.ChildWindow
+                f_layersChildWindowFactory,
+                f_colorPickerChildWindowFactory,
+                f_zoomBoxChildWindowFactory
             };
+
+            LoadChildWindowsStates();
         }
 
         private void GraphicContentWorkSpaceMouseMove(object sender, MouseEventArgs e)
@@ -213,7 +215,7 @@ namespace GraphicEditor.ViewModel
         public void SubscribeMenuItemsToChildWindows(List<MenuItem> menuItems)
         {
             for (int i = 0; i < menuItems.Count; i++)
-                f_childWindows[i].Subscribe(menuItems[i]);
+                f_childWindows[i].ChildWindow.ChildWindow.Subscribe(menuItems[i]);
         }
 
         private void SubscribeToCommands()
@@ -342,7 +344,7 @@ namespace GraphicEditor.ViewModel
 
         private void SaveGeFileExecute(object obj = null)
         {
-            f_graphicBuilderForSave = new GEFileBuilder();
+            f_graphicBuilderForSave = new GeFileBuilder();
             f_graphicBuilderForSave = GraphicContent.Layers.Aggregate(f_graphicBuilderForSave, (current, layer) => current.BuildLayer(layer));
             f_graphicBuilderForSave.Buid(f_graphicBuilderForSave.FileName());
         }
@@ -386,6 +388,22 @@ namespace GraphicEditor.ViewModel
         public void OpenGeFileOnStartup(string fileName)
         {
             GraphicContent.Command.InsertGeFile(fileName, GraphicContent);
+        }
+
+        public void SaveChildWindowsStates()
+        {
+            foreach (IChildWindowFactory childWindow in f_childWindows)
+            {
+                childWindow.SaveState();
+            }
+        }
+
+        public void LoadChildWindowsStates()
+        {
+            foreach (IChildWindowFactory childWindow in f_childWindows)
+            {
+                childWindow.LoadState();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using GraphicEditor.View.UserControls;
+﻿using System;
+using GraphicEditor.View.UserControls;
 
 namespace GraphicEditor.Model.ChildWindowBehavior.Interfaces
 {

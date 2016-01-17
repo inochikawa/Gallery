@@ -5,12 +5,8 @@ using Microsoft.Win32;
 
 namespace GraphicEditor.Model.ToolBehavior.GraphicBuilderBehavior
 {
-    public class GEFileBuilder : GraphicBuilder
+    public class GeFileBuilder : GraphicBuilder
     {
-        public GEFileBuilder():base()
-        {
-        }
-
         public override void Buid(string fileName)
         {
             if (fileName != null)
