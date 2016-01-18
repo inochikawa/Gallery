@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Markup;
 using GraphicEditor.Model.ToolBehavior;
 
@@ -8,8 +10,8 @@ namespace GraphicEditor.Model.Commands
 {
     public class InsertGeFileCommand : ICommand
     {
-        private List<Layer> f_layers;
-        private GraphicContent f_graphicContent;
+        private readonly List<Layer> f_layers;
+        private readonly GraphicContent f_graphicContent;
 
         public InsertGeFileCommand(string fileName, GraphicContent graphicContent)
         {
@@ -17,13 +19,26 @@ namespace GraphicEditor.Model.Commands
             Canvas loadedCanvas;
             using (FileStream fileStream = new FileStream(fileName, FileMode.Open))
             {
-                loadedCanvas = XamlReader.Load(fileStream) as Canvas;
+                try
+                {
+                    loadedCanvas = XamlReader.Load(fileStream) as Canvas;
+                }
+                catch (XamlParseException exception)
+                {
+                    MessageBox.Show(exception.ToString(), @"Error adding layer");
+                    return;
+                }
+                catch (ArgumentException exception)
+                {
+                    MessageBox.Show(exception.ToString(), @"Error adding layer");
+                    return;
+                }
             }
 
             if (loadedCanvas == null) return;
 
             foreach (Layer layer in loadedCanvas.Children)
-                f_layers.Add(layer.Clone());
+                f_layers.Add(layer.Clone(false));
 
             f_graphicContent = graphicContent;
         }

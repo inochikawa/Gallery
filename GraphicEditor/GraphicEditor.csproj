@@ -124,6 +124,10 @@
     <Compile Include="Model\IViewModel.cs" />
     <Compile Include="Model\Layer.cs" />
     <Compile Include="Model\RelayCommand.cs" />
+    <Page Include="View\Styles\BrushPropertyItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Styles\CuteSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +160,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UserControls\GraphicToolPropertiesUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControls\LayersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +191,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ColorPickerVIewModel.cs" />
+    <Compile Include="ViewModel\GraphicToolPropertiesViewModel.cs" />
     <Compile Include="ViewModel\LayersViewViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\StatusBarViewModel.cs" />
@@ -195,8 +204,12 @@
     <Compile Include="View\UserControls\ColorPicker.xaml.cs">
       <DependentUpon>ColorPicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\CSharpFiles\BrushPropertyItem.cs" />
     <Compile Include="View\UserControls\CSharpFiles\LayerItem.cs" />
     <Compile Include="View\UserControls\CSharpFiles\ZoomBox.cs" />
+    <Compile Include="View\UserControls\GraphicToolPropertiesUserControl.xaml.cs">
+      <DependentUpon>GraphicToolPropertiesUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\Helpers\RgbConverter.cs" />
     <Compile Include="View\UserControls\LayersView.xaml.cs">
       <DependentUpon>LayersView.xaml</DependentUpon>

@@ -41,7 +41,7 @@ namespace GraphicEditor.Model
 
         public string LayerName { get; set; }
         
-        public Layer Clone()
+        public Layer Clone(bool autoNaming = true)
         {
             var xaml = XamlWriter.Save(this);
             var xamlString = new StringReader(xaml);
@@ -49,7 +49,11 @@ namespace GraphicEditor.Model
             var deepCopyObject = XamlReader.Load(xmlTextReader) as Layer;
             if (deepCopyObject != null)
             {
-                deepCopyObject.LayerName += " clone";
+                if (autoNaming)
+                {
+                    deepCopyObject.LayerName += " clone";
+                    deepCopyObject.Name = LayerName.Replace(" ", "_");
+                }
                 IsSelected = false;
                 return deepCopyObject;
             }

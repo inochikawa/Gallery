@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="View/Styles/ZoomBox.xaml"/>
                 <ResourceDictionary Source="View/Styles/CuteSlider.xaml"/>
                 <ResourceDictionary Source="View/Styles/MenuItemStyeRadioButton.xaml"/>
+                <ResourceDictionary Source="View/Styles/BrushPropertyItem.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

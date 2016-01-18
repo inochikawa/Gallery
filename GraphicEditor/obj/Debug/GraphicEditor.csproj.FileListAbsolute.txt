@@ -49,3 +49,6 @@ D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\CuteSlider.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\MenuItemStyeRadioButton.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\UserControls\StatusBar.g.cs
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\UserControls\StatusBar.baml
+D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\UserControls\GraphicToolPropertiesUserControl.g.cs
+D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\UserControls\GraphicToolPropertiesUserControl.baml
+D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\BrushPropertyItem.baml

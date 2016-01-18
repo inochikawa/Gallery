@@ -13,7 +13,8 @@ namespace GraphicEditor.Model.ChildWindowBehavior.ChildWondows
             {
                 Child = new ZoomBox(),
                 Width = 190,
-                Height = 210
+                Height = 210,
+                MinHeight = 63
             };
             Header = "Overview";
         }

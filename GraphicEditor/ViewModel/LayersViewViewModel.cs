@@ -73,6 +73,8 @@ namespace GraphicEditor.ViewModel
 
         public void AddLayer(Layer layer)
         {
+            if(layer == null) return;
+            
             LayerItem layerItem = new LayerItem
             {
                 IsChecked = layer.IsActive,

@@ -20,6 +20,7 @@
         <local:StatusBar x:Name="statusBar"
                          HorizontalAlignment="Stretch"
                          VerticalAlignment="Bottom"
+                         Margin="0,0,17,17"
                          />
 
         <Menu Height="25"
@@ -147,7 +148,13 @@
             </MenuItem>
             
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+
         </Menu>
+
+        <local:GraphicToolPropertiesUserControl VerticalAlignment="Top"
+                                                HorizontalAlignment="Left"
+                                                Margin="220,-34,0,0"
+                                                x:Name="GraphicToolPropertiesUserControl"/>
 
         <ToolBarTray Orientation="Vertical"
                      Width="25"

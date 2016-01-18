@@ -47,7 +47,7 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Factories
             if (windowParameters == null) return;
 
             ChildWindow.ChildWindow.Width = windowParameters.Width;
-            ChildWindow.ChildWindow.Height = ChildWindow.ChildWindow.Height;
+            ChildWindow.ChildWindow.Height = windowParameters.Height;
             ((TranslateTransform)ChildWindow.ChildWindow.RenderTransform).Y = windowParameters.Y;
             ((TranslateTransform)ChildWindow.ChildWindow.RenderTransform).X = windowParameters.X;
 

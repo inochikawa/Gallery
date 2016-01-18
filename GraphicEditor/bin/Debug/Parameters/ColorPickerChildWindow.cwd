@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <WindowParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <X>-20</X>
-  <Y>220</Y>
+  <X>-35</X>
+  <Y>-3</Y>
   <Width>190</Width>
-  <Height>210</Height>
+  <Height>243</Height>
   <IsVisible>true</IsVisible>
 </WindowParameters>

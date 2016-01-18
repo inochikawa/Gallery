@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\GitHub\Gallery\GraphicEditor\App.xaml
-12-540204373
+14-1283635985
 
-55600324373
+58106230787
 19-1007979877
-View\Styles\CuteSlider.xaml;View\Styles\MenuItemStyeRadioButton.xaml;View\Styles\LayerItem.xaml;View\Styles\LayersListBox.xaml;View\Styles\ModificatedExpander.xaml;View\Styles\ZoomBox.xaml;View\UserControls\ChildWindow.xaml;View\UserControls\ColorPicker.xaml;View\UserControls\LayersView.xaml;View\UserControls\StatusBar.xaml;View\Windows\ImagePropertiesWindow.xaml;View\Windows\MainWindow.xaml;
+View\Styles\BrushPropertyItem.xaml;View\Styles\CuteSlider.xaml;View\Styles\MenuItemStyeRadioButton.xaml;View\Styles\LayerItem.xaml;View\Styles\LayersListBox.xaml;View\Styles\ModificatedExpander.xaml;View\Styles\ZoomBox.xaml;View\UserControls\ChildWindow.xaml;View\UserControls\ColorPicker.xaml;View\UserControls\GraphicToolPropertiesUserControl.xaml;View\UserControls\LayersView.xaml;View\UserControls\StatusBar.xaml;View\Windows\ImagePropertiesWindow.xaml;View\Windows\MainWindow.xaml;
 
 False
 

@@ -85,7 +85,7 @@ namespace GraphicEditor.Model.ToolBehavior
 
             // Set the shadow opacity to half opaque or in other words - half transparent.
             // The range is 0-1.
-            myDropShadowEffect.Opacity = 1;
+            myDropShadowEffect.Opacity = (double)GraphicContent.GraphicToolProperties.Softness;
 
             return myDropShadowEffect;
         }

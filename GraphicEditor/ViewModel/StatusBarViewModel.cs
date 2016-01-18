@@ -32,17 +32,7 @@ namespace GraphicEditor.ViewModel
                 NotifyPropertyChanged("Pos");
             }
         }
-
-        public string Color
-        {
-            get { return f_color; }
-            set
-            {
-                f_color = value;
-                NotifyPropertyChanged("Color");
-            }
-        }
-
+        
         public string Tool
         {
             get { return f_tool; }
@@ -58,12 +48,7 @@ namespace GraphicEditor.ViewModel
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
-
-        public void UpdateColor(Color color)
-        {
-            f_color = color.ToString() + "\t";
-        }
-
+        
         public void UpdateTool(string name)
         {
             Tool = name + "\t";

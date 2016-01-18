@@ -12,7 +12,6 @@ using GraphicEditor.Model.ChildWindowBehavior.Factories;
 using GraphicEditor.Model.ChildWindowBehavior.Interfaces;
 using GraphicEditor.Model.ToolBehavior;
 using GraphicEditor.Model.ToolBehavior.GraphicBuilderBehavior;
-using GraphicEditor.View.UserControls;
 using Microsoft.Win32;
 
 namespace GraphicEditor.ViewModel
@@ -168,12 +167,6 @@ namespace GraphicEditor.ViewModel
             set { f_saveImage = value; }
         }
 
-        #endregion
-
-        public ScrollViewer ScrollViewer { get; set; }
-
-        public Canvas BackCanvas { get; set; }
-
         public ICommand SaveGeFile
         {
             get { return f_saveGeFile; }
@@ -204,12 +197,18 @@ namespace GraphicEditor.ViewModel
             set { f_showOrHideColorPickerWindow = value; }
         }
 
+        #endregion
+
+        public ScrollViewer ScrollViewer { get; set; }
+
+        public Canvas BackCanvas { get; set; }
+
         public StatusBarViewModel StatusBar
         {
             get { return f_statusBar; }
             set { f_statusBar = value; }
         }
-
+        
         public void SubscribeMenuItemsToChildWindows(List<MenuItem> menuItems)
         {
             for (int i = 0; i < menuItems.Count; i++)
@@ -244,8 +243,8 @@ namespace GraphicEditor.ViewModel
             ScrollViewer = new ScrollViewer
             {
                 Background = Brushes.Transparent,
-                HorizontalScrollBarVisibility = ScrollBarVisibility.Auto,
-                VerticalScrollBarVisibility = ScrollBarVisibility.Auto
+                HorizontalScrollBarVisibility = ScrollBarVisibility.Visible,
+                VerticalScrollBarVisibility = ScrollBarVisibility.Visible
             };
 
             BackCanvas = new Canvas()
@@ -385,7 +384,8 @@ namespace GraphicEditor.ViewModel
 
         public void OpenGeFileOnStartup(string fileName)
         {
-            GraphicContent.Command.InsertGeFile(fileName, GraphicContent);
+            GraphicContent = GraphicContent.InitFromGeFile(fileName);
+            GC.Collect();
         }
 
         public void SaveChildWindowsStates()

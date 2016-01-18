@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="GraphicEditor.View.UserControls.GraphicToolPropertiesUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModel="clr-namespace:GraphicEditor.ViewModel"
+             mc:Ignorable="d"
+             Background="Transparent">
+    <UserControl.DataContext>
+        <viewModel:GraphicToolPropertiesViewModel x:Name="viewModel"/>
+    </UserControl.DataContext>
+    <StackPanel Orientation="Horizontal">
+        <Label Content="Brush"
+               Foreground="White"
+               FontWeight="Bold"
+               FontSize="15"
+               VerticalAlignment="Top"
+               Margin="0,-5,0,0"/>
+        <Expander Header="{Binding ThicknessValue}"
+                  Foreground="White"
+                  FontSize="15">
+            <Grid Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <ListBox ItemsSource="{Binding Path=TemplateBrushProperties, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Width="300"
+                         Height="300"
+                         x:Name="TemplatesListBox"
+                         SelectedIndex="0"
+                         SelectionMode="Single"
+                         FocusVisualStyle="{x:Null}">
+                    <!--<ListBox.Resources>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                        </Style>
+                    </ListBox.Resources>-->
+                </ListBox>
+                <StackPanel Grid.Row="1">
+                    <Grid>
+                        <Label  Content="Thiscness"
+                                VerticalAlignment="Center"
+                                FontWeight="Normal"
+                                FontSize="12"/>
+                        <Slider Minimum="1"
+                                Maximum="1000"
+                                Value="10"
+                                Width="200"
+                                Margin="60,0,0,0"
+                                VerticalAlignment="Center"
+                                Style="{DynamicResource CuteSlider}"
+                                x:Name="thicknessSlider"
+                                TickFrequency="1"
+                                AutoToolTipPlacement="BottomRight"
+                                AutoToolTipPrecision="0"
+                                IsSnapToTickEnabled="True"/>
+                    </Grid>
+                    <Grid>
+                        <Label Content="Softness"
+                                VerticalAlignment="Center"
+                                FontWeight="Normal"
+                                FontSize="12"/>
+                        <Slider Minimum="0"
+                                Maximum="100"
+                                Value="0"
+                                Width="200"
+                                Margin="60,0,0,0"
+                                VerticalAlignment="Center"
+                                Style="{DynamicResource CuteSlider}"
+                                x:Name="softnessSlider"
+                                AutoToolTipPlacement="BottomRight"
+                                AutoToolTipPrecision="0"
+                                IsSnapToTickEnabled="True"
+                                TickFrequency="1"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Expander>
+    </StackPanel>
+</UserControl>

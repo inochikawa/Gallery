@@ -26,7 +26,11 @@ namespace GraphicEditor
                 colorPickerMenuItem,
                 overviewMenuItem
             });
+            statusBar.viewModel.UpdateSize((int)f_mainWindowViewModel.GraphicContent.WorkSpace.Width, (int)f_mainWindowViewModel.GraphicContent.WorkSpace.Height);
             f_mainWindowViewModel.StatusBar = statusBar.viewModel;
+
+            // Does not match the MVVM pattern
+            GraphicToolPropertiesUserControl.viewModel.Subscribe(f_mainWindowViewModel.GraphicContent.GraphicToolProperties);
 
             Loaded += MainContainer_Loaded;
             Closing += MainContainer_Unloaded;

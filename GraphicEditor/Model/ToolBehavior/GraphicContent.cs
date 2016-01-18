@@ -36,10 +36,10 @@ namespace GraphicEditor.Model.ToolBehavior
         private Tool f_currentTool;
 
         private CommandReceiver f_command;
-        
+
         private GraphicToolProperties f_graphicToolProperties;
 
-        public GraphicContent()
+        public GraphicContent(bool autoLayerCreating = true)
         {
             Command = new CommandReceiver();
             f_workSpace = new Canvas();
@@ -51,7 +51,8 @@ namespace GraphicEditor.Model.ToolBehavior
             };
             ConfigureWorkSpace();
             Layers = new List<Layer>();
-            AddLayer(new Layer("New layer " + Layers.Count));
+            if (autoLayerCreating)
+                AddLayer(new Layer("New layer " + Layers.Count));
 
             // Set current tool is Pointer
             f_currentTool = new PointerTool(this);
@@ -89,7 +90,7 @@ namespace GraphicEditor.Model.ToolBehavior
             get { return f_windowSize; }
             set { f_windowSize = value; }
         }
-        
+
         public CommandReceiver Command
         {
             get
@@ -111,7 +112,7 @@ namespace GraphicEditor.Model.ToolBehavior
         {
             get { return Layers.FirstOrDefault(layer => layer.IsSelected); }
         }
-        
+
         public GraphicToolProperties GraphicToolProperties
         {
             get { return f_graphicToolProperties; }
@@ -232,5 +233,16 @@ namespace GraphicEditor.Model.ToolBehavior
             f_workSpace.Effect = myDropShadowEffect;
         }
 
+        public GraphicContent InitFromGeFile(string fileName)
+        {
+            List<Layer> tempLayers = new List<Layer>(Layers);
+
+            foreach (Layer layer in tempLayers)
+                RemoveLayerEventHandler(layer);
+
+            Command.InsertGeFile(fileName, this);
+            
+            return this;
+        }
     }
 }

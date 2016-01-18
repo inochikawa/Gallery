@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:cSharpFiles="clr-namespace:GraphicEditor.View.UserControls.CSharpFiles">
+    
+    <Style TargetType="{x:Type cSharpFiles:BrushPropertyItem}">
+        <Setter Property="Height" Value="45"/>
+        <Setter Property="Width" Value="260"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type cSharpFiles:BrushPropertyItem}">
+                    <Border BorderBrush="Black"
+                            BorderThickness="2"
+                            Margin="0,1,0,1"
+                            x:Name="Border">
+                        <Grid Background="#9f9f9f"
+                              HorizontalAlignment="Stretch"
+                              DataContext="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=.}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Path Stroke="White" 
+                                  StrokeThickness="{Binding ThicknessValue}"
+                                  Grid.Column="0"
+                                  x:Name="PART_Curve">
+                                <Path.Data>
+                                    <PathGeometry>
+                                        <PathGeometry.Figures>
+                                            <PathFigureCollection>
+                                                <PathFigure StartPoint="1,10">
+                                                    <PathFigure.Segments>
+                                                        <PathSegmentCollection>
+                                                            <BezierSegment Point1="70,0" 
+                                                                           Point2="140,50" 
+                                                                           Point3="210,10"/>
+                                                        </PathSegmentCollection>
+                                                    </PathFigure.Segments>
+                                                </PathFigure>
+                                            </PathFigureCollection>
+                                        </PathGeometry.Figures>
+                                    </PathGeometry>
+                                </Path.Data>
+                                <Path.Effect>
+                                    <DropShadowEffect Direction="0"
+                                                      Color="White"
+                                                      Opacity="{Binding SoftnessValue}"
+                                                      ShadowDepth="0"/>
+                                </Path.Effect>
+                            </Path>
+
+                            <TextBlock Text="{Binding ThicknessValue}"
+                                       FontSize="15"
+                                       HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Century Gothic"
+                                       Foreground="White"
+                                       TextWrapping="Wrap"
+                                       Grid.Column="1"
+                                       x:Name="PART_ThicknessValue"/>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="Border" Property="BorderBrush"
+                                    Value="Black"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Border" Property="BorderBrush"
+                                    Value="White"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -2,6 +2,9 @@
 
 namespace GraphicEditor.Model.ToolBehavior.GraphicBuilderBehavior
 {
+    /// <summary>
+    /// Graphic image builder 
+    /// </summary>
     public abstract class GraphicBuilder
     {
         protected GraphicBuilder()
@@ -13,7 +16,7 @@ namespace GraphicEditor.Model.ToolBehavior.GraphicBuilderBehavior
 
         public GraphicBuilder BuildLayer(Layer layer)
         {
-            Panel.Children.Add(layer.Clone());
+            Panel.Children.Add(layer.Clone(false));
             Panel.Width = layer.Width;
             Panel.Height = layer.Height;
             return this;

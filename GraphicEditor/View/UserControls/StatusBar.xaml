@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:viewModel="clr-namespace:GraphicEditor.ViewModel"
              Height="25"
-             Background="WhiteSmoke">
+             Background="White">
     <UserControl.DataContext>
         <viewModel:StatusBarViewModel x:Name="viewModel"/>
     </UserControl.DataContext>
@@ -19,7 +19,7 @@
         </StackPanel>
         
         <StackPanel Orientation="Horizontal">
-            <Label Content="Pos: "
+            <Label Content= "Mouse position: "
                    FontWeight="Bold"/>
             <Label Content="{Binding Pos, Mode=TwoWay}"
                    x:Name="labePos"
