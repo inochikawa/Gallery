@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using Combogallary;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -84,7 +85,7 @@ namespace Combogallary {
             eventSetter = new System.Windows.EventSetter();
             eventSetter.Event = System.Windows.UIElement.MouseLeftButtonDownEvent;
             
-            #line 9 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
+            #line 10 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
             eventSetter.Handler = new System.Windows.Input.MouseButtonEventHandler(this.Resize_Init);
             
             #line default
@@ -93,7 +94,7 @@ namespace Combogallary {
             eventSetter = new System.Windows.EventSetter();
             eventSetter.Event = System.Windows.UIElement.MouseLeftButtonUpEvent;
             
-            #line 10 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
+            #line 11 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
             eventSetter.Handler = new System.Windows.Input.MouseButtonEventHandler(this.Resize_End);
             
             #line default
@@ -102,7 +103,7 @@ namespace Combogallary {
             eventSetter = new System.Windows.EventSetter();
             eventSetter.Event = System.Windows.UIElement.MouseMoveEvent;
             
-            #line 11 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
+            #line 12 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
             eventSetter.Handler = new System.Windows.Input.MouseEventHandler(this.Resizeing_Form);
             
             #line default
@@ -111,7 +112,7 @@ namespace Combogallary {
             break;
             case 2:
             
-            #line 37 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
+            #line 38 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
             ((System.Windows.Controls.Grid)(target)).MouseDown += new System.Windows.Input.MouseButtonEventHandler(this.TopBar_MouseDown);
             
             #line default
@@ -119,7 +120,7 @@ namespace Combogallary {
             break;
             case 3:
             
-            #line 70 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
+            #line 71 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.btnClose_Click);
             
             #line default
@@ -127,7 +128,7 @@ namespace Combogallary {
             break;
             case 4:
             
-            #line 81 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
+            #line 82 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.btnMaximize_Click);
             
             #line default
@@ -135,7 +136,7 @@ namespace Combogallary {
             break;
             case 5:
             
-            #line 112 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
+            #line 113 "..\..\..\..\..\View\Resourses\Styles\FlatWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.btnMinimize_Click);
             
             #line default

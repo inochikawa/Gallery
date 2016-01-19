@@ -68,7 +68,8 @@
                         <TextBlock x:Name="HeaderTxt"
                                    Text="Header"
                                    VerticalAlignment="Center"
-                                   Foreground="White"/>
+                                   Foreground="White"
+				                   FontFamily="Century Gothic"/>
                     </Border>
 
                     <Button x:Name="ButtonClose" 

@@ -15,8 +15,9 @@
         <ListBox x:Name="LayersList"
                  Grid.Row="0"
                  ItemsSource="{Binding Path=LayerItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 HorizontalContentAlignment="Stretch"
                  SelectedIndex="0"
+                 Style="{DynamicResource CuteListBox}"
+				 FontFamily="Century Gothic"
                  />
 
         <Menu Height="25"

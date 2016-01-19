@@ -12,25 +12,30 @@
     <StackPanel Orientation="Horizontal">
         <Label Content="Brush"
                Foreground="White"
-               FontWeight="Bold"
                FontSize="15"
                VerticalAlignment="Top"
-               Margin="0,-5,0,0"/>
+               Margin="0,-5,0,0"
+			   FontFamily="Century Gothic"/>
         <Expander Header="{Binding ThicknessValue}"
                   Foreground="White"
-                  FontSize="15">
+                  FontSize="15"
+                  Template="{DynamicResource RevealExpanderTemp}"
+				  FontFamily="Century Gothic"
+                  FontWeight="Bold"
+                  x:Name="Expander">
             <Grid Background="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="70"/>
                 </Grid.RowDefinitions>
                 <ListBox ItemsSource="{Binding Path=TemplateBrushProperties, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Width="300"
-                         Height="300"
+                         Height="350"
                          x:Name="TemplatesListBox"
                          SelectedIndex="0"
                          SelectionMode="Single"
-                         FocusVisualStyle="{x:Null}">
+                         Style="{DynamicResource CuteListBox}"
+                         FontWeight="Normal">
                     <!--<ListBox.Resources>
                         <Style TargetType="ListBoxItem">
                             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -42,7 +47,8 @@
                         <Label  Content="Thiscness"
                                 VerticalAlignment="Center"
                                 FontWeight="Normal"
-                                FontSize="12"/>
+                                FontSize="15"
+				                FontFamily="Century Gothic"/>
                         <Slider Minimum="1"
                                 Maximum="1000"
                                 Value="10"
@@ -60,7 +66,8 @@
                         <Label Content="Softness"
                                 VerticalAlignment="Center"
                                 FontWeight="Normal"
-                                FontSize="12"/>
+                                FontSize="15"
+				                FontFamily="Century Gothic"/>
                         <Slider Minimum="0"
                                 Maximum="100"
                                 Value="0"

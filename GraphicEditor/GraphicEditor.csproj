@@ -128,6 +128,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Styles\CuteMenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Styles\CuteSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,7 +144,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Styles\LayersListBox.xaml">
+    <Page Include="View\Styles\CuteListBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,7 +199,6 @@
     <Compile Include="ViewModel\LayersViewViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\StatusBarViewModel.cs" />
-    <Compile Include="View\Styles\FlatInnerWindow.cs" />
     <Compile Include="View\Styles\Helpers\MultiplyConverter.cs" />
     <Compile Include="View\Styles\Helpers\TransparentViewVisualBrush.cs" />
     <Compile Include="View\UserControls\ChildWindow.xaml.cs">

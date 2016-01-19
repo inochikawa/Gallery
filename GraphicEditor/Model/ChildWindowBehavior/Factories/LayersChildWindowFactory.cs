@@ -96,6 +96,9 @@ namespace GraphicEditor.Model.ChildWindowBehavior.Factories
                 return;
 
             LayerItem layerItem = (LayerItem)((ListBox)obj).SelectedItem;
+
+            if(layerItem == null) return;
+
             Layer currentLayer = null;
 
             foreach (var layer in GraphicContent.Layers)

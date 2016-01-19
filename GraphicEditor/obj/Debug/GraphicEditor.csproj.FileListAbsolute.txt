@@ -34,7 +34,6 @@ D:\GitHub\Gallery\GraphicEditor\bin\Debug\ru-RU\StyleCop.CSharp.Rules.resources.
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Windows\MainWindow.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\App.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\LayerItem.baml
-D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\LayersListBox.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\ModificatedExpander.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Windows\ImagePropertiesWindow.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\GraphicEditor.g.resources
@@ -52,3 +51,5 @@ D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\UserControls\StatusBar.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\UserControls\GraphicToolPropertiesUserControl.g.cs
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\UserControls\GraphicToolPropertiesUserControl.baml
 D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\BrushPropertyItem.baml
+D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\CuteListBox.baml
+D:\GitHub\Gallery\GraphicEditor\obj\Debug\View\Styles\CuteMenuItem.baml

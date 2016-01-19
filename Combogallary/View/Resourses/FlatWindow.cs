@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Shapes;
+using MouseEventArgs = System.Windows.Input.MouseEventArgs;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace Combogallary
 {
@@ -24,9 +28,16 @@ namespace Combogallary
     public partial class FlatWindow
     {
         private System.Windows.WindowState f_windowState = WindowState.Normal;
+        // private Window f_window;
+
+        public FlatWindow()
+        {
+            
+        }
 
         void TopBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            // sender.ForWindowFromTemplate(w => f_window = w);
             sender.ForWindowFromTemplate(w => w.DragMove());
         }
 
@@ -37,11 +48,14 @@ namespace Combogallary
 
         void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
+            // sender.ForWindowFromTemplate(w => f_window = w);
             sender.ForWindowFromTemplate(w => w.WindowState = System.Windows.WindowState.Minimized);
         }
 
         void btnMaximize_Click(object sender, RoutedEventArgs e)
         {
+            // sender.ForWindowFromTemplate(w => f_window = w);
+
             if (this.f_windowState == System.Windows.WindowState.Normal)
             {
                 sender.ForWindowFromTemplate(w => w.WindowState = System.Windows.WindowState.Maximized);

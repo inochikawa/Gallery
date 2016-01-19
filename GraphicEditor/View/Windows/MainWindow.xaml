@@ -14,28 +14,28 @@
         MinWidth="790"
         WindowStartupLocation="CenterScreen" 
         KeyDown="Window_KeyDown"
-        Icon="../Resources/Images/icon.png">
+        Icon="../Resources/Images/icon.png"
+        WindowState="Normal"
+        PreviewMouseDown="MainWindow_OnPreviewMouseDown">
     <Grid x:Name="ChildrenContent">
 
-        <local:StatusBar x:Name="statusBar"
-                         HorizontalAlignment="Stretch"
-                         VerticalAlignment="Bottom"
-                         Margin="0,0,17,17"
-                         />
-
         <Menu Height="25"
-			VerticalAlignment="Top"
-			HorizontalAlignment="Left"
-			Margin="0,-35,75,0"
-			Background="#0277bd">
+			  VerticalAlignment="Top"
+			  HorizontalAlignment="Left"
+	          Margin="0,-35,75,0"
+		      Background="#0277bd"
+              FocusVisualStyle="{x:Null}">
             <MenuItem Header="File"
-				FontFamily="Century Gothic"
-				Foreground="White">
+				      FontFamily="Century Gothic"
+				      Foreground="White"
+                      FontSize="15"
+                      Style="{DynamicResource CuteMenuItem}">
 
                 <MenuItem x:Name="openFileMenuItem"
 					      Header="Open" 
                           Foreground="Black"
-                          Background="White">
+                          Background="White"
+                          Style="{DynamicResource CuteMenuItem}">
                     <MenuItem.Icon>
                         <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-folder-open.png"/>
                     </MenuItem.Icon>
@@ -44,14 +44,16 @@
 					          Header="image"
                               Foreground="Black"
                               Background="White"
-					          Command="{Binding OpenImage}">
+					          Command="{Binding OpenImage}"
+                              Style="{DynamicResource CuteMenuItem}">
                     </MenuItem>
 
                     <MenuItem x:Name="openGEFileMenuItem"
 					          Header="graphic editor file (*.gef)" 
                               Foreground="Black"
                               Background="White"
-					          Command="{Binding OpenGeFile}">
+					          Command="{Binding OpenGeFile}"
+                              Style="{DynamicResource CuteMenuItem}">
                     </MenuItem>
                     
                 </MenuItem>
@@ -59,7 +61,8 @@
                 <MenuItem x:Name="saveFileMenuItem"
 					      Header="Save as" 
                           Foreground="Black"
-                          Background="White">
+                          Background="White"
+                          Style="{DynamicResource CuteMenuItem}">
                     <MenuItem.Icon>
                         <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-save.png"/>
                     </MenuItem.Icon>
@@ -68,14 +71,16 @@
 				              Header="image"
                               Foreground="Black"
                               Background="White"
-				              Command="{Binding SaveImage}">
+				              Command="{Binding SaveImage}"
+                              Style="{DynamicResource CuteMenuItem}">
                     </MenuItem>
 
                     <MenuItem x:Name="saveAsGEFile"
 				              Header="graphic editor file (*.gef)" 
                               Foreground="Black"
                               Background="White"
-				              Command="{Binding SaveGeFile}">
+				              Command="{Binding SaveGeFile}"
+                              Style="{DynamicResource CuteMenuItem}">
                     </MenuItem>
 
                 </MenuItem>
@@ -85,11 +90,14 @@
             
             <MenuItem Header="Image"
 				      FontFamily="Century Gothic"
-				      Foreground="White">
+				      Foreground="White"
+                      FontSize="15"
+                      Style="{DynamicResource CuteMenuItem}">
                 <MenuItem x:Name="imageProperties"
 					      Header="Propeties"
                           Foreground="Black"
-                          Background="White">
+                          Background="White"
+                          Style="{DynamicResource CuteMenuItem}">
                     <MenuItem.Icon>
                         <Image Source="/GraphicEditor;component/View/Resources/Images/MainWindowMenu/image-properties.png"/>
                     </MenuItem.Icon>
@@ -100,7 +108,9 @@
             
             <MenuItem Header="Window"
 				      FontFamily="Century Gothic"
-				      Foreground="White">
+				      Foreground="White"
+                      FontSize="15"
+                      Style="{DynamicResource CuteMenuItem}">
                 <MenuItem x:Name="overviewMenuItem"
                           IsCheckable="True"
                           Header="Overview"
@@ -108,12 +118,14 @@
                           Background="White"
                           IsChecked="True"
                           Command="{Binding ShowOrHideOverviewWindow}"
-                          CommandParameter="{Binding ElementName=overviewMenuItem, Path=IsChecked}"/>
+                          CommandParameter="{Binding ElementName=overviewMenuItem, Path=IsChecked}"
+                          Style="{DynamicResource CuteMenuItem}"/>
                 <MenuItem x:Name="layersMenuItem"
                           IsCheckable="True"
                           Header="Layers"
                           Foreground="Black"
                           Background="White"
+                          Style="{DynamicResource CuteMenuItem}"
                           IsChecked="True"
                           Command="{Binding ShowOrHideLayersWindow}"
                           CommandParameter="{Binding ElementName=layersMenuItem, Path=IsChecked}"/>
@@ -123,6 +135,7 @@
                           Foreground="Black"
                           Background="White"
                           IsChecked="True"
+                          Style="{DynamicResource CuteMenuItem}"
                           Command="{Binding ShowOrHideColorPickerWindow}"
                           CommandParameter="{Binding ElementName=colorPickerMenuItem, Path=IsChecked}"/>
             </MenuItem>
@@ -130,8 +143,10 @@
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
             
             <MenuItem ToolTip="Undo"
-				Width="25"
-				Command="{Binding UndoCommand}">
+			          Width="25"
+			          Command="{Binding UndoCommand}"
+                      Style="{DynamicResource CuteMenuItem}"
+				      Foreground="White">
                 <MenuItem.Icon>
                     <Image Source="/GraphicEditor;component/View/Resources/Images/UndoRedo/undo.png"/>
                 </MenuItem.Icon>
@@ -140,8 +155,10 @@
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
             
             <MenuItem ToolTip="Redo"
-				Width="25"
-				Command="{Binding RedoCommand}">
+				      Command="{Binding RedoCommand}"
+                      Style="{DynamicResource CuteMenuItem}"
+				      Foreground="White"
+                      Width="25">
                 <MenuItem.Icon>
                     <Image Source="/GraphicEditor;component/View/Resources/Images/UndoRedo/redo.png"/>
                 </MenuItem.Icon>
@@ -153,7 +170,7 @@
 
         <local:GraphicToolPropertiesUserControl VerticalAlignment="Top"
                                                 HorizontalAlignment="Left"
-                                                Margin="220,-34,0,0"
+                                                Margin="245,-33"
                                                 x:Name="GraphicToolPropertiesUserControl"/>
 
         <ToolBarTray Orientation="Vertical"
@@ -212,6 +229,12 @@
                 </RadioButton>
             </ToolBar>
         </ToolBarTray>
-        
+
+
+        <local:StatusBar x:Name="statusBar"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Bottom"
+                         Margin="0,0,17,17"/>
+
     </Grid>
 </Window>

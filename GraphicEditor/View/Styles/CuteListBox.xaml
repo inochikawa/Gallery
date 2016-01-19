@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:GraphicEditor.View.UserControls.LayersControl">
 
-    <Style x:Key="LayersListBox" TargetType="{x:Type ListBox}">
+    <Style x:Key="CuteListBox" TargetType="{x:Type ListBox}">
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -11,6 +11,17 @@
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical"/>
                 </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <ScrollViewer x:Name="ScrollViewer"
+                                  Style="{DynamicResource CustomScrollViewer}">
+                        <ItemsPresenter/>
+                    </ScrollViewer>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
 
@@ -32,7 +43,7 @@
                             CornerRadius="2" 
                             BorderThickness="0" 
                             BorderBrush="#C5CAE9"
-                            Background="#536DFE">
+                            Background="#0277bd">
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -40,17 +51,18 @@
     </Style>
 
     <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
-        <Grid Width="30" 
+        <Grid Width="10" 
               Background="Transparent">
-            <Border CornerRadius="2" 
-                    Background="Transparent"
-                    BorderThickness="0"/>
-            <Track x:Name="PART_Track" IsDirectionReversed="true" IsEnabled="{TemplateBinding IsMouseOver}">
-
-                <Track.Thumb>
-                    <Thumb Style="{StaticResource ScrollBarThumb}"/>
-                </Track.Thumb>
-            </Track>
+            <Grid>
+                <Rectangle Width="2"
+                           Stroke="Gainsboro"
+                           StrokeThickness="1"/>
+                <Track x:Name="PART_Track" IsDirectionReversed="true" IsEnabled="{TemplateBinding IsMouseOver}">
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource ScrollBarThumb}"/>
+                    </Track.Thumb>
+                </Track>
+            </Grid>
         </Grid>
     </ControlTemplate>
 
@@ -58,7 +70,7 @@
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Vertical">
-                <Setter Property="Width" Value="7"/>
+                <Setter Property="Width" Value="15"/>
                 <Setter Property="Height" Value="Auto" />
                 <Setter Property="Template" Value="{StaticResource VerticalScrollBar}" />
                 <Setter Property="Background" Value="Transparent"/>
@@ -79,7 +91,7 @@
                                                   CanVerticallyScroll="False" 
                                                   ContentTemplate="{TemplateBinding ContentTemplate}" 
                                                   Content="{TemplateBinding Content}" 
-                                                  Margin="5" />
+                                                  Margin="0,0,20,0" />
                         <ScrollBar x:Name="PART_VerticalScrollBar" 
                                    HorizontalAlignment="Right" 
                                    AutomationProperties.AutomationId="VerticalScrollBar" 
@@ -88,7 +100,8 @@
                                    Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" 
                                    Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" 
                                    ViewportSize="{TemplateBinding ViewportHeight}"
-                                   Background="Transparent"/>
+                                   Background="Transparent"
+                                   Style="{DynamicResource CustomScrollBar}"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

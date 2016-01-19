@@ -21,16 +21,17 @@
                                Grid.ColumnSpan="2"/>
                 <Ellipse Name="Circle"
                          Grid.Column="0"
-                         Stroke="DarkGray"
+                         Stroke="White"
                          Width="20"
                          Height="20"
                          HorizontalAlignment="Center"
                          VerticalAlignment="Center"
+                         StrokeThickness="2"
                          />
                 <Path x:Name="Arrow"
                       Grid.Column="0"
                       Data="M 1,1.5 L 4.5,5 8,1.5"
-                      Stroke="#FF666666"
+                      Stroke="White"
                       StrokeThickness="2"
                       HorizontalAlignment="Center"
                       VerticalAlignment="Center"
@@ -54,9 +55,9 @@
                     <BeginStoryboard>
                         <Storyboard>
                             <DoubleAnimation Storyboard.TargetName="Arrow"
-                                                 Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                 To="180"
-                                                 Duration="0:0:0.4"/>
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             To="180"
+                                             Duration="0:0:0.4"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.EnterActions>
@@ -64,9 +65,9 @@
                     <BeginStoryboard>
                         <Storyboard>
                             <DoubleAnimation Storyboard.TargetName="Arrow"
-                                                 Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                 To="0"
-                                                 Duration="0:0:0.4"/>
+                                             Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                             To="0"
+                                             Duration="0:0:0.4"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.ExitActions>
@@ -74,25 +75,51 @@
 
             <!-- MouseOver, Pressed behaviours-->
             <Trigger Property="IsMouseOver"
-                                 Value="true">
-                <Setter Property="Stroke"
-                                    Value="#FF3C7FB1"
-                                    TargetName="Circle"/>
-                <Setter Property="Stroke"
-                                    Value="#222"
-                                    TargetName="Arrow"/>
+                     Value="true">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Arrow"
+                                             Storyboard.TargetProperty="StrokeThickness"
+                                             To="3"
+                                             Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Arrow"
+                                             Storyboard.TargetProperty="StrokeThickness"
+                                             To="2"
+                                             Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
             </Trigger>
+            
             <Trigger Property="IsPressed"
-                                 Value="true">
-                <Setter Property="Stroke"
-                                    Value="#FF526C7B"
-                                    TargetName="Circle"/>
-                <Setter Property="StrokeThickness"
-                                    Value="1.5"
-                                    TargetName="Circle"/>
-                <Setter Property="Stroke"
-                                    Value="#FF003366"
-                                    TargetName="Arrow"/>
+                     Value="true">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Circle"
+                                             Storyboard.TargetProperty="StrokeThickness"
+                                             To="4"
+                                             Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="Circle"
+                                             Storyboard.TargetProperty="StrokeThickness"
+                                             To="2"
+                                             Duration="0:0:0.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -100,19 +127,19 @@
     <ControlTemplate x:Key="RevealExpanderTemp" TargetType="{x:Type Expander}">
         <DockPanel>
             <ToggleButton x:Name="ExpanderButton" 
-                              DockPanel.Dock="Top"
-                              Template="{StaticResource AnimatedExpanderButtonTemp}"
-                              Content="{TemplateBinding Header}"
-                              IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
-                              OverridesDefaultStyle="True"
-                              Padding="1.5,0">
+                          DockPanel.Dock="Top"
+                          Template="{StaticResource AnimatedExpanderButtonTemp}"
+                          Content="{TemplateBinding Header}"
+                          IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
+                          OverridesDefaultStyle="True"
+                          Padding="1.5,0">
             </ToggleButton>
             <ScrollViewer x:Name="ExpanderContentScrollView" DockPanel.Dock="Bottom"
-                              HorizontalScrollBarVisibility="Hidden"
-                              VerticalScrollBarVisibility="Hidden"
-                              HorizontalContentAlignment="Stretch"
-                              VerticalContentAlignment="Bottom"
-                              >
+                          HorizontalScrollBarVisibility="Hidden"
+                          VerticalScrollBarVisibility="Hidden"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Bottom"
+                          Margin="0,5,0,0">
                 <ScrollViewer.Tag>
                     <system:Double>0.0</system:Double>
                 </ScrollViewer.Tag>
@@ -133,7 +160,13 @@
                             <DoubleAnimation Storyboard.TargetName="ExpanderContentScrollView"
                                                  Storyboard.TargetProperty="Tag"                                                 
                                                  To="1"
-                                                 Duration="0:0:0.4"/>
+                                                 Duration="0:0:.8">
+                                <DoubleAnimation.EasingFunction>
+                                    <BounceEase Bounces="1" 
+                                                EasingMode="EaseOut" 
+                                                Bounciness="6" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.EnterActions>
@@ -143,7 +176,11 @@
                             <DoubleAnimation Storyboard.TargetName="ExpanderContentScrollView"
                                                  Storyboard.TargetProperty="Tag"                                                 
                                                  To="0"
-                                                 Duration="0:0:0.4"/>
+                                                 Duration="0:0:.5">
+                                <DoubleAnimation.EasingFunction>
+                                    <CircleEase EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.ExitActions>

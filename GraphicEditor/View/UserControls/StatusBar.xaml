@@ -10,32 +10,38 @@
     <StackPanel Orientation="Horizontal">
         <StackPanel Orientation="Horizontal">
             <Label Content="Size: "
-                   FontWeight="Bold"/>
+                   FontWeight="Bold"
+				   FontFamily="Century Gothic"/>
             <Label Content="{Binding Size, Mode=TwoWay}"
                    x:Name="labeSize"
                    FontStyle="Italic"
                    HorizontalAlignment="Left"
-                   Margin="0,0,25,0"/>
+                   Margin="0,0,25,0"
+				   FontFamily="Century Gothic"/>
         </StackPanel>
         
         <StackPanel Orientation="Horizontal">
             <Label Content= "Mouse position: "
-                   FontWeight="Bold"/>
+                   FontWeight="Bold"
+				   FontFamily="Century Gothic"/>
             <Label Content="{Binding Pos, Mode=TwoWay}"
                    x:Name="labePos"
                    FontStyle="Italic"
                    HorizontalAlignment="Left"
-                   Margin="0,0,25,0"/>
+                   Margin="0,0,25,0"
+				   FontFamily="Century Gothic"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
             <Label Content="Tool: "
-                   FontWeight="Bold"/>
+                   FontWeight="Bold"
+				   FontFamily="Century Gothic"/>
             <Label Content="{Binding Tool, Mode=TwoWay}"
                    x:Name="labeTool"
                    FontStyle="Italic"
                    HorizontalAlignment="Left"
-                   Margin="0,0,25,0"/>
+                   Margin="0,0,25,0"
+				   FontFamily="Century Gothic"/>
         </StackPanel>
     </StackPanel>
 </UserControl>
